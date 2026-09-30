@@ -1,0 +1,2400 @@
+{
+  "hallTicket": "23N01A7405",
+  "studentName": "KEERTHI GOPI",
+  "fatherName": "KEERTHI KANAKAIAH",
+  "branch": "CSD-A (Computer Science & Engineering - Data Science)",
+  "year": "4th Year (B.Tech)",
+  "totalConducted": 385,
+  "totalAttended": 258,
+  "totalAbsent": 127,
+  "percentage": 67.01,
+  "subjectStats": {
+    "CD": {
+      "conducted": 61,
+      "attended": 38
+    },
+    "DDV": {
+      "conducted": 66,
+      "attended": 46
+    },
+    "ES": {
+      "conducted": 52,
+      "attended": 33
+    },
+    "AM": {
+      "conducted": 55,
+      "attended": 38
+    },
+    "CC": {
+      "conducted": 41,
+      "attended": 24
+    },
+    "CDLAB": {
+      "conducted": 30,
+      "attended": 24
+    },
+    "SEMINARS": {
+      "conducted": 58,
+      "attended": 39
+    },
+    "INSTACKS": {
+      "conducted": 22,
+      "attended": 16
+    }
+  },
+  "dailyRecords": [
+    {
+      "date": "2026-07-06",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-07",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-08",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CDLAB",
+          "attended": 0,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 0,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-07-09",
+      "conducted": 7,
+      "attended": 4,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "INSTACKS",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "INSTACKS",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-11",
+      "conducted": 5,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "SEMINARS",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "SEMINARS",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-13",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-15",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CDLAB",
+          "attended": 3,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-07-16",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 3,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-07-18",
+      "conducted": 6,
+      "attended": 6,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "SEMINARS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-20",
+      "conducted": 6,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-21",
+      "conducted": 6,
+      "attended": 6,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-22",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CDLAB",
+          "attended": 3,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-07-23",
+      "conducted": 6,
+      "attended": 6,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-25",
+      "conducted": 6,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "SEMINARS",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-27",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-28",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-29",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CDLAB",
+          "attended": 3,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-07-30",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "INSTACKS",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "INSTACKS",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 3,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-08-01",
+      "conducted": 6,
+      "attended": 6,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "SEMINARS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "SEMINARS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-03",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-04",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-05",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CDLAB",
+          "attended": 3,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-08-06",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "INSTACKS",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "INSTACKS",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-07",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 3,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-08-08",
+      "conducted": 6,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "SEMINARS",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "SEMINARS",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-11",
+      "conducted": 6,
+      "attended": 5,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-12",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CDLAB",
+          "attended": 3,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-08-13",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 0,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-08-17",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-19",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CDLAB",
+          "attended": 3,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-08-20",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 0,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-08-22",
+      "conducted": 4,
+      "attended": 4,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "SEMINARS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "SEMINARS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-24",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-25",
+      "conducted": 7,
+      "attended": 6,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-27",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-31",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-01",
+      "conducted": 6,
+      "attended": 6,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-02",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CDLAB",
+          "attended": 3,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-05",
+      "conducted": 6,
+      "attended": 6,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "SEMINARS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "SEMINARS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "conducted": 7,
+      "attended": 7,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-11",
+      "conducted": 4,
+      "attended": 4,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-09-12",
+      "conducted": 4,
+      "attended": 4,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "SEMINARS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "SEMINARS",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "conducted": 3,
+      "attended": 2,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-16",
+      "conducted": 4,
+      "attended": 3,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CDLAB",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "conducted": 7,
+      "attended": 6,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-18",
+      "conducted": 4,
+      "attended": 4,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 3,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-09-19",
+      "conducted": 2,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-21",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "conducted": 6,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-24",
+      "conducted": 6,
+      "attended": 6,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CD",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "INSTACKS",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-25",
+      "conducted": 4,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 3
+        }
+      ]
+    },
+    {
+      "date": "2026-09-26",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "SEMINARS",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "SEMINARS",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-28",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "DDV",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "AM",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "4",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "CC",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "CD",
+          "attended": 0,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "conducted": 6,
+      "attended": 6,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "ES",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "3",
+          "subject": "DDV",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "5",
+          "subject": "CC",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "6",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        },
+        {
+          "hour": "7",
+          "subject": "AM",
+          "attended": 1,
+          "conducted": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "conducted": 7,
+      "attended": 0,
+      "periods": [
+        {
+          "hour": "1",
+          "subject": "ES",
+          "attended": 0,
+          "conducted": 1
+        },
+        {
+          "hour": "2",
+          "subject": "CDLAB",
+          "attended": 0,
+          "conducted": 3
+        },
+        {
+          "hour": "5",
+          "subject": "SEMINARS",
+          "attended": 0,
+          "conducted": 3
+        }
+      ]
+    }
+  ]
+}

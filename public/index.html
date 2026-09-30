@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>SCCE Smart Academic Gateway | Attendance & Student Analytics</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                screens: {
+                    'xs': '400px',
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                },
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        surface: {
+                            base: '#070A11',
+                            card: '#101726',
+                            cardHover: '#172238',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            subtle: '#1E293B',
+                        },
+                        cyber: {
+                            cyan: '#06B6D4',
+                            indigo: '#6366F1',
+                            violet: '#8B5CF6',
+                            emerald: '#10B981',
+                            amber: '#F59E0B',
+                            rose: '#F43F5E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #070A11;
+            background-image: 
+                radial-gradient(at 15% 10%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 85% 15%, rgba(6, 182, 212, 0.12) 0px, transparent 50%),
+                radial-gradient(at 50% 85%, rgba(139, 92, 246, 0.10) 0px, transparent 60%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .glass-card {
+            background: rgba(16, 23, 38, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .progress-ring {
+            transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+
+
+        /* Custom scrollbars */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #070A11; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-slate-100 font-sans selection:bg-cyan-500 selection:text-white flex flex-col justify-between min-h-screen">
+
+    <!-- Clean Modern Floating Island Navigation Bar -->
+    <header class="sticky top-2.5 sm:top-4 z-50 px-3 sm:px-6 w-full flex justify-center">
+        <div class="max-w-2xl w-full rounded-full border border-white/[0.12] bg-slate-900/85 backdrop-blur-xl px-4 sm:px-6 py-2.5 shadow-2xl flex items-center justify-between gap-3">
+            
+            <!-- New College Academic Crest Logo -->
+            <div class="flex items-center gap-2.5 cursor-pointer select-none min-w-0" onclick="returnToLanding()">
+                <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 p-[1.5px] flex items-center justify-center shadow-lg shadow-cyan-500/20 shrink-0">
+                    <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 min-w-0">
+                    <span class="text-xs sm:text-sm font-extrabold tracking-tight text-white whitespace-nowrap">Sree Chaitanya</span>
+                    <span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-mono shrink-0">
+                        Attendance
+                    </span>
+                </div>
+            </div>
+
+            <!-- Right Status (Clean Live Server Indicator) -->
+            <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold shrink-0">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="font-mono text-[11px] hidden xs:inline">Live Server</span>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- SECTION 1: LANDING PAGE VIEW (ACTIVE BY DEFAULT - ZERO DATA LEAK) -->
+    <section id="landing-page-view" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-16 space-y-10 sm:space-y-16 w-full">
+        
+        <!-- Hero Section -->
+        <div class="text-center space-y-4 sm:space-y-6 max-w-3xl mx-auto pt-2">
+            
+
+
+            <!-- Main Headline -->
+            <h1 class="text-2xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-tight sm:leading-none">
+                Check Your Official <br />
+                <span class="bg-gradient-to-r from-cyan-400 via-indigo-300 to-violet-400 bg-clip-text text-transparent">
+                    Attendance & Subject Table
+                </span>
+            </h1>
+
+            <p class="text-xs sm:text-base text-slate-400 max-w-xl mx-auto font-normal leading-relaxed px-1">
+                Direct college database bridge for all hall ticket numbers. View your overall percentage, subject-wise table breakdown, condonation standing, and lecture recovery.
+            </p>
+
+            <!-- Clean, Simple Search Input Box with Shadcn Button -->
+            <div class="max-w-xl mx-auto pt-3 px-1 w-full">
+                <div class="bg-slate-900/90 rounded-2xl sm:rounded-full p-1.5 sm:p-2 border border-slate-700/70 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 shadow-2xl">
+                    <div class="hidden sm:flex pl-3 text-slate-400">
+                        <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
+                    <input type="text" id="landing-htno-input" 
+                           placeholder="Enter Hall Ticket No (e.g. 23N01A7405)" 
+                           class="w-full bg-transparent rounded-xl px-4 py-2.5 sm:py-3 text-sm sm:text-base font-mono uppercase text-white placeholder-slate-500 focus:outline-none text-center sm:text-left">
+                    
+                    <button id="landing-search-btn" onclick="submitHallTicket(false)" 
+                            class="w-full sm:w-auto px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-full bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 whitespace-nowrap active:scale-[0.98]">
+                        <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        <span id="landing-btn-text">View Attendance</span>
+                        <svg id="landing-btn-spinner" class="hidden animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Quick Pick Suggestions -->
+                <div class="mt-3 flex items-center justify-center flex-wrap gap-1.5 text-xs text-slate-400">
+                    <span class="text-slate-500 font-medium text-[11px]">Quick Test:</span>
+                    <button onclick="fillAndSearch('23N01A7405')" class="px-2 py-1 rounded-lg bg-surface-card hover:bg-surface-cardHover border border-white/[0.06] text-cyan-400 font-mono transition text-[11px]">23N01A7405</button>
+                    <button onclick="fillAndSearch('23N01A7401')" class="px-2 py-1 rounded-lg bg-surface-card hover:bg-surface-cardHover border border-white/[0.06] text-indigo-400 font-mono transition text-[11px]">23N01A7401</button>
+                    <button onclick="fillAndSearch('23N01A7402')" class="px-2 py-1 rounded-lg bg-surface-card hover:bg-surface-cardHover border border-white/[0.06] text-violet-400 font-mono transition text-[11px]">23N01A7402</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Student Feature Highlights Bento Grid -->
+        <div class="space-y-4">
+            <div class="text-center space-y-1">
+                <span class="text-[10px] uppercase tracking-wider font-bold text-cyan-400 font-mono">Academic Portal Features</span>
+                <h3 class="text-lg sm:text-2xl font-bold text-white">Full Transparency & Prediction</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6 pt-1 sm:pt-2">
+                
+                <!-- Feature 1: Subject Table -->
+                <div class="glass-card rounded-2xl p-4 sm:p-6 space-y-2.5">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-xl text-cyan-400">
+                        📋
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold text-white">Subject-Wise Attendance Table</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Complete table with conducted hours, attended hours, and percentages for Electronic Sensors, Agile Methodology, Compiler Design, Cloud Computing, etc.
+                    </p>
+                </div>
+
+                <!-- Feature 2: Condonation -->
+                <div class="glass-card rounded-2xl p-4 sm:p-6 space-y-2.5">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-xl text-indigo-400">
+                        ⚖️
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold text-white">Condonation Cutoff Engine</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Automatic check against University regulations: <strong>Safe (≥75%)</strong>, <strong>Condonation (65%–74.9%)</strong>, or <strong>Detention Warning (&lt;65%)</strong>.
+                    </p>
+                </div>
+
+                <!-- Feature 3: Live Daily Invalidation -->
+                <div class="glass-card rounded-2xl p-4 sm:p-6 space-y-2.5">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xl text-emerald-400">
+                        🔄
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold text-white">Tomorrow's Auto-Update</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Checking tomorrow automatically retrieves the newest lecture periods from the college server and recalculates your updated totals.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- SECTION 2: ATTENDANCE DASHBOARD VIEW (REVEALED ONLY AFTER SUBMISSION) -->
+    <section id="dashboard-view" class="hidden max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-4 sm:space-y-6 w-full max-w-full overflow-hidden">
+        
+        <!-- Top Toolbar: Responsive Back & Live Sync -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 w-full">
+            <div class="flex items-center justify-between sm:justify-start gap-2 w-full sm:w-auto">
+                <button onclick="returnToLanding()" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-700/80 bg-slate-900/90 hover:bg-slate-800 text-slate-100 text-xs font-medium shadow-sm transition-all active:scale-95">
+                    <span class="text-sm leading-none">←</span> <span>Search</span>
+                </button>
+                <div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] sm:text-xs font-medium truncate">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                    <span id="dash-latest-date-badge" class="truncate">Latest: Today</span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">
+                <span class="text-[10px] sm:text-xs font-mono text-slate-400 truncate" id="dash-fetched-time">Sync: Just Now</span>
+                <button onclick="refreshCurrentStudent()" id="sync-live-btn" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 hover:from-cyan-500/30 hover:to-indigo-500/30 border border-cyan-500/30 text-cyan-300 text-xs font-bold transition flex items-center gap-1.5 active:scale-95 shrink-0">
+                    <svg id="sync-icon" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                    <span id="sync-btn-text">Sync Live</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Live Toast Notification -->
+        <div id="sync-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:right-6 sm:translate-x-0 z-50 px-4 py-2.5 rounded-2xl glass-card border border-emerald-500/30 text-emerald-300 text-xs font-semibold shadow-2xl flex items-center gap-2 max-w-[90vw]">
+            <span>✅</span>
+            <span id="sync-toast-msg" class="truncate">Attendance refreshed directly from SCCE.</span>
+        </div>
+
+        <!-- Student Profile Card (Mobile & Desktop Responsive) -->
+        <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 relative overflow-hidden w-full">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 w-full">
+                
+                <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3.5 sm:gap-5 w-full min-w-0">
+                    <!-- Avatar -->
+                    <div class="relative shrink-0">
+                        <div class="w-16 h-20 sm:w-20 sm:h-24 rounded-xl overflow-hidden border-2 border-cyan-500/40 shadow-lg bg-slate-900 flex items-center justify-center">
+                            <img id="student-photo" src="" 
+                                 alt="Student Photo" 
+                                 onerror="this.src='https://ui-avatars.com/api/?name=Student&background=0f172a&color=38bdf8&size=128'"
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- Details -->
+                    <div class="space-y-1 text-center sm:text-left min-w-0 flex-1 w-full">
+                        <div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                            <span id="htno-badge" class="px-2 py-0.5 rounded font-mono text-xs font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                                -
+                            </span>
+                            <span id="year-badge" class="px-2 py-0.5 rounded text-[11px] font-semibold bg-white/[0.05] text-slate-300 border border-white/[0.08]">
+                                -
+                            </span>
+                        </div>
+                        <h2 id="student-name" class="text-base sm:text-2xl font-black text-white tracking-tight break-words leading-snug">-</h2>
+                        <p class="text-xs text-slate-400 font-medium">
+                            Father: <span id="father-name" class="text-slate-200 font-semibold">-</span>
+                        </p>
+                        <p class="text-xs text-indigo-300 font-mono truncate" id="branch-name">-</p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons: 2 columns on mobile, stacked on desktop -->
+                <div class="grid grid-cols-2 sm:flex sm:flex-col gap-2 w-full sm:w-auto shrink-0 pt-1 sm:pt-0">
+                    <button onclick="window.print()" class="px-3 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08] text-xs font-semibold text-slate-200 transition flex items-center justify-center gap-1.5">
+                        <span>🖨️</span> <span>Print</span>
+                    </button>
+                    <button onclick="copySummary()" id="copy-btn" class="px-3 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08] text-xs font-semibold text-slate-200 transition flex items-center justify-center gap-1.5">
+                        <span>📋</span> <span>Copy</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Overall Attendance Hero Card (Mobile-Optimized & Centered) -->
+        <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 w-full">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-5">
+                
+                <div class="space-y-2.5 text-center md:text-left w-full md:w-auto flex-1">
+                    <div class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                        <span class="text-[11px] uppercase tracking-wider font-bold text-slate-400 font-mono">Official Cumulative Attendance</span>
+                    </div>
+
+                    <div class="flex items-baseline space-x-1.5 justify-center md:justify-start">
+                        <span id="overall-percentage" class="text-4xl sm:text-6xl font-black tracking-tight text-white">-</span>
+                        <span class="text-2xl font-bold text-slate-400">%</span>
+                    </div>
+
+                    <div>
+                        <div id="status-pill" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-300 border border-amber-500/20 max-w-full">
+                            -
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-md mx-auto md:mx-0">
+                        Safe Threshold: <strong class="text-white">75.00%</strong> • Condonation: <strong class="text-white">65.00% - 74.99%</strong>
+                    </p>
+                </div>
+
+                <!-- Animated Circular Progress Meter -->
+                <div class="relative w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center shrink-0">
+                    <svg class="w-full h-full" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.06)" stroke-width="11" fill="transparent"/>
+                        <circle id="radial-progress-bar" cx="60" cy="60" r="50" stroke="url(#cyan-indigo-gradient)" stroke-width="11" fill="transparent" 
+                                stroke-linecap="round"
+                                stroke-dasharray="314.159"
+                                stroke-dashoffset="314.159"
+                                class="progress-ring filter drop-shadow-[0_0_8px_rgba(6,182,212,0.4)]"/>
+                        <defs>
+                            <linearGradient id="cyan-indigo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#06B6D4" />
+                                <stop offset="100%" stop-color="#8B5CF6" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="absolute text-center">
+                        <span class="text-[9px] uppercase font-bold text-slate-500 tracking-wider block">Attended</span>
+                        <div id="radial-ratio-text" class="text-xs sm:text-sm font-bold font-mono text-white">- / -</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mini Summary Metrics Grid (Conducted, Attended, Absent) -->
+            <div class="grid grid-cols-3 gap-2 sm:gap-4 pt-4 mt-4 border-t border-white/[0.06] text-center">
+                <div class="p-2 sm:p-3 rounded-xl bg-white/[0.02]">
+                    <span class="text-[10px] sm:text-xs text-slate-400 font-medium block">Conducted</span>
+                    <span id="stat-conducted" class="text-base sm:text-2xl font-black text-white font-mono">-</span>
+                </div>
+                <div class="p-2 sm:p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
+                    <span class="text-[10px] sm:text-xs text-emerald-400 font-medium block">Attended</span>
+                    <span id="stat-attended" class="text-base sm:text-2xl font-black text-emerald-400 font-mono">-</span>
+                </div>
+                <div class="p-2 sm:p-3 rounded-xl bg-rose-500/5 border border-rose-500/10">
+                    <span class="text-[10px] sm:text-xs text-rose-400 font-medium block">Absent</span>
+                    <span id="stat-absent" class="text-base sm:text-2xl font-black text-rose-400 font-mono">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: SUBJECT-WISE ATTENDANCE TABLE (THE CORE USER REQUIREMENT) -->
+        <div class="glass-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 space-y-3 sm:space-y-4 w-full">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-white/[0.06] pb-3">
+                <div>
+                    <h3 class="text-sm sm:text-lg font-bold text-white flex items-center gap-2">
+                        <span>📚</span> <span>Subject-Wise Attendance Table</span>
+                    </h3>
+                    <p class="text-[11px] sm:text-xs text-slate-400">Official lecture counts and percentage for every enrolled subject</p>
+                </div>
+                <span class="text-[10px] sm:text-xs font-mono text-cyan-400 self-start sm:self-auto bg-cyan-500/10 px-2 py-0.5 rounded-full border border-cyan-500/20">
+                    Live Verified
+                </span>
+            </div>
+
+            <!-- Fully Responsive Subjects Table Container -->
+            <div class="overflow-x-auto rounded-xl border border-white/[0.06] w-full">
+                <table class="w-full text-left text-xs sm:text-sm">
+                    <thead class="bg-surface-card text-[11px] sm:text-xs uppercase text-slate-400 font-mono border-b border-white/[0.06]">
+                        <tr>
+                            <th class="px-2.5 sm:px-4 py-2.5 font-bold">Subject</th>
+                            <th class="px-2 sm:px-3 py-2.5 text-center font-bold">Conducted</th>
+                            <th class="px-2 sm:px-3 py-2.5 text-center font-bold">Attended</th>
+                            <th class="px-2.5 sm:px-4 py-2.5 text-center font-bold">Percentage</th>
+                            <th class="px-2 sm:px-3 py-2.5 text-center font-bold hidden xs:table-cell">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subject-table-body" class="divide-y divide-white/[0.04]">
+                        <!-- Dynamic Subject Rows populated via JavaScript -->
+                    </tbody>
+                    <tfoot id="subject-table-footer" class="bg-white/[0.03] font-bold border-t border-white/[0.08]">
+                        <!-- Total Row -->
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <!-- Additional Tabs: Recovery Simulator, Daily Lecture Log, Inspector -->
+        <div class="space-y-4 w-full">
+            <div class="border-b border-white/[0.08] flex items-center space-x-1 sm:space-x-4 overflow-x-auto pb-1 scrollbar-none w-full">
+                <button onclick="switchTab('simulator')" id="tab-btn-simulator" class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-t-xl border-b-2 border-cyan-400 text-cyan-400 transition flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+                    <span>🎯</span> <span>Recovery Simulator</span>
+                </button>
+                <button onclick="switchTab('transactions')" id="tab-btn-transactions" class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-t-xl border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+                    <span>⏱️</span> <span>Daily Period Log (321+)</span>
+                </button>
+                <button onclick="switchTab('inspector')" id="tab-btn-inspector" class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-t-xl border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+                    <span>🔍</span> <span>Server Trace</span>
+                </button>
+            </div>
+
+            <!-- Tab: Simulator -->
+            <div id="tab-simulator">
+                <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-4">
+                    <div>
+                        <h4 class="text-sm sm:text-base font-bold text-white">Target 75% Attendance Calculator</h4>
+                        <p class="text-[11px] sm:text-xs text-slate-400">See how attending future classes increases your eligibility</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                        <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] space-y-1">
+                            <span class="text-xs text-slate-400">Classes Needed for Safe 75%:</span>
+                            <div id="sim-need-75" class="text-2xl sm:text-3xl font-black text-cyan-400">-</div>
+                            <p class="text-[11px] text-slate-400">Consecutive classes required with 0 absents.</p>
+                        </div>
+
+                        <!-- Slider -->
+                        <div class="p-4 rounded-xl bg-surface-card border border-white/[0.08] space-y-3">
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="font-medium text-slate-300">Simulate Next Classes:</span>
+                                <span id="slider-count-badge" class="px-2 py-0.5 rounded font-mono font-bold bg-cyan-500/10 text-cyan-300">+10 Classes</span>
+                            </div>
+                            <input type="range" id="simulator-slider" min="0" max="60" value="10" 
+                                   class="w-full accent-cyan-400 h-2 bg-slate-800 rounded-lg cursor-pointer"
+                                   oninput="handleSimulation(this.value)">
+                            <div class="flex justify-between items-center text-xs pt-1">
+                                <span class="text-slate-400">Projected Attendance:</span>
+                                <span id="projected-percentage" class="text-lg font-black text-cyan-400 font-mono">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Daily Transactions (Responsive Table) -->
+            <div id="tab-transactions" class="hidden">
+                <div class="glass-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 space-y-3.5">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <h4 class="text-sm sm:text-base font-bold text-white">Full Daily Lecture Transactions</h4>
+                            <p class="text-[11px] sm:text-xs text-slate-400">All recorded periods from July 2026 to present</p>
+                        </div>
+                        <input type="text" id="tx-search-input" placeholder="Filter by date or subject..." 
+                               oninput="filterTransactions()"
+                               class="w-full sm:w-auto px-3 py-1.5 text-xs rounded-xl bg-surface-card border border-white/[0.08] text-white outline-none focus:border-cyan-500 font-mono">
+                    </div>
+
+                    <div class="overflow-x-auto rounded-xl border border-white/[0.06] max-h-[420px] overflow-y-auto w-full">
+                        <table class="w-full text-left text-xs min-w-[320px]">
+                            <thead class="bg-surface-card text-[11px] uppercase text-slate-400 font-mono sticky top-0 backdrop-blur-md">
+                                <tr>
+                                    <th class="px-2.5 py-2">S.No</th>
+                                    <th class="px-2.5 py-2">Date</th>
+                                    <th class="px-2.5 py-2">Subject</th>
+                                    <th class="px-2 py-2 text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tx-table-body" class="divide-y divide-white/[0.04]">
+                                <!-- Dynamic Daily Rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Inspector -->
+            <div id="tab-inspector" class="hidden">
+                <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-3">
+                    <h4 class="text-sm sm:text-base font-bold text-white">Direct Server Endpoint</h4>
+                    <div class="p-3 rounded-xl bg-black/60 font-mono text-[11px] sm:text-xs text-slate-300 space-y-1.5 border border-white/[0.08] overflow-x-auto">
+                        <div class="text-cyan-400">// Direct College Bridge</div>
+                        <div>POST https://scce.ac.in/parent12/Dailywise1.php</div>
+                        <div id="inspector-payload" class="text-slate-500">Payload: HallticketNo=-&dayatten=Submit</div>
+                        <div class="text-emerald-400">Response: 200 OK (Calculated from real daily table)</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer with Developer Credit -->
+    <footer class="border-t border-white/[0.08] py-8 text-center text-xs text-slate-400 space-y-3 px-4 mt-auto w-full bg-slate-950/40">
+        <div class="flex items-center justify-center gap-2 flex-wrap text-sm">
+            <span class="text-slate-400 font-normal">Created with passion by</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-400 font-bold font-mono tracking-wide shadow-sm">
+                <span>👨‍💻</span> <span>Gopi Keerthi</span> <span class="text-slate-500">•</span> <span class="text-indigo-400">CSD</span>
+            </span>
+        </div>
+        <div class="text-[11px] text-slate-500 flex items-center justify-center gap-2 flex-wrap">
+            <span>SCCE Smart Academic Gateway</span>
+            <span>•</span>
+            <span>Sree Chaitanya Educational Institutions</span>
+            <span>•</span>
+            <span class="font-mono text-slate-600">Live Server Engine 2026</span>
+        </div>
+    </footer>
+
+    <!-- App JavaScript Logic -->
+    <script>
+        let currentStudentData = null;
+
+        function fillAndSearch(htno) {
+            document.getElementById('landing-htno-input').value = htno;
+            submitHallTicket(false);
+        }
+
+        async function submitHallTicket(forceRefresh = false) {
+            const htno = document.getElementById('landing-htno-input').value.trim().toUpperCase();
+            if (!htno) {
+                alert("Please enter a valid Hall Ticket Number.");
+                document.getElementById('landing-htno-input').focus();
+                return;
+            }
+
+            const btnText = document.getElementById('landing-btn-text');
+            const btnSpinner = document.getElementById('landing-btn-spinner');
+            btnText.innerText = forceRefresh ? "Syncing..." : "Querying...";
+            btnSpinner.classList.remove('hidden');
+
+            try {
+                const url = forceRefresh ? `/api/attendance?htno=${htno}&refresh=true` : `/api/attendance?htno=${htno}`;
+                const res = await fetch(url);
+                if (!res.ok) {
+                    throw new Error(`Server returned HTTP ${res.status}`);
+                }
+                const data = await res.json();
+                currentStudentData = data;
+
+                revealDashboard(data);
+
+                if (forceRefresh) {
+                    showSyncToast("Live attendance refreshed directly from SCCE!");
+                }
+
+            } catch (err) {
+                console.error("Fetch error:", err);
+                alert(`Error loading attendance for ${htno}: ${err.message}. Please check if the hall ticket is registered.`);
+            } finally {
+                btnText.innerText = "View Attendance";
+                btnSpinner.classList.add('hidden');
+            }
+        }
+
+        async function refreshCurrentStudent() {
+            if (!currentStudentData || !currentStudentData.hallTicket) return;
+            const htno = currentStudentData.hallTicket;
+            
+            const syncBtn = document.getElementById('sync-live-btn');
+            const syncText = document.getElementById('sync-btn-text');
+            const syncIcon = document.getElementById('sync-icon');
+            
+            syncText.innerText = "Syncing...";
+            syncIcon.classList.add('animate-spin');
+            syncBtn.disabled = true;
+
+            try {
+                const res = await fetch(`/api/attendance?htno=${htno}&refresh=true`);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                currentStudentData = data;
+                
+                populateDashboardData(data);
+                showSyncToast(`Synced! Latest lecture: ${data.latestClassDate || 'Today'}`);
+
+                anime({
+                    targets: '#overall-percentage',
+                    scale: [1, 1.1, 1],
+                    color: ['#ffffff', '#06B6D4', '#ffffff'],
+                    duration: 500,
+                    easing: 'easeOutQuad'
+                });
+
+            } catch (err) {
+                console.error("Sync error:", err);
+                alert(`Live sync error: ${err.message}. Please verify connection.`);
+            } finally {
+                syncText.innerText = "Sync Live";
+                syncIcon.classList.remove('animate-spin');
+                syncBtn.disabled = false;
+            }
+        }
+
+        function showSyncToast(msg) {
+            const toast = document.getElementById('sync-toast');
+            const msgEl = document.getElementById('sync-toast-msg');
+            msgEl.innerText = msg;
+            toast.classList.remove('hidden');
+            anime({
+                targets: '#sync-toast',
+                opacity: [0, 1],
+                translateY: [15, 0],
+                duration: 350,
+                easing: 'easeOutCubic'
+            });
+            setTimeout(() => {
+                anime({
+                    targets: '#sync-toast',
+                    opacity: [1, 0],
+                    translateY: [0, 15],
+                    duration: 350,
+                    easing: 'easeInCubic',
+                    complete: () => toast.classList.add('hidden')
+                });
+            }, 3000);
+        }
+
+        function revealDashboard(data) {
+            if (!data || data.totalConducted === 0) {
+                alert(`No attendance records found for "${data && data.hallTicket ? data.hallTicket : 'this student'}". Please check if the hall ticket is registered.`);
+                return;
+            }
+
+            const landing = document.getElementById('landing-page-view');
+            const dash = document.getElementById('dashboard-view');
+            
+            landing.classList.add('hidden');
+            dash.classList.remove('hidden');
+
+            // Ensure all child elements have full opacity and zero transform
+            dash.style.opacity = '1';
+            dash.style.transform = 'none';
+            Array.from(dash.children).forEach(child => {
+                child.style.opacity = '1';
+                child.style.transform = 'none';
+            });
+
+            populateDashboardData(data);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function returnToLanding() {
+            const dash = document.getElementById('dashboard-view');
+            const landing = document.getElementById('landing-page-view');
+            
+            dash.classList.add('hidden');
+            landing.classList.remove('hidden');
+            
+            landing.style.opacity = '1';
+            landing.style.transform = 'none';
+            Array.from(landing.children).forEach(child => {
+                child.style.opacity = '1';
+                child.style.transform = 'none';
+            });
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function populateDashboardData(data) {
+            document.getElementById('student-name').innerText = data.studentName;
+            document.getElementById('father-name').innerText = data.fatherName;
+            document.getElementById('htno-badge').innerText = data.hallTicket;
+            document.getElementById('year-badge').innerText = data.year;
+            document.getElementById('branch-name').innerText = data.branch;
+            document.getElementById('student-photo').src = data.photoUrl;
+            document.getElementById('dash-fetched-time').innerText = `Sync: ${data.fetchedAt ? data.fetchedAt.split(' ')[1] + ' ' + (data.fetchedAt.split(' ')[2] || '') : 'Today'}`;
+            
+            const latestBadge = document.getElementById('dash-latest-date-badge');
+            if (latestBadge && data.latestClassDate) {
+                latestBadge.innerText = `Latest: ${data.latestClassDate}`;
+            }
+
+            // Stats
+            document.getElementById('overall-percentage').innerText = data.percentage.toFixed(2);
+            document.getElementById('stat-conducted').innerText = data.totalConducted;
+            document.getElementById('stat-attended').innerText = data.totalAttended;
+            document.getElementById('stat-absent').innerText = data.totalAbsent;
+            document.getElementById('radial-ratio-text').innerText = `${data.totalAttended} / ${data.totalConducted}`;
+
+            // Animate Radial Progress
+            const circle = document.getElementById('radial-progress-bar');
+            const circumference = 2 * Math.PI * 50; // 314.159
+            const targetOffset = circumference - (data.percentage / 100) * circumference;
+            setTimeout(() => {
+                circle.style.strokeDashoffset = targetOffset;
+            }, 150);
+
+            // Status Badge
+            const pill = document.getElementById('status-pill');
+            if (data.percentage >= 75) {
+                pill.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20';
+                pill.innerHTML = '<span>🟢</span> Safe (Above 75.00%)';
+            } else if (data.percentage >= 65) {
+                pill.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-300 border border-amber-500/20';
+                pill.innerHTML = '<span>⚠️</span> Condonation Eligible (65% – 75%)';
+            } else {
+                pill.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-500/10 text-rose-300 border border-rose-500/20';
+                pill.innerHTML = '<span>🚨</span> Critical Attendance Shortage (< 65%)';
+            }
+
+            // Simulator
+            document.getElementById('sim-need-75').innerText = data.need75 > 0 ? `${data.need75} Classes` : 'Goal Met!';
+
+            // Inspector
+            document.getElementById('inspector-payload').innerText = `Payload: HallticketNo=${data.hallTicket}&dayatten=Submit`;
+
+            // RENDER THE FULL RESPONSIVE SUBJECT TABLE
+            renderSubjectTable(data.subjectStats, data.totalConducted, data.totalAttended, data.percentage);
+            renderTransactionsTable(data.transactions);
+            handleSimulation(10);
+        }
+
+        // RENDER SUBJECTS IN CLEAN RESPONSIVE TABLE FORMAT
+        function renderSubjectTable(stats, totalConducted, totalAttended, overallPercentage) {
+            const tbody = document.getElementById('subject-table-body');
+            const tfoot = document.getElementById('subject-table-footer');
+            tbody.innerHTML = '';
+            tfoot.innerHTML = '';
+
+            for (const [code, item] of Object.entries(stats)) {
+                const pct = item.conducted > 0 ? (item.attended / item.conducted * 100) : 0;
+                
+                let badgeClass = 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+                let barClass = 'bg-emerald-400';
+                let statusText = 'Safe';
+                if (pct < 65) {
+                    badgeClass = 'bg-rose-500/10 text-rose-400 border-rose-500/20';
+                    barClass = 'bg-rose-400';
+                    statusText = 'Critical';
+                } else if (pct < 75) {
+                    badgeClass = 'bg-amber-500/10 text-amber-300 border-amber-500/20';
+                    barClass = 'bg-amber-400';
+                    statusText = 'Condonation';
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-white/[0.02] transition';
+                tr.innerHTML = `
+                    <td class="px-2.5 sm:px-4 py-2.5 sm:py-3">
+                        <div class="flex items-center gap-1.5 sm:gap-2">
+                            <span class="px-1.5 py-0.5 rounded text-[10px] sm:text-xs font-mono font-bold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 shrink-0">
+                                ${code}
+                            </span>
+                            <span class="font-bold text-white text-xs sm:text-sm leading-snug break-words max-w-[130px] xs:max-w-[200px] sm:max-w-none">
+                                ${item.name}
+                            </span>
+                        </div>
+                    </td>
+                    <td class="px-2 sm:px-3 py-2.5 sm:py-3 text-center font-mono text-xs sm:text-sm text-slate-300">
+                        ${item.conducted}
+                    </td>
+                    <td class="px-2 sm:px-3 py-2.5 sm:py-3 text-center font-mono text-xs sm:text-sm font-bold text-emerald-400">
+                        ${item.attended}
+                    </td>
+                    <td class="px-2.5 sm:px-4 py-2.5 sm:py-3 text-center">
+                        <div class="flex flex-col items-center gap-1">
+                            <span class="font-mono font-bold text-xs sm:text-sm text-white">${pct.toFixed(1)}%</span>
+                            <div class="w-12 sm:w-16 bg-slate-800 rounded-full h-1 overflow-hidden">
+                                <div class="${barClass} h-1 rounded-full" style="width: ${Math.min(100, pct)}%"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-2 sm:px-3 py-2.5 sm:py-3 text-center hidden xs:table-cell">
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold border ${badgeClass}">
+                            ${statusText}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            }
+
+            // Total Aggregate Row
+            let totalStatus = overallPercentage >= 75 ? 'Safe' : (overallPercentage >= 65 ? 'Condonation' : 'Critical');
+            let totalBadgeClass = overallPercentage >= 75 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : (overallPercentage >= 65 ? 'bg-amber-500/10 text-amber-300 border-amber-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20');
+            
+            tfoot.innerHTML = `
+                <tr>
+                    <td class="px-2.5 sm:px-4 py-3 text-xs sm:text-sm text-white">
+                        <span class="font-black tracking-wide uppercase font-mono text-cyan-400">Overall Aggregate</span>
+                    </td>
+                    <td class="px-2 sm:px-3 py-3 text-center font-mono text-xs sm:text-sm font-extrabold text-white">
+                        ${totalConducted}
+                    </td>
+                    <td class="px-2 sm:px-3 py-3 text-center font-mono text-xs sm:text-sm font-extrabold text-emerald-400">
+                        ${totalAttended}
+                    </td>
+                    <td class="px-2.5 sm:px-4 py-3 text-center font-mono text-xs sm:text-sm font-black text-cyan-400">
+                        ${overallPercentage.toFixed(2)}%
+                    </td>
+                    <td class="px-2 sm:px-3 py-3 text-center hidden xs:table-cell">
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold border ${totalBadgeClass}">
+                            ${totalStatus}
+                        </span>
+                    </td>
+                </tr>
+            `;
+        }
+
+        function renderTransactionsTable(txList) {
+            const tbody = document.getElementById('tx-table-body');
+            tbody.innerHTML = '';
+
+            txList.slice(0, 100).forEach(tx => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-white/[0.02] transition';
+                tr.innerHTML = `
+                    <td class="px-2.5 py-2 font-mono text-slate-400">${tx.sno}</td>
+                    <td class="px-2.5 py-2 font-mono text-slate-300 whitespace-nowrap">${tx.date}</td>
+                    <td class="px-2.5 py-2 font-semibold text-white truncate max-w-[140px]">${tx.subjectName || tx.subject}</td>
+                    <td class="px-2 py-2 text-center">
+                        <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${tx.present ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-300 border border-rose-500/20'}">
+                            ${tx.present ? 'Present' : 'Absent'}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterTransactions() {
+            const query = document.getElementById('tx-search-input').value.trim().toLowerCase();
+            const rows = document.getElementById('tx-table-body').querySelectorAll('tr');
+
+            rows.forEach(r => {
+                const txt = r.innerText.toLowerCase();
+                r.style.display = (!query || txt.includes(query)) ? '' : 'none';
+            });
+        }
+
+        function switchTab(tabId) {
+            ['simulator', 'transactions', 'inspector'].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.add('hidden');
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (btn) {
+                    btn.className = 'px-3 py-2 text-xs sm:text-sm font-semibold rounded-t-xl border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition flex items-center gap-1.5 shrink-0 whitespace-nowrap';
+                }
+            });
+
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = 'px-3 py-2 text-xs sm:text-sm font-semibold rounded-t-xl border-b-2 border-cyan-400 text-cyan-400 transition flex items-center gap-1.5 shrink-0 whitespace-nowrap';
+            }
+        }
+
+        function handleSimulation(val) {
+            val = parseInt(val);
+            document.getElementById('slider-count-badge').innerText = `+${val} Classes`;
+            if (!currentStudentData) return;
+
+            const newCond = currentStudentData.totalConducted + val;
+            const newAtnd = currentStudentData.totalAttended + val;
+            const newPct = (newAtnd / newCond * 100);
+
+            document.getElementById('projected-percentage').innerText = `${newPct.toFixed(2)}%`;
+        }
+
+        function copySummary() {
+            if (!currentStudentData) return;
+            const text = `SCCE Attendance Report\nHall Ticket: ${currentStudentData.hallTicket}\nName: ${currentStudentData.studentName}\nAttended: ${currentStudentData.totalAttended} / ${currentStudentData.totalConducted}\nOverall Percentage: ${currentStudentData.percentage}%\nStatus: ${currentStudentData.percentage >= 75 ? 'Safe' : 'Condonation'}`;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.innerHTML = '<span>✅</span> <span>Copied</span>';
+                setTimeout(() => {
+                    btn.innerHTML = '<span>📋</span> <span>Copy</span>';
+                }, 2000);
+            });
+        }
+
+        document.getElementById('landing-htno-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                submitHallTicket(false);
+            }
+        });
+    </script>
+
+
+
+</body>
+</html>
