@@ -9,7 +9,7 @@
   "author": "Gopi Keerthi CSD",
   "license": "MIT",
   "devDependencies": {
-    "wrangler": "^3.80.0"
+    "wrangler": "^3.114.0"
   },
   "type": "module"
 }
