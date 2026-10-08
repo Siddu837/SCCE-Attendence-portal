@@ -4,3 +4,5 @@ cloudflared.exe
 cache/
 __pycache__/
 *.log
+deploy_to_cloudflare.zip
+deploy_to_cloudflare/

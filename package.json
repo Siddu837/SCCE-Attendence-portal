@@ -6,7 +6,7 @@
     "dev": "wrangler pages dev public",
     "deploy": "wrangler pages deploy public --project-name scce-portal"
   },
-  "author": "Gopi Keerthi CSD",
+  "author": "SCCE",
   "license": "MIT",
   "devDependencies": {
     "wrangler": "^3.114.0"
