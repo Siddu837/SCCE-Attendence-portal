@@ -126,10 +126,20 @@
                 </div>
             </div>
 
-            <!-- Right Status (Clean Live Server Indicator) -->
-            <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold shrink-0">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="font-mono text-[11px] hidden xs:inline">Live Server</span>
+            <!-- Right Status & Navigation -->
+            <div class="flex items-center gap-2 shrink-0">
+                <!-- SCCE HackEvents Button -->
+                <a href="events.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-cyan-300 bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/30 transition shadow-sm active:scale-95">
+                    <span>⚡</span>
+                    <span>HackEvents</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                </a>
+
+                <!-- Right Status (Clean Live Server Indicator) -->
+                <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="font-mono text-[11px]">Live Server</span>
+                </div>
             </div>
 
         </div>
@@ -186,6 +196,26 @@
                     <button onclick="fillAndSearch('23N01A7405')" class="px-2 py-1 rounded-lg bg-surface-card hover:bg-surface-cardHover border border-white/[0.06] text-cyan-400 font-mono transition text-[11px]">23N01A7405</button>
                     <button onclick="fillAndSearch('23N01A7401')" class="px-2 py-1 rounded-lg bg-surface-card hover:bg-surface-cardHover border border-white/[0.06] text-indigo-400 font-mono transition text-[11px]">23N01A7401</button>
                     <button onclick="fillAndSearch('23N01A7402')" class="px-2 py-1 rounded-lg bg-surface-card hover:bg-surface-cardHover border border-white/[0.06] text-violet-400 font-mono transition text-[11px]">23N01A7402</button>
+                </div>
+
+                <!-- HackEvents Promotion Card -->
+                <div class="mt-6 max-w-xl mx-auto p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-cyan-950/30 via-indigo-950/30 to-purple-950/30 border border-cyan-500/20 flex items-center justify-between gap-3 shadow-lg">
+                    <div class="flex items-center gap-3 text-left min-w-0">
+                        <div class="w-9 h-9 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-base shrink-0">
+                            🚀
+                        </div>
+                        <div class="min-w-0">
+                            <div class="font-bold text-xs sm:text-sm text-white flex items-center gap-1.5 truncate">
+                                <span>SCCE HackEvents Hub</span>
+                                <span class="px-1.5 py-0.2 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 font-bold">70+ LIVE</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 truncate">Explore Hackathons, Workshops & Contests</div>
+                        </div>
+                    </div>
+                    <a href="events.html" class="px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-500 transition shadow-md whitespace-nowrap active:scale-95 shrink-0 flex items-center gap-1">
+                        <span>Explore</span>
+                        <span>↗</span>
+                    </a>
                 </div>
             </div>
 

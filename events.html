@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>SCCE HackEvents | Hackathons, Workshops & Competitions for Students</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        surface: {
+                            base: '#070A11',
+                            card: '#0F172A',
+                            cardHover: '#131F37',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            subtle: '#1E293B',
+                        },
+                        cyber: {
+                            cyan: '#06B6D4',
+                            indigo: '#6366F1',
+                            violet: '#8B5CF6',
+                            emerald: '#10B981',
+                            amber: '#F59E0B',
+                            rose: '#F43F5E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #070A11;
+            color: #F8FAFC;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 35%, rgba(6, 182, 212, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-nav {
+            background: rgba(10, 15, 29, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-hover-glow {
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-hover-glow:hover {
+            transform: translateY(-4px);
+            border-color: rgba(6, 182, 212, 0.35);
+            box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.15);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #070A11; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
+
+    <!-- Sticky Floating Navigation Bar -->
+    <header class="sticky top-3 z-50 px-3 sm:px-6 w-full max-w-7xl mx-auto">
+        <nav class="glass-nav rounded-2xl px-3 sm:px-5 py-2.5 flex items-center justify-between shadow-2xl shadow-black/50 transition-all">
+            <!-- Left: Back to Portal button -->
+            <a href="index.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.08] transition shadow-sm active:scale-95 shrink-0">
+                <i data-lucide="arrow-left" class="w-4 h-4 text-cyan-400"></i>
+                <span>Attendance Portal</span>
+            </a>
+
+            <!-- Center: Brand Logo -->
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500/20 via-indigo-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </div>
+                <div class="text-left hidden xs:block">
+                    <div class="font-bold text-sm tracking-tight text-white flex items-center gap-1.5">
+                        <span>SCCE HackEvents</span>
+                        <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">LIVE</span>
+                    </div>
+                    <div class="text-[10px] text-slate-400 font-medium">Sree Chaitanya College of Engineering</div>
+                </div>
+            </div>
+
+            <!-- Right: Status Pill -->
+            <div class="flex items-center gap-2">
+                <div class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="nav-count-badge">70+ Events</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-10 space-y-8">
+        
+        <!-- Hero Banner -->
+        <section class="text-center space-y-4 max-w-3xl mx-auto pt-2 sm:pt-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-purple-500/10 border border-cyan-500/25 text-cyan-300 text-xs font-semibold tracking-wide shadow-sm">
+                <i data-lucide="trophy" class="w-3.5 h-3.5 text-amber-400"></i>
+                <span>Opportunities Hub for Students & Developers</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                Discover, Compete & <span class="bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Win Big</span>
+            </h1>
+
+            <p class="text-sm sm:text-base text-slate-400 leading-relaxed max-w-2xl mx-auto">
+                Explore live hackathons, technical workshops, competitive programming contests, and tech meetups aggregated in real-time from Devpost, Devfolio, Unstop, and community networks.
+            </p>
+
+            <!-- Quick Metrics Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-3">
+                <div class="glass-panel p-3 sm:p-4 rounded-2xl text-center">
+                    <div class="text-lg sm:text-2xl font-mono font-bold text-cyan-400" id="stat-total-opps">72</div>
+                    <div class="text-[11px] sm:text-xs text-slate-400 font-medium">Live Opportunities</div>
+                </div>
+                <div class="glass-panel p-3 sm:p-4 rounded-2xl text-center">
+                    <div class="text-lg sm:text-2xl font-mono font-bold text-emerald-400" id="stat-hackathons">42</div>
+                    <div class="text-[11px] sm:text-xs text-slate-400 font-medium">Active Hackathons</div>
+                </div>
+                <div class="glass-panel p-3 sm:p-4 rounded-2xl text-center">
+                    <div class="text-lg sm:text-2xl font-mono font-bold text-amber-400">₹2.5 Cr+</div>
+                    <div class="text-[11px] sm:text-xs text-slate-400 font-medium">Total Prize Pools</div>
+                </div>
+                <div class="glass-panel p-3 sm:p-4 rounded-2xl text-center">
+                    <div class="text-lg sm:text-2xl font-mono font-bold text-indigo-400">100%</div>
+                    <div class="text-[11px] sm:text-xs text-slate-400 font-medium">Free To Enter</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Tabs Navigation -->
+        <section class="space-y-4">
+            <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-white/[0.08]" id="category-tabs">
+                <button onclick="setCategory('all')" data-cat="all" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                    <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                    <span>All Opportunities</span>
+                    <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-cyan-500/20 text-cyan-200" id="badge-all">72</span>
+                </button>
+                <button onclick="setCategory('hackathon')" data-cat="hackathon" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-slate-400 hover:text-white hover:bg-white/[0.04]">
+                    <i data-lucide="code" class="w-4 h-4"></i>
+                    <span>Hackathons</span>
+                    <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300" id="badge-hackathon">42</span>
+                </button>
+                <button onclick="setCategory('workshop')" data-cat="workshop" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-slate-400 hover:text-white hover:bg-white/[0.04]">
+                    <i data-lucide="wrench" class="w-4 h-4"></i>
+                    <span>Workshops</span>
+                    <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300" id="badge-workshop">15</span>
+                </button>
+                <button onclick="setCategory('competition')" data-cat="competition" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-slate-400 hover:text-white hover:bg-white/[0.04]">
+                    <i data-lucide="award" class="w-4 h-4"></i>
+                    <span>Competitions</span>
+                    <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300" id="badge-competition">12</span>
+                </button>
+                <button onclick="setCategory('meetup')" data-cat="meetup" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-slate-400 hover:text-white hover:bg-white/[0.04]">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                    <span>Meetups</span>
+                    <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300" id="badge-meetup">3</span>
+                </button>
+            </div>
+
+            <!-- Search & Filters Toolbar (Shadcn style) -->
+            <div class="glass-panel p-3.5 sm:p-4 rounded-2xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4">
+                
+                <!-- Search Box -->
+                <div class="relative flex-grow max-w-md">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                    <input type="text" id="event-search" oninput="handleSearch()" placeholder="Search by title, organizer, or tag (AI, Web3, Python)..." class="w-full pl-10 pr-4 py-2 bg-slate-900/90 text-sm text-white placeholder-slate-500 rounded-xl border border-white/[0.08] focus:border-cyan-500/50 focus:outline-none focus:ring-1 focus:ring-cyan-500/30 transition">
+                </div>
+
+                <!-- Dropdown / Pill Filter Controls -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+                    
+                    <!-- Mode Filter -->
+                    <div class="flex items-center gap-1 bg-slate-900/80 p-1 rounded-xl border border-white/[0.08]">
+                        <button onclick="setMode('all')" data-mode="all" class="mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-cyan-500/20 text-cyan-300">All</button>
+                        <button onclick="setMode('online')" data-mode="online" class="mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-400 hover:text-white">Online</button>
+                        <button onclick="setMode('offline')" data-mode="offline" class="mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-400 hover:text-white">In-Person</button>
+                    </div>
+
+                    <!-- Cost Filter -->
+                    <div class="flex items-center gap-1 bg-slate-900/80 p-1 rounded-xl border border-white/[0.08]">
+                        <button onclick="setFee('all')" data-fee="all" class="fee-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-cyan-500/20 text-cyan-300">All</button>
+                        <button onclick="setFee('free')" data-fee="free" class="fee-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-400 hover:text-white">Free</button>
+                    </div>
+
+                    <!-- Platform Filter -->
+                    <select id="platform-select" onchange="handlePlatformFilter()" class="bg-slate-900 text-xs font-semibold text-slate-300 px-3 py-1.5 rounded-xl border border-white/[0.08] focus:outline-none focus:border-cyan-500/50 cursor-pointer">
+                        <option value="all">All Platforms</option>
+                        <option value="Devpost">Devpost</option>
+                        <option value="Devfolio">Devfolio</option>
+                        <option value="Unstop">Unstop</option>
+                    </select>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Opportunity Cards Grid -->
+        <section>
+            <div id="events-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                <!-- Dynamically populated via JS -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden text-center py-16 px-4 glass-panel rounded-3xl space-y-4 max-w-lg mx-auto my-8">
+                <div class="w-16 h-16 rounded-full bg-slate-800/80 flex items-center justify-center mx-auto text-slate-500">
+                    <i data-lucide="calendar-x" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white">No Matching Opportunities Found</h3>
+                <p class="text-xs sm:text-sm text-slate-400">Try tweaking your search keywords or resetting filters to view all active events.</p>
+                <button onclick="resetAllFilters()" class="px-4 py-2 rounded-xl text-xs font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/20 transition">
+                    Reset All Filters
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.08] py-8 text-center text-xs text-slate-400 space-y-3 px-4 mt-auto w-full bg-slate-950/60">
+        <div class="flex items-center justify-center gap-2 flex-wrap text-sm">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 font-medium tracking-wide shadow-sm">
+                <span>🎓</span> <span>Made for students of SCCE</span>
+            </span>
+        </div>
+        <div class="text-[11px] text-slate-500 flex items-center justify-center gap-2 flex-wrap">
+            <span>SCCE HackEvents Gateway</span>
+            <span>•</span>
+            <span>Real-time Aggregation Engine</span>
+            <span>•</span>
+            <a href="index.html" class="text-cyan-400 hover:underline">Return to Attendance Portal</a>
+        </div>
+    </footer>
+
+    <!-- Frontend Script Logic -->
+    <script>
+        let allEvents = [];
+        let activeCategory = 'all';
+        let activeMode = 'all';
+        let activeFee = 'all';
+        let activePlatform = 'all';
+        let searchQuery = '';
+
+        async function loadEventsData() {
+            try {
+                // Fetch cached aggregated events
+                const res = await fetch('data/events.json');
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                allEvents = data.events || [];
+                
+                // Update stats
+                document.getElementById('stat-total-opps').innerText = data.totalCount || allEvents.length;
+                document.getElementById('stat-hackathons').innerText = data.categories?.hackathons || 0;
+                document.getElementById('badge-all').innerText = data.totalCount || allEvents.length;
+                document.getElementById('badge-hackathon').innerText = data.categories?.hackathons || 0;
+                document.getElementById('badge-workshop').innerText = data.categories?.workshops || 0;
+                document.getElementById('badge-competition').innerText = data.categories?.competitions || 0;
+                document.getElementById('badge-meetup').innerText = data.categories?.meetups || 0;
+                document.getElementById('nav-count-badge').innerText = `${allEvents.length} Events`;
+
+                renderEvents();
+            } catch (err) {
+                console.error("Failed to load events.json, falling back:", err);
+                // Fallback to embedded data if opened directly without web server
+                loadFallbackEvents();
+            }
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.cat-tab').forEach(b => {
+                if (b.dataset.cat === cat) {
+                    b.className = "cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition bg-cyan-500/20 text-cyan-300 border border-cyan-500/30";
+                } else {
+                    b.className = "cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-slate-400 hover:text-white hover:bg-white/[0.04]";
+                }
+            });
+            renderEvents();
+        }
+
+        function setMode(mode) {
+            activeMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(b => {
+                if (b.dataset.mode === mode) {
+                    b.className = "mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-cyan-500/20 text-cyan-300";
+                } else {
+                    b.className = "mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-400 hover:text-white";
+                }
+            });
+            renderEvents();
+        }
+
+        function setFee(fee) {
+            activeFee = fee;
+            document.querySelectorAll('.fee-btn').forEach(b => {
+                if (b.dataset.fee === fee) {
+                    b.className = "fee-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-cyan-500/20 text-cyan-300";
+                } else {
+                    b.className = "fee-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-400 hover:text-white";
+                }
+            });
+            renderEvents();
+        }
+
+        function handlePlatformFilter() {
+            activePlatform = document.getElementById('platform-select').value;
+            renderEvents();
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('event-search').value.toLowerCase().trim();
+            renderEvents();
+        }
+
+        function resetAllFilters() {
+            activeCategory = 'all';
+            activeMode = 'all';
+            activeFee = 'all';
+            activePlatform = 'all';
+            searchQuery = '';
+            document.getElementById('event-search').value = '';
+            document.getElementById('platform-select').value = 'all';
+            setCategory('all');
+            setMode('all');
+            setFee('all');
+        }
+
+        function renderEvents() {
+            const grid = document.getElementById('events-grid');
+            const empty = document.getElementById('empty-state');
+            grid.innerHTML = '';
+
+            const filtered = allEvents.filter(ev => {
+                // Category
+                if (activeCategory !== 'all' && ev.category !== activeCategory) return false;
+                // Mode
+                if (activeMode !== 'all' && ev.mode !== activeMode) return false;
+                // Fee
+                if (activeFee === 'free' && !ev.isFree) return false;
+                // Platform
+                if (activePlatform !== 'all' && ev.platform !== activePlatform) return false;
+                // Search
+                if (searchQuery) {
+                    const matchTitle = ev.title.toLowerCase().includes(searchQuery);
+                    const matchOrg = (ev.organizer || '').toLowerCase().includes(searchQuery);
+                    const matchTags = (ev.tags || []).some(t => t.toLowerCase().includes(searchQuery));
+                    if (!matchTitle && !matchOrg && !matchTags) return false;
+                }
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                grid.classList.add('hidden');
+                empty.classList.remove('hidden');
+                return;
+            }
+
+            grid.classList.remove('hidden');
+            empty.classList.add('hidden');
+
+            filtered.forEach(ev => {
+                // Platform Badge Color
+                let platClass = "bg-indigo-500/20 text-indigo-300 border-indigo-500/30";
+                if (ev.platform === 'Devfolio') platClass = "bg-blue-500/20 text-blue-300 border-blue-500/30";
+                if (ev.platform === 'Unstop') platClass = "bg-emerald-500/20 text-emerald-300 border-emerald-500/30";
+                if (ev.platform === 'Google Developers') platClass = "bg-amber-500/20 text-amber-300 border-amber-500/30";
+
+                // Mode Badge
+                let modeText = ev.mode === 'online' ? '🌐 Online' : `📍 ${ev.location || 'In-Person'}`;
+
+                // Card HTML
+                const card = document.createElement('div');
+                card.className = "glass-panel rounded-2xl overflow-hidden flex flex-col card-hover-glow";
+                card.innerHTML = `
+                    <!-- Image Banner -->
+                    <div class="relative w-full h-44 overflow-hidden bg-slate-900">
+                        <img src="${ev.bannerUrl}" alt="${ev.title}" class="w-full h-full object-cover transition duration-300 hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                        
+                        <!-- Top Floating Badges -->
+                        <div class="absolute top-3 left-3 flex items-center gap-1.5">
+                            <span class="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold border backdrop-blur-md ${platClass}">
+                                ${ev.platform}
+                            </span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-black/60 text-slate-200 border border-white/10 backdrop-blur-md">
+                                ${modeText}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Content Body -->
+                    <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <div class="text-[11px] font-medium text-slate-400 flex items-center gap-1.5 truncate">
+                                <i data-lucide="building-2" class="w-3.5 h-3.5 text-cyan-400 shrink-0"></i>
+                                <span class="truncate">${ev.organizer || 'Student Opportunity'}</span>
+                            </div>
+                            <h3 class="text-base font-bold text-white leading-snug line-clamp-2 hover:text-cyan-300 transition">
+                                ${ev.title}
+                            </h3>
+                        </div>
+
+                        <!-- Highlights: Prize & Deadline -->
+                        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-white/[0.06] text-xs">
+                            <div class="flex flex-col">
+                                <span class="text-[10px] text-slate-400">Prize Pool / Benefits</span>
+                                <span class="font-mono font-bold text-amber-300 truncate">${ev.prizePool || 'Certificates'}</span>
+                            </div>
+                            <div class="flex flex-col text-right">
+                                <span class="text-[10px] text-slate-400">Deadline</span>
+                                <span class="font-mono font-semibold text-emerald-400 truncate">${ev.daysLeft || 'Upcoming'}</span>
+                            </div>
+                        </div>
+
+                        <!-- Tech Tags -->
+                        <div class="flex items-center gap-1.5 flex-wrap pt-1">
+                            ${(ev.tags || []).map(t => `<span class="px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-800/80 text-slate-300 border border-white/5">${t}</span>`).join('')}
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="pt-2">
+                            <a href="${ev.registrationUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 border border-cyan-400/30 transition shadow-lg shadow-cyan-500/10 active:scale-[0.98]">
+                                <span>Register / Explore</span>
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadEventsData();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
