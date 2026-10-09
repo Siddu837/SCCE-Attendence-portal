@@ -52,6 +52,21 @@
         }
     </script>
     <style>
+        :root {
+            --bg-base: #1D1A05;
+            --surface-card: #242007;
+            --surface-raised: #2a2509;
+            --surface-inset: #161403;
+            --shadow-dark: #0c0b02;
+            --shadow-light: #362f0a;
+            --border-neu: rgba(247, 240, 109, 0.18);
+            --text-main: #ffffff;
+            --text-muted: #e7e5e4;
+            --text-subtle: #a8a29e;
+            --accent-yellow: #F7F06D;
+            --accent-hover: #ede559;
+        }
+
         html, body {
             max-width: 100%;
             overflow-x: hidden;
@@ -67,21 +82,117 @@
         }
 
         body {
-            background-color: #070A11;
+            background-color: #1D1A05;
             background-image: 
-                radial-gradient(at 15% 10%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-                radial-gradient(at 85% 15%, rgba(6, 182, 212, 0.12) 0px, transparent 50%),
-                radial-gradient(at 50% 85%, rgba(139, 92, 246, 0.10) 0px, transparent 60%);
+                radial-gradient(circle at 15% 15%, #2c2708 0%, transparent 60%),
+                radial-gradient(circle at 85% 85%, #141203 0%, transparent 60%);
             background-attachment: fixed;
             min-height: 100vh;
+            color: #ffffff;
         }
 
-        .glass-card {
-            background: rgba(16, 23, 38, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        /* Neumorphic Raised / Extruded Surfaces (no rounded-full corners) */
+        .neu-flat {
+            background: #242007;
+            box-shadow: 6px 6px 16px var(--shadow-dark), -5px -5px 14px var(--shadow-light);
+            border: 1px solid var(--border-neu);
+            border-radius: 14px;
+        }
+
+        .neu-card {
+            background: #242007;
+            box-shadow: 7px 7px 18px var(--shadow-dark), -6px -6px 16px var(--shadow-light);
+            border: 1px solid var(--border-neu);
+            border-radius: 16px;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .neu-card:hover {
+            box-shadow: 9px 9px 22px var(--shadow-dark), -7px -7px 18px #40380c;
+        }
+
+        /* Neumorphic Inset / Sunken / Debossed Surfaces */
+        .neu-inset {
+            background: #171403;
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.14);
+            border-radius: 12px;
+        }
+
+        .neu-inset-subtle {
+            background: #1a1704;
+            box-shadow: inset 2px 2px 6px var(--shadow-dark), inset -2px -2px 6px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.12);
+            border-radius: 10px;
+        }
+
+        /* Neumorphic Secondary / Nav Button */
+        .neu-btn {
+            background: #242007;
+            color: #ffffff;
+            box-shadow: 4px 4px 10px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.25);
+            border-radius: 12px;
+            transition: all 0.18s ease-in-out;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .neu-btn:hover {
+            background: #F7F06D;
+            color: #000000;
+            border-color: #F7F06D;
+            box-shadow: 5px 5px 14px var(--shadow-dark), -3px -3px 10px #40380c, 0 0 12px rgba(247, 240, 109, 0.3);
+        }
+
+        .neu-btn:active, .neu-btn.active {
+            background: #F7F06D;
+            color: #000000;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(255, 255, 255, 0.3);
+            transform: translateY(1px);
+        }
+
+        /* Primary Button: #F7F06D Solar Yellow with Black Text */
+        .neu-btn-primary {
+            background: #F7F06D !important;
+            color: #000000 !important;
+            box-shadow: 4px 4px 14px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 15px rgba(247, 240, 109, 0.25);
+            border: 1px solid #F7F06D;
+            border-radius: 12px;
+            transition: all 0.18s ease-in-out;
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .neu-btn-primary:hover {
+            background: #ede559 !important;
+            color: #000000 !important;
+            box-shadow: 5px 5px 18px var(--shadow-dark), -3px -3px 10px #40380c, 0 0 22px rgba(247, 240, 109, 0.45);
+        }
+
+        .neu-btn-primary:active {
+            background: #e0d84a !important;
+            color: #000000 !important;
+            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.5), inset -2px -2px 5px rgba(255, 255, 255, 0.4);
+            transform: translateY(1px);
+        }
+
+        /* Neumorphic Small Chips & Badges */
+        .neu-chip {
+            background: #242007;
+            color: #F7F06D;
+            box-shadow: 3px 3px 7px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.25);
+            border-radius: 8px;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .neu-chip:hover {
+            background: #2c2709;
+        }
+
+        .neu-chip:active, .neu-chip.active {
+            box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
         }
 
         .progress-ring {
@@ -90,54 +201,52 @@
             transform-origin: 50% 50%;
         }
 
-
-
         /* Custom scrollbars */
-        ::-webkit-scrollbar { width: 4px; height: 4px; }
-        ::-webkit-scrollbar-track { background: #070A11; }
-        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: #161403; }
+        ::-webkit-scrollbar-thumb { background: #3a330b; border-radius: 6px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4f4510; }
 
         .scrollbar-none::-webkit-scrollbar { display: none; }
         .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="text-slate-100 font-sans selection:bg-cyan-500 selection:text-white flex flex-col justify-between min-h-screen">
+<body class="text-white font-sans selection:bg-[#F7F06D] selection:text-black flex flex-col justify-between min-h-screen">
 
-    <!-- Clean Modern Floating Island Navigation Bar -->
-    <header class="sticky top-2.5 sm:top-4 z-50 px-3 sm:px-6 w-full flex justify-center">
-        <div class="max-w-2xl w-full rounded-full border border-white/[0.12] bg-slate-900/85 backdrop-blur-xl px-4 sm:px-6 py-2.5 shadow-2xl flex items-center justify-between gap-3">
+    <!-- Clean Modern Floating Navigation Bar -->
+    <header class="sticky top-2 sm:top-4 z-50 px-2.5 sm:px-6 w-full flex justify-center">
+        <div class="max-w-2xl w-full rounded-2xl neu-flat px-3 sm:px-5 py-2 sm:py-2.5 flex items-center justify-between gap-2">
             
-            <!-- New College Academic Crest Logo -->
-            <div class="flex items-center gap-2.5 cursor-pointer select-none min-w-0" onclick="returnToLanding()">
-                <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 p-[1.5px] flex items-center justify-center shadow-lg shadow-cyan-500/20 shrink-0">
-                    <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center">
-                        <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- College Academic Crest Logo -->
+            <div class="flex items-center gap-2 cursor-pointer select-none min-w-0" onclick="returnToLanding()">
+                <div class="w-8 h-8 rounded-xl neu-inset p-[2px] flex items-center justify-center shrink-0">
+                    <div class="w-full h-full rounded-lg flex items-center justify-center text-[#F7F06D]">
+                        <svg class="w-4 h-4 text-[#F7F06D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
                             <path d="M6 12v5c3 3 9 3 12 0v-5"/>
                         </svg>
                     </div>
                 </div>
-                <div class="flex items-center gap-2 min-w-0">
+                <div class="flex items-center gap-1.5 min-w-0">
                     <span class="text-xs sm:text-sm font-extrabold tracking-tight text-white whitespace-nowrap">Sree Chaitanya</span>
-                    <span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-mono shrink-0">
+                    <span class="hidden sm:inline-block px-2 py-0.5 text-[10px] font-bold rounded-md neu-chip text-[#F7F06D] font-mono shrink-0">
                         Attendance
                     </span>
                 </div>
             </div>
 
             <!-- Right Status & Navigation -->
-            <div class="flex items-center gap-2 shrink-0">
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <!-- SCCE HackEvents Button -->
-                <a href="events.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-cyan-300 bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/30 transition shadow-sm active:scale-95">
+                <a href="events.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black text-black neu-btn-primary hover:brightness-105 transition active:scale-95 shrink-0">
                     <span>⚡</span>
                     <span>HackEvents</span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span class="w-1.5 h-1.5 rounded-sm bg-black/60 animate-pulse"></span>
                 </a>
 
                 <!-- Right Status (Clean Live Server Indicator) -->
-                <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <div class="hidden md:flex items-center gap-1.5 px-3 py-1 rounded-xl neu-inset-subtle text-emerald-400 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-sm bg-emerald-400 animate-pulse"></span>
                     <span class="font-mono text-[11px]">Live Server</span>
                 </div>
             </div>
@@ -146,124 +255,233 @@
     </header>
 
     <!-- SECTION 1: LANDING PAGE VIEW (ACTIVE BY DEFAULT - ZERO DATA LEAK) -->
-    <section id="landing-page-view" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-16 space-y-10 sm:space-y-16 w-full">
+    <section id="landing-page-view" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-16 space-y-8 sm:space-y-12 w-full">
         
         <!-- Hero Section -->
-        <div class="text-center space-y-4 sm:space-y-6 max-w-3xl mx-auto pt-2">
+        <div class="text-center space-y-4 max-w-xl mx-auto pt-2">
             
-
-
             <!-- Main Headline -->
-            <h1 class="text-2xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-tight sm:leading-none">
-                Check Your Official <br />
-                <span class="bg-gradient-to-r from-cyan-400 via-indigo-300 to-violet-400 bg-clip-text text-transparent">
-                    Attendance & Subject Table
-                </span>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+                SCCE Student Portal
             </h1>
 
-            <p class="text-xs sm:text-base text-slate-400 max-w-xl mx-auto font-normal leading-relaxed px-1">
-                Direct college database bridge for all hall ticket numbers. View your overall percentage, subject-wise table breakdown, condonation standing, and lecture recovery.
-            </p>
-
-            <!-- Clean, Simple Search Input Box with Shadcn Button -->
-            <div class="max-w-xl mx-auto pt-3 px-1 w-full">
-                <div class="bg-slate-900/90 rounded-2xl sm:rounded-full p-1.5 sm:p-2 border border-slate-700/70 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 shadow-2xl">
-                    <div class="hidden sm:flex pl-3 text-slate-400">
-                        <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </div>
-                    <input type="text" id="landing-htno-input" 
-                           placeholder="Enter Hall Ticket No (e.g. 23N01A7405)" 
-                           class="w-full bg-transparent rounded-xl px-4 py-2.5 sm:py-3 text-sm sm:text-base font-mono uppercase text-white placeholder-slate-500 focus:outline-none text-center sm:text-left">
+            <!-- Normal Sized Input & Attendance Button Box (Mobile-Responsive) -->
+            <div class="max-w-md mx-auto pt-2 px-1 w-full">
+                <div class="neu-card p-4 sm:p-5 rounded-2xl space-y-3 text-left">
+                    <label for="landing-htno-input" class="block text-xs font-bold uppercase tracking-wider text-stone-300">
+                        Hall Ticket Number
+                    </label>
                     
+                    <div class="neu-inset rounded-xl px-3 py-2 flex items-center">
+                        <input type="text" id="landing-htno-input" 
+                               placeholder="" 
+                               class="w-full bg-transparent font-mono uppercase text-white placeholder-stone-400 text-sm sm:text-base font-bold focus:outline-none">
+                    </div>
+
                     <button id="landing-search-btn" onclick="submitHallTicket(false)" 
-                            class="w-full sm:w-auto px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-full bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 whitespace-nowrap active:scale-[0.98]">
-                        <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            class="neu-btn-primary w-full py-2.5 sm:py-3 rounded-xl text-black font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 transition active:scale-[0.98]">
+                        <svg class="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                         </svg>
-                        <span id="landing-btn-text">View Attendance</span>
-                        <svg id="landing-btn-spinner" class="hidden animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
+                        <span id="landing-btn-text">Check Attendance</span>
+                        <svg id="landing-btn-spinner" class="hidden animate-spin w-4 h-4 text-black" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
                         </svg>
                     </button>
                 </div>
 
-                <!-- Quick Pick Suggestions -->
-                <div class="mt-3 flex items-center justify-center flex-wrap gap-1.5 text-xs text-slate-400">
-                    <span class="text-slate-500 font-medium text-[11px]">Quick Test:</span>
-                    <button onclick="fillAndSearch('23N01A7405')" class="px-2 py-1 rounded-lg bg-surface-card hover:bg-surface-cardHover border border-white/[0.06] text-cyan-400 font-mono transition text-[11px]">23N01A7405</button>
-                    <button onclick="fillAndSearch('23N01A7401')" class="px-2 py-1 rounded-lg bg-surface-card hover:bg-surface-cardHover border border-white/[0.06] text-indigo-400 font-mono transition text-[11px]">23N01A7401</button>
-                    <button onclick="fillAndSearch('23N01A7402')" class="px-2 py-1 rounded-lg bg-surface-card hover:bg-surface-cardHover border border-white/[0.06] text-violet-400 font-mono transition text-[11px]">23N01A7402</button>
-                </div>
-
-                <!-- HackEvents Promotion Card -->
-                <div class="mt-6 max-w-xl mx-auto p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-cyan-950/30 via-indigo-950/30 to-purple-950/30 border border-cyan-500/20 flex items-center justify-between gap-3 shadow-lg">
-                    <div class="flex items-center gap-3 text-left min-w-0">
-                        <div class="w-9 h-9 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-base shrink-0">
+                <!-- HackEvents Promotion Banner -->
+                <div class="mt-4 p-3 sm:p-3.5 rounded-xl neu-card flex items-center justify-between gap-2.5 text-left">
+                    <div class="flex items-center gap-2.5 min-w-0 flex-1">
+                        <div class="w-9 h-9 rounded-lg neu-inset flex items-center justify-center text-base shrink-0">
                             🚀
                         </div>
-                        <div class="min-w-0">
-                            <div class="font-bold text-xs sm:text-sm text-white flex items-center gap-1.5 truncate">
-                                <span>SCCE HackEvents Hub</span>
-                                <span class="px-1.5 py-0.2 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 font-bold">70+ LIVE</span>
+                        <div class="min-w-0 flex-1">
+                            <div class="font-bold text-xs sm:text-sm text-white flex items-center gap-1.5 flex-wrap">
+                                <span class="whitespace-nowrap">SCCE HackEvents</span>
+                                <span class="px-1.5 py-0.2 rounded text-[9px] font-mono neu-chip font-bold text-[#F7F06D] shrink-0">313 LIVE</span>
                             </div>
-                            <div class="text-[11px] text-slate-400 truncate">Explore Hackathons, Workshops & Contests</div>
+                            <div class="text-[10px] text-stone-300 truncate">313 Active Opportunities across Unstop, Devpost & Devfolio</div>
                         </div>
                     </div>
-                    <a href="events.html" class="px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-500 transition shadow-md whitespace-nowrap active:scale-95 shrink-0 flex items-center gap-1">
-                        <span>Explore</span>
-                        <span>↗</span>
-                    </a>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <a href="events.html?host=true" class="neu-btn px-2.5 py-1.5 rounded-lg text-xs font-bold text-[#F7F06D] whitespace-nowrap active:scale-95 flex items-center gap-1">
+                            <span>+ Host</span>
+                        </a>
+                        <a href="events.html" class="neu-btn-primary px-3 py-1.5 rounded-lg text-xs font-bold text-black whitespace-nowrap active:scale-95 flex items-center gap-1">
+                            <span>Explore ↗</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
         </div>
 
-        <!-- Student Feature Highlights Bento Grid -->
-        <div class="space-y-4">
-            <div class="text-center space-y-1">
-                <span class="text-[10px] uppercase tracking-wider font-bold text-cyan-400 font-mono">Academic Portal Features</span>
-                <h3 class="text-lg sm:text-2xl font-bold text-white">Full Transparency & Prediction</h3>
+        <!-- Benefits, Features & Info Section (Filling the space with value for students) -->
+        <div class="max-w-5xl mx-auto pt-6 sm:pt-10 space-y-8 sm:space-y-12">
+            
+            <!-- Section Header -->
+            <div class="text-center space-y-2.5 max-w-2xl mx-auto">
+                <div class="neu-chip inline-flex items-center gap-1.5 px-3.5 py-1 rounded-xl text-[#F7F06D] text-xs font-bold tracking-wide">
+                    <span>🌟</span>
+                    <span>Student Career & Skill Accelerator</span>
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+                    Why Participate in <span class="text-[#F7F06D]">Hackathons & Tech Events?</span>
+                </h2>
+                <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                    Going beyond classroom theory gives you real engineering grit. Build production-grade projects, compete for national prize pools, and unlock direct recruitment opportunities.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6 pt-1 sm:pt-2">
+            <!-- 4 Key Benefits Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 
-                <!-- Feature 1: Subject Table -->
-                <div class="glass-card rounded-2xl p-4 sm:p-6 space-y-2.5">
-                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-xl text-cyan-400">
-                        📋
+                <!-- Benefit 1 -->
+                <div class="neu-card p-4 sm:p-6 rounded-2xl flex flex-col justify-between space-y-3 transition duration-200 hover:-translate-y-1">
+                    <div class="space-y-2.5">
+                        <div class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-lg text-[#F7F06D]">
+                            💻
+                        </div>
+                        <h3 class="text-base sm:text-lg font-black text-white">
+                            Build Standout Portfolio Projects
+                        </h3>
+                        <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                            Turn your ideas into working, deployed software in 24–48 hours. Real-world MVPs in AI, Web3, Mobile, and IoT set your GitHub profile miles ahead of cookie-cutter college projects during resume shortlisting.
+                        </p>
                     </div>
-                    <h4 class="text-sm sm:text-base font-bold text-white">Subject-Wise Attendance Table</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        Complete table with conducted hours, attended hours, and percentages for Electronic Sensors, Agile Methodology, Compiler Design, Cloud Computing, etc.
-                    </p>
+                    <div class="pt-2 flex items-center gap-2">
+                        <span class="neu-chip px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-[#F7F06D]">Real MVPs</span>
+                        <span class="neu-chip px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-stone-300">GitHub Proof</span>
+                    </div>
                 </div>
 
-                <!-- Feature 2: Condonation -->
-                <div class="glass-card rounded-2xl p-4 sm:p-6 space-y-2.5">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-xl text-indigo-400">
-                        ⚖️
+                <!-- Benefit 2 -->
+                <div class="neu-card p-4 sm:p-6 rounded-2xl flex flex-col justify-between space-y-3 transition duration-200 hover:-translate-y-1">
+                    <div class="space-y-2.5">
+                        <div class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-lg text-emerald-400">
+                            💼
+                        </div>
+                        <h3 class="text-base sm:text-lg font-black text-white">
+                            Direct Placement & Interview Fast-Tracks
+                        </h3>
+                        <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                            Leading tech firms—from global giants like Google, Microsoft, and PayPal to high-growth unicorns—sponsor hackathons specifically to scout student talent, skipping traditional resume filters.
+                        </p>
                     </div>
-                    <h4 class="text-sm sm:text-base font-bold text-white">Condonation Cutoff Engine</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        Automatic check against University regulations: <strong>Safe (≥75%)</strong>, <strong>Condonation (65%–74.9%)</strong>, or <strong>Detention Warning (&lt;65%)</strong>.
-                    </p>
+                    <div class="pt-2 flex items-center gap-2">
+                        <span class="neu-chip px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-emerald-300">Fast-Track Hiring</span>
+                        <span class="neu-chip px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-stone-300">Direct PPIs</span>
+                    </div>
                 </div>
 
-                <!-- Feature 3: Live Daily Invalidation -->
-                <div class="glass-card rounded-2xl p-4 sm:p-6 space-y-2.5">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xl text-emerald-400">
-                        🔄
+                <!-- Benefit 3 -->
+                <div class="neu-card p-4 sm:p-6 rounded-2xl flex flex-col justify-between space-y-3 transition duration-200 hover:-translate-y-1">
+                    <div class="space-y-2.5">
+                        <div class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-lg text-amber-400">
+                            🏆
+                        </div>
+                        <h3 class="text-base sm:text-lg font-black text-white">
+                            Win Cash Prizes & Cloud Grants
+                        </h3>
+                        <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                            Compete for pooled prize funds exceeding ₹2.5 Crore! Receive cash bounties, MacBooks, developer devices, official certificates, and thousands of dollars in AWS/Google Cloud credits to fund your startups.
+                        </p>
                     </div>
-                    <h4 class="text-sm sm:text-base font-bold text-white">Tomorrow's Auto-Update</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        Checking tomorrow automatically retrieves the newest lecture periods from the college server and recalculates your updated totals.
-                    </p>
+                    <div class="pt-2 flex items-center gap-2">
+                        <span class="neu-chip px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-amber-300">₹2.5 Cr+ Pool</span>
+                        <span class="neu-chip px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-stone-300">Hardware & Credits</span>
+                    </div>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="neu-card p-4 sm:p-6 rounded-2xl flex flex-col justify-between space-y-3 transition duration-200 hover:-translate-y-1">
+                    <div class="space-y-2.5">
+                        <div class="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-lg text-cyan-400">
+                            🤝
+                        </div>
+                        <h3 class="text-base sm:text-lg font-black text-white">
+                            Teamwork, Mentorship & Visibility
+                        </h3>
+                        <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                            Collaborate with passionate coders, get 1-on-1 code reviews from senior industry architects, and represent Sree Chaitanya College of Engineering on national Unstop, Devpost, and Devfolio leaderboards.
+                        </p>
+                    </div>
+                    <div class="pt-2 flex items-center gap-2">
+                        <span class="neu-chip px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-cyan-300">Industry Mentors</span>
+                        <span class="neu-chip px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-stone-300">SCCE Pride</span>
+                    </div>
                 </div>
 
             </div>
+
+            <!-- Event Formats Grid -->
+            <div class="neu-card p-4 sm:p-6 rounded-2xl space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.06] pb-3">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-black text-white">Explore Available Event Types</h3>
+                        <p class="text-[11px] sm:text-xs text-stone-400">Find the right competition style matching your current semester & skill level</p>
+                    </div>
+                    <span class="neu-chip px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold text-[#F7F06D] shrink-0 self-start sm:self-auto">
+                        313 Aggregated Events
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pt-1">
+                    <div class="neu-inset-subtle p-3.5 rounded-xl space-y-1.5">
+                        <div class="text-base">🌐</div>
+                        <div class="text-xs font-bold text-white">Online Hackathons</div>
+                        <p class="text-[11px] text-stone-400 leading-relaxed">
+                            Code remotely from hostel or home. Flexible timeframes with zero travel cost.
+                        </p>
+                    </div>
+                    <div class="neu-inset-subtle p-3.5 rounded-xl space-y-1.5">
+                        <div class="text-base">🏛️</div>
+                        <div class="text-xs font-bold text-white">Campus & Offline</div>
+                        <p class="text-[11px] text-stone-400 leading-relaxed">
+                            In-person hackathons hosted at top institutes. Experience 36-hr marathon coding.
+                        </p>
+                    </div>
+                    <div class="neu-inset-subtle p-3.5 rounded-xl space-y-1.5">
+                        <div class="text-base">🛠️</div>
+                        <div class="text-xs font-bold text-white">Hands-on Workshops</div>
+                        <p class="text-[11px] text-stone-400 leading-relaxed">
+                            Master GenAI, Cloud, and Web3 from industry leaders with verified certificates.
+                        </p>
+                    </div>
+                    <div class="neu-inset-subtle p-3.5 rounded-xl space-y-1.5">
+                        <div class="text-base">🎯</div>
+                        <div class="text-xs font-bold text-white">Coding Contests</div>
+                        <p class="text-[11px] text-stone-400 leading-relaxed">
+                            DSA, speed debugging, and algorithmic challenges to ace technical interview rounds.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call-to-Action Card -->
+            <div class="neu-card p-5 sm:p-7 rounded-2xl text-center space-y-3.5 border border-[#F7F06D]/20">
+                <div class="max-w-xl mx-auto space-y-1.5">
+                    <h3 class="text-base sm:text-xl font-black text-white">
+                        Ready to Find Your Next Challenge?
+                    </h3>
+                    <p class="text-xs sm:text-sm text-stone-300">
+                        Explore all 313 live hackathons, workshops, and competitions now. Filter by Online/Offline mode and Free/Paid entry.
+                    </p>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <a href="events.html" class="neu-btn-primary inline-flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-xl text-black font-extrabold text-xs sm:text-sm active:scale-95">
+                        <span>Browse All 310+ Active Opportunities</span>
+                        <span>↗</span>
+                    </a>
+                    <a href="events.html?host=true" class="neu-btn inline-flex items-center gap-2 px-5 py-2.5 sm:py-3 rounded-xl text-[#F7F06D] font-extrabold text-xs sm:text-sm active:scale-95">
+                        <span>+ Host College Event</span>
+                        <span>🚀</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
 
     </section>
@@ -274,19 +492,19 @@
         <!-- Top Toolbar: Responsive Back & Live Sync -->
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 w-full">
             <div class="flex items-center justify-between sm:justify-start gap-2 w-full sm:w-auto">
-                <button onclick="returnToLanding()" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-700/80 bg-slate-900/90 hover:bg-slate-800 text-slate-100 text-xs font-medium shadow-sm transition-all active:scale-95">
+                <button onclick="returnToLanding()" class="neu-btn inline-flex items-center gap-2 px-4 py-1.5 rounded-xl text-white text-xs font-bold transition-all active:scale-95">
                     <span class="text-sm leading-none">←</span> <span>Search</span>
                 </button>
-                <div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] sm:text-xs font-medium truncate">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                <div class="neu-inset-subtle flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-emerald-300 text-[11px] sm:text-xs font-bold truncate">
+                    <span class="w-1.5 h-1.5 rounded-sm bg-emerald-400 animate-pulse shrink-0"></span>
                     <span id="dash-latest-date-badge" class="truncate">Latest: Today</span>
                 </div>
             </div>
 
             <div class="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">
-                <span class="text-[10px] sm:text-xs font-mono text-slate-400 truncate" id="dash-fetched-time">Sync: Just Now</span>
-                <button onclick="refreshCurrentStudent()" id="sync-live-btn" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 hover:from-cyan-500/30 hover:to-indigo-500/30 border border-cyan-500/30 text-cyan-300 text-xs font-bold transition flex items-center gap-1.5 active:scale-95 shrink-0">
-                    <svg id="sync-icon" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <span class="text-[10px] sm:text-xs font-mono text-stone-300 truncate" id="dash-fetched-time">Sync: Just Now</span>
+                <button onclick="refreshCurrentStudent()" id="sync-live-btn" class="neu-btn-primary px-3.5 py-1.5 rounded-xl text-black text-xs font-bold transition flex items-center gap-1.5 active:scale-95 shrink-0">
+                    <svg id="sync-icon" class="w-3.5 h-3.5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                     </svg>
                     <span id="sync-btn-text">Sync Live</span>
@@ -295,19 +513,19 @@
         </div>
         
         <!-- Live Toast Notification -->
-        <div id="sync-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:right-6 sm:translate-x-0 z-50 px-4 py-2.5 rounded-2xl glass-card border border-emerald-500/30 text-emerald-300 text-xs font-semibold shadow-2xl flex items-center gap-2 max-w-[90vw]">
+        <div id="sync-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:right-6 sm:translate-x-0 z-50 px-4 py-2.5 rounded-xl neu-flat text-emerald-300 text-xs font-bold flex items-center gap-2 max-w-[90vw]">
             <span>✅</span>
             <span id="sync-toast-msg" class="truncate">Attendance refreshed directly from SCCE.</span>
         </div>
 
         <!-- Student Profile Card (Mobile & Desktop Responsive) -->
-        <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 relative overflow-hidden w-full">
+        <div class="neu-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 relative overflow-hidden w-full">
             <div class="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 w-full">
                 
                 <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3.5 sm:gap-5 w-full min-w-0">
                     <!-- Avatar -->
                     <div class="relative shrink-0">
-                        <div class="w-16 h-20 sm:w-20 sm:h-24 rounded-xl overflow-hidden border-2 border-cyan-500/40 shadow-lg bg-slate-900 flex items-center justify-center">
+                        <div class="w-16 h-20 sm:w-20 sm:h-24 rounded-xl overflow-hidden neu-inset p-1 flex items-center justify-center">
                             <img id="student-photo" src="" 
                                  alt="Student Photo" 
                                  onerror="this.src='https://ui-avatars.com/api/?name=Student&background=0f172a&color=38bdf8&size=128'"
@@ -318,27 +536,27 @@
                     <!-- Details -->
                     <div class="space-y-1 text-center sm:text-left min-w-0 flex-1 w-full">
                         <div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
-                            <span id="htno-badge" class="px-2 py-0.5 rounded font-mono text-xs font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                            <span id="htno-badge" class="px-2.5 py-0.5 rounded-md font-mono text-xs font-bold neu-chip text-[#F7F06D]">
                                 -
                             </span>
-                            <span id="year-badge" class="px-2 py-0.5 rounded text-[11px] font-semibold bg-white/[0.05] text-slate-300 border border-white/[0.08]">
+                            <span id="year-badge" class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold neu-chip text-stone-300">
                                 -
                             </span>
                         </div>
                         <h2 id="student-name" class="text-base sm:text-2xl font-black text-white tracking-tight break-words leading-snug">-</h2>
-                        <p class="text-xs text-slate-400 font-medium">
-                            Father: <span id="father-name" class="text-slate-200 font-semibold">-</span>
+                        <p class="text-xs text-stone-300 font-medium">
+                            Father: <span id="father-name" class="text-white font-semibold">-</span>
                         </p>
-                        <p class="text-xs text-indigo-300 font-mono truncate" id="branch-name">-</p>
+                        <p class="text-xs text-[#F7F06D] font-mono truncate font-bold" id="branch-name">-</p>
                     </div>
                 </div>
 
                 <!-- Action Buttons: 2 columns on mobile, stacked on desktop -->
                 <div class="grid grid-cols-2 sm:flex sm:flex-col gap-2 w-full sm:w-auto shrink-0 pt-1 sm:pt-0">
-                    <button onclick="window.print()" class="px-3 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08] text-xs font-semibold text-slate-200 transition flex items-center justify-center gap-1.5">
+                    <button onclick="window.print()" class="neu-btn px-3.5 py-2 rounded-xl text-xs font-bold text-white transition flex items-center justify-center gap-1.5">
                         <span>🖨️</span> <span>Print</span>
                     </button>
-                    <button onclick="copySummary()" id="copy-btn" class="px-3 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08] text-xs font-semibold text-slate-200 transition flex items-center justify-center gap-1.5">
+                    <button onclick="copySummary()" id="copy-btn" class="neu-btn px-3.5 py-2 rounded-xl text-xs font-bold text-white transition flex items-center justify-center gap-1.5">
                         <span>📋</span> <span>Copy</span>
                     </button>
                 </div>
@@ -347,27 +565,27 @@
         </div>
 
         <!-- Overall Attendance Hero Card (Mobile-Optimized & Centered) -->
-        <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 w-full">
+        <div class="neu-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 w-full">
             <div class="flex flex-col md:flex-row items-center justify-between gap-5">
                 
                 <div class="space-y-2.5 text-center md:text-left w-full md:w-auto flex-1">
                     <div class="flex items-center gap-1.5 justify-center md:justify-start">
-                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-                        <span class="text-[11px] uppercase tracking-wider font-bold text-slate-400 font-mono">Official Cumulative Attendance</span>
+                        <span class="w-2 h-2 rounded-sm bg-[#F7F06D]"></span>
+                        <span class="text-[11px] uppercase tracking-wider font-bold text-stone-300 font-mono">Official Cumulative Attendance</span>
                     </div>
 
                     <div class="flex items-baseline space-x-1.5 justify-center md:justify-start">
                         <span id="overall-percentage" class="text-4xl sm:text-6xl font-black tracking-tight text-white">-</span>
-                        <span class="text-2xl font-bold text-slate-400">%</span>
+                        <span class="text-2xl font-bold text-stone-300">%</span>
                     </div>
 
                     <div>
-                        <div id="status-pill" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-300 border border-amber-500/20 max-w-full">
+                        <div id="status-pill" class="neu-chip inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-[#F7F06D] max-w-full">
                             -
                         </div>
                     </div>
 
-                    <p class="text-xs text-slate-400 leading-relaxed max-w-md mx-auto md:mx-0">
+                    <p class="text-xs text-stone-300 leading-relaxed max-w-md mx-auto md:mx-0">
                         Safe Threshold: <strong class="text-white">75.00%</strong> • Condonation: <strong class="text-white">65.00% - 74.99%</strong>
                     </p>
                 </div>
@@ -380,11 +598,11 @@
                                 stroke-linecap="round"
                                 stroke-dasharray="314.159"
                                 stroke-dashoffset="314.159"
-                                class="progress-ring filter drop-shadow-[0_0_8px_rgba(6,182,212,0.4)]"/>
+                                class="progress-ring filter drop-shadow-[0_0_8px_rgba(247,240,109,0.35)]"/>
                         <defs>
                             <linearGradient id="cyan-indigo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#06B6D4" />
-                                <stop offset="100%" stop-color="#8B5CF6" />
+                                <stop offset="0%" stop-color="#F7F06D" />
+                                <stop offset="100%" stop-color="#eaefb1" />
                             </linearGradient>
                         </defs>
                     </svg>
@@ -397,40 +615,40 @@
             </div>
 
             <!-- Mini Summary Metrics Grid (Conducted, Attended, Absent) -->
-            <div class="grid grid-cols-3 gap-2 sm:gap-4 pt-4 mt-4 border-t border-white/[0.06] text-center">
-                <div class="p-2 sm:p-3 rounded-xl bg-white/[0.02]">
-                    <span class="text-[10px] sm:text-xs text-slate-400 font-medium block">Conducted</span>
+            <div class="grid grid-cols-3 gap-2.5 sm:gap-4 pt-4 mt-4 border-t border-white/[0.04] text-center">
+                <div class="p-3 rounded-xl neu-inset">
+                    <span class="text-[10px] sm:text-xs text-stone-300 font-bold block">Conducted</span>
                     <span id="stat-conducted" class="text-base sm:text-2xl font-black text-white font-mono">-</span>
                 </div>
-                <div class="p-2 sm:p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
-                    <span class="text-[10px] sm:text-xs text-emerald-400 font-medium block">Attended</span>
+                <div class="p-3 rounded-xl neu-inset">
+                    <span class="text-[10px] sm:text-xs text-emerald-300 font-bold block">Attended</span>
                     <span id="stat-attended" class="text-base sm:text-2xl font-black text-emerald-400 font-mono">-</span>
                 </div>
-                <div class="p-2 sm:p-3 rounded-xl bg-rose-500/5 border border-rose-500/10">
-                    <span class="text-[10px] sm:text-xs text-rose-400 font-medium block">Absent</span>
+                <div class="p-3 rounded-xl neu-inset">
+                    <span class="text-[10px] sm:text-xs text-rose-300 font-bold block">Absent</span>
                     <span id="stat-absent" class="text-base sm:text-2xl font-black text-rose-400 font-mono">-</span>
                 </div>
             </div>
         </div>
 
         <!-- SECTION 3: SUBJECT-WISE ATTENDANCE TABLE (THE CORE USER REQUIREMENT) -->
-        <div class="glass-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 space-y-3 sm:space-y-4 w-full">
+        <div class="neu-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 space-y-3 sm:space-y-4 w-full">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-white/[0.06] pb-3">
                 <div>
                     <h3 class="text-sm sm:text-lg font-bold text-white flex items-center gap-2">
                         <span>📚</span> <span>Subject-Wise Attendance Table</span>
                     </h3>
-                    <p class="text-[11px] sm:text-xs text-slate-400">Official lecture counts and percentage for every enrolled subject</p>
+                    <p class="text-[11px] sm:text-xs text-stone-300">Official lecture counts and percentage for every enrolled subject</p>
                 </div>
-                <span class="text-[10px] sm:text-xs font-mono text-cyan-400 self-start sm:self-auto bg-cyan-500/10 px-2 py-0.5 rounded-full border border-cyan-500/20">
+                <span class="text-[10px] sm:text-xs font-mono text-[#F7F06D] self-start sm:self-auto neu-chip px-2.5 py-0.5 rounded-md font-bold">
                     Live Verified
                 </span>
             </div>
 
             <!-- Fully Responsive Subjects Table Container -->
-            <div class="overflow-x-auto rounded-xl border border-white/[0.06] w-full">
+            <div class="overflow-x-auto rounded-xl neu-inset p-1 w-full">
                 <table class="w-full text-left text-xs sm:text-sm">
-                    <thead class="bg-surface-card text-[11px] sm:text-xs uppercase text-slate-400 font-mono border-b border-white/[0.06]">
+                    <thead class="text-[11px] sm:text-xs uppercase text-stone-300 font-mono border-b border-[rgba(247,240,109,0.15)] bg-[#242007]">
                         <tr>
                             <th class="px-2.5 sm:px-4 py-2.5 font-bold">Subject</th>
                             <th class="px-2 sm:px-3 py-2.5 text-center font-bold">Conducted</th>
@@ -451,45 +669,45 @@
 
         <!-- Additional Tabs: Recovery Simulator, Daily Lecture Log, Inspector -->
         <div class="space-y-4 w-full">
-            <div class="border-b border-white/[0.08] flex items-center space-x-1 sm:space-x-4 overflow-x-auto pb-1 scrollbar-none w-full">
-                <button onclick="switchTab('simulator')" id="tab-btn-simulator" class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-t-xl border-b-2 border-cyan-400 text-cyan-400 transition flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+            <div class="neu-inset rounded-2xl p-1.5 flex items-center space-x-1 sm:space-x-2 overflow-x-auto scrollbar-none w-full">
+                <button onclick="switchTab('simulator')" id="tab-btn-simulator" class="neu-btn-primary px-3.5 py-2 text-xs sm:text-sm font-black rounded-xl text-black bg-[#F7F06D] transition flex items-center gap-1.5 shrink-0 whitespace-nowrap">
                     <span>🎯</span> <span>Recovery Simulator</span>
                 </button>
-                <button onclick="switchTab('transactions')" id="tab-btn-transactions" class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-t-xl border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+                <button onclick="switchTab('transactions')" id="tab-btn-transactions" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-xl text-stone-300 hover:text-white transition flex items-center gap-1.5 shrink-0 whitespace-nowrap">
                     <span>⏱️</span> <span>Daily Period Log (321+)</span>
                 </button>
-                <button onclick="switchTab('inspector')" id="tab-btn-inspector" class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-t-xl border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+                <button onclick="switchTab('inspector')" id="tab-btn-inspector" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-xl text-stone-300 hover:text-white transition flex items-center gap-1.5 shrink-0 whitespace-nowrap">
                     <span>🔍</span> <span>Server Trace</span>
                 </button>
             </div>
 
             <!-- Tab: Simulator -->
             <div id="tab-simulator">
-                <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-4">
+                <div class="neu-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-4">
                     <div>
                         <h4 class="text-sm sm:text-base font-bold text-white">Target 75% Attendance Calculator</h4>
-                        <p class="text-[11px] sm:text-xs text-slate-400">See how attending future classes increases your eligibility</p>
+                        <p class="text-[11px] sm:text-xs text-stone-300">See how attending future classes increases your eligibility</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-                        <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] space-y-1">
-                            <span class="text-xs text-slate-400">Classes Needed for Safe 75%:</span>
-                            <div id="sim-need-75" class="text-2xl sm:text-3xl font-black text-cyan-400">-</div>
-                            <p class="text-[11px] text-slate-400">Consecutive classes required with 0 absents.</p>
+                        <div class="p-4 rounded-xl neu-inset space-y-1">
+                            <span class="text-xs text-stone-300 font-bold">Classes Needed for Safe 75%:</span>
+                            <div id="sim-need-75" class="text-2xl sm:text-3xl font-black text-[#F7F06D]">-</div>
+                            <p class="text-[11px] text-stone-300">Consecutive classes required with 0 absents.</p>
                         </div>
 
                         <!-- Slider -->
-                        <div class="p-4 rounded-xl bg-surface-card border border-white/[0.08] space-y-3">
+                        <div class="p-4 rounded-xl neu-inset space-y-3">
                             <div class="flex justify-between items-center text-xs">
-                                <span class="font-medium text-slate-300">Simulate Next Classes:</span>
-                                <span id="slider-count-badge" class="px-2 py-0.5 rounded font-mono font-bold bg-cyan-500/10 text-cyan-300">+10 Classes</span>
+                                <span class="font-bold text-white">Simulate Next Classes:</span>
+                                <span id="slider-count-badge" class="px-2.5 py-0.5 rounded-md font-mono font-bold neu-chip text-[#F7F06D]">+10 Classes</span>
                             </div>
                             <input type="range" id="simulator-slider" min="0" max="60" value="10" 
-                                   class="w-full accent-cyan-400 h-2 bg-slate-800 rounded-lg cursor-pointer"
+                                   class="w-full accent-[#F7F06D] h-2 bg-stone-800 rounded-lg cursor-pointer"
                                    oninput="handleSimulation(this.value)">
                             <div class="flex justify-between items-center text-xs pt-1">
-                                <span class="text-slate-400">Projected Attendance:</span>
-                                <span id="projected-percentage" class="text-lg font-black text-cyan-400 font-mono">-</span>
+                                <span class="text-stone-300 font-bold">Projected Attendance:</span>
+                                <span id="projected-percentage" class="text-lg font-black text-[#F7F06D] font-mono">-</span>
                             </div>
                         </div>
                     </div>
@@ -498,20 +716,20 @@
 
             <!-- Tab: Daily Transactions (Responsive Table) -->
             <div id="tab-transactions" class="hidden">
-                <div class="glass-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 space-y-3.5">
+                <div class="neu-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 space-y-3.5">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                         <div>
                             <h4 class="text-sm sm:text-base font-bold text-white">Full Daily Lecture Transactions</h4>
-                            <p class="text-[11px] sm:text-xs text-slate-400">All recorded periods from July 2026 to present</p>
+                            <p class="text-[11px] sm:text-xs text-stone-300">All recorded periods from July 2026 to present</p>
                         </div>
                         <input type="text" id="tx-search-input" placeholder="Filter by date or subject..." 
                                oninput="filterTransactions()"
-                               class="w-full sm:w-auto px-3 py-1.5 text-xs rounded-xl bg-surface-card border border-white/[0.08] text-white outline-none focus:border-cyan-500 font-mono">
+                               class="w-full sm:w-auto px-3.5 py-2 text-xs rounded-xl neu-inset text-white placeholder-stone-400 outline-none font-mono">
                     </div>
 
-                    <div class="overflow-x-auto rounded-xl border border-white/[0.06] max-h-[420px] overflow-y-auto w-full">
+                    <div class="overflow-x-auto rounded-xl neu-inset p-1 max-h-[420px] overflow-y-auto w-full">
                         <table class="w-full text-left text-xs min-w-[320px]">
-                            <thead class="bg-surface-card text-[11px] uppercase text-slate-400 font-mono sticky top-0 backdrop-blur-md">
+                            <thead class="bg-[#242007] text-[11px] uppercase text-stone-300 font-mono sticky top-0">
                                 <tr>
                                     <th class="px-2.5 py-2">S.No</th>
                                     <th class="px-2.5 py-2">Date</th>
@@ -529,10 +747,10 @@
 
             <!-- Tab: Inspector -->
             <div id="tab-inspector" class="hidden">
-                <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-3">
+                <div class="neu-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-3">
                     <h4 class="text-sm sm:text-base font-bold text-white">Direct Server Endpoint</h4>
-                    <div class="p-3 rounded-xl bg-black/60 font-mono text-[11px] sm:text-xs text-slate-300 space-y-1.5 border border-white/[0.08] overflow-x-auto">
-                        <div class="text-cyan-400">// Direct College Bridge</div>
+                    <div class="p-4 rounded-xl neu-inset font-mono text-[11px] sm:text-xs text-stone-200 space-y-1.5 overflow-x-auto">
+                        <div class="text-[#F7F06D]">// Direct College Bridge</div>
                         <div>POST https://scce.ac.in/parent12/Dailywise1.php</div>
                         <div id="inspector-payload" class="text-slate-500">Payload: HallticketNo=-&dayatten=Submit</div>
                         <div class="text-emerald-400">Response: 200 OK (Calculated from real daily table)</div>
@@ -545,18 +763,18 @@
     </section>
 
     <!-- Footer with Developer Credit -->
-    <footer class="border-t border-white/[0.08] py-8 text-center text-xs text-slate-400 space-y-3 px-4 mt-auto w-full bg-slate-950/40">
-        <div class="flex items-center justify-center gap-2 flex-wrap text-sm">
-            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 font-medium tracking-wide shadow-sm">
+    <footer class="neu-flat border-t-0 py-4 sm:py-5 text-center text-slate-400 space-y-2 px-4 mt-auto w-full">
+        <div class="flex items-center justify-center gap-1.5 flex-wrap">
+            <span class="neu-chip inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[10px] sm:text-[11px] text-[#F7F06D] font-bold tracking-wide">
                 <span>🎓</span> <span>Made for students of SCCE</span>
             </span>
         </div>
-        <div class="text-[11px] text-slate-500 flex items-center justify-center gap-2 flex-wrap">
+        <div class="text-[9px] sm:text-[10px] text-stone-400 flex items-center justify-center gap-1.5 flex-wrap">
             <span>SCCE Smart Academic Gateway</span>
             <span>•</span>
             <span>Sree Chaitanya Educational Institutions</span>
             <span>•</span>
-            <span class="font-mono text-slate-600">Live Server Engine 2026</span>
+            <span class="font-mono text-stone-500">2026</span>
         </div>
     </footer>
 
@@ -742,13 +960,13 @@
             // Status Badge
             const pill = document.getElementById('status-pill');
             if (data.percentage >= 75) {
-                pill.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20';
+                pill.className = 'neu-chip inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-emerald-300 bg-[#242007] border border-[#ceb5a7]';
                 pill.innerHTML = '<span>🟢</span> Safe (Above 75.00%)';
             } else if (data.percentage >= 65) {
-                pill.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-300 border border-amber-500/20';
+                pill.className = 'neu-chip inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-[#f7d488] bg-[#242007] border border-[#f9a03f]/30';
                 pill.innerHTML = '<span>⚠️</span> Condonation Eligible (65% – 75%)';
             } else {
-                pill.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-500/10 text-rose-300 border border-rose-500/20';
+                pill.className = 'neu-chip inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-rose-300 bg-[#ceb5a7]/40 border border-[#ceb5a7]';
                 pill.innerHTML = '<span>🚨</span> Critical Attendance Shortage (< 65%)';
             }
 
@@ -774,7 +992,7 @@
             for (const [code, item] of Object.entries(stats)) {
                 const pct = item.conducted > 0 ? (item.attended / item.conducted * 100) : 0;
                 
-                let badgeClass = 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+                let badgeClass = 'bg-emerald-400/10 text-emerald-400 border-emerald-500/20';
                 let barClass = 'bg-emerald-400';
                 let statusText = 'Safe';
                 if (pct < 65) {
@@ -788,11 +1006,11 @@
                 }
 
                 const tr = document.createElement('tr');
-                tr.className = 'hover:bg-white/[0.02] transition';
+                tr.className = 'hover:bg-[#2e290a]/70 transition';
                 tr.innerHTML = `
                     <td class="px-2.5 sm:px-4 py-2.5 sm:py-3">
                         <div class="flex items-center gap-1.5 sm:gap-2">
-                            <span class="px-1.5 py-0.5 rounded text-[10px] sm:text-xs font-mono font-bold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 shrink-0">
+                            <span class="px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-mono font-bold neu-chip text-[#F7F06D] shrink-0">
                                 ${code}
                             </span>
                             <span class="font-bold text-white text-xs sm:text-sm leading-snug break-words max-w-[130px] xs:max-w-[200px] sm:max-w-none">
@@ -800,7 +1018,7 @@
                             </span>
                         </div>
                     </td>
-                    <td class="px-2 sm:px-3 py-2.5 sm:py-3 text-center font-mono text-xs sm:text-sm text-slate-300">
+                    <td class="px-2 sm:px-3 py-2.5 sm:py-3 text-center font-mono text-xs sm:text-sm text-stone-300">
                         ${item.conducted}
                     </td>
                     <td class="px-2 sm:px-3 py-2.5 sm:py-3 text-center font-mono text-xs sm:text-sm font-bold text-emerald-400">
@@ -809,13 +1027,13 @@
                     <td class="px-2.5 sm:px-4 py-2.5 sm:py-3 text-center">
                         <div class="flex flex-col items-center gap-1">
                             <span class="font-mono font-bold text-xs sm:text-sm text-white">${pct.toFixed(1)}%</span>
-                            <div class="w-12 sm:w-16 bg-slate-800 rounded-full h-1 overflow-hidden">
-                                <div class="${barClass} h-1 rounded-full" style="width: ${Math.min(100, pct)}%"></div>
+                            <div class="w-12 sm:w-16 neu-inset rounded-md h-2 overflow-hidden p-[1px]">
+                                <div class="${barClass} h-full rounded-md" style="width: ${Math.min(100, pct)}%"></div>
                             </div>
                         </div>
                     </td>
                     <td class="px-2 sm:px-3 py-2.5 sm:py-3 text-center hidden xs:table-cell">
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold border ${badgeClass}">
+                        <span class="px-2.5 py-0.5 rounded-md text-[10px] font-bold neu-chip ${badgeClass}">
                             ${statusText}
                         </span>
                     </td>
@@ -825,12 +1043,12 @@
 
             // Total Aggregate Row
             let totalStatus = overallPercentage >= 75 ? 'Safe' : (overallPercentage >= 65 ? 'Condonation' : 'Critical');
-            let totalBadgeClass = overallPercentage >= 75 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : (overallPercentage >= 65 ? 'bg-amber-500/10 text-amber-300 border-amber-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20');
+            let totalBadgeClass = overallPercentage >= 75 ? 'bg-emerald-400/10 text-emerald-400 border-emerald-500/20' : (overallPercentage >= 65 ? 'bg-amber-500/10 text-amber-300 border-amber-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20');
             
             tfoot.innerHTML = `
-                <tr>
+                <tr class="bg-[#242007]">
                     <td class="px-2.5 sm:px-4 py-3 text-xs sm:text-sm text-white">
-                        <span class="font-black tracking-wide uppercase font-mono text-cyan-400">Overall Aggregate</span>
+                        <span class="font-black tracking-wide uppercase font-mono text-[#F7F06D]">Overall Aggregate</span>
                     </td>
                     <td class="px-2 sm:px-3 py-3 text-center font-mono text-xs sm:text-sm font-extrabold text-white">
                         ${totalConducted}
@@ -838,11 +1056,11 @@
                     <td class="px-2 sm:px-3 py-3 text-center font-mono text-xs sm:text-sm font-extrabold text-emerald-400">
                         ${totalAttended}
                     </td>
-                    <td class="px-2.5 sm:px-4 py-3 text-center font-mono text-xs sm:text-sm font-black text-cyan-400">
+                    <td class="px-2.5 sm:px-4 py-3 text-center font-mono text-xs sm:text-sm font-black text-[#F7F06D]">
                         ${overallPercentage.toFixed(2)}%
                     </td>
                     <td class="px-2 sm:px-3 py-3 text-center hidden xs:table-cell">
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold border ${totalBadgeClass}">
+                        <span class="px-2.5 py-0.5 rounded-md text-[10px] font-bold neu-chip ${totalBadgeClass}">
                             ${totalStatus}
                         </span>
                     </td>
@@ -862,7 +1080,7 @@
                     <td class="px-2.5 py-2 font-mono text-slate-300 whitespace-nowrap">${tx.date}</td>
                     <td class="px-2.5 py-2 font-semibold text-white truncate max-w-[140px]">${tx.subjectName || tx.subject}</td>
                     <td class="px-2 py-2 text-center">
-                        <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${tx.present ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-300 border border-rose-500/20'}">
+                        <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${tx.present ? 'bg-emerald-400/10 text-emerald-300 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-300 border border-rose-500/20'}">
                             ${tx.present ? 'Present' : 'Absent'}
                         </span>
                     </td>
@@ -886,14 +1104,14 @@
                 document.getElementById(`tab-${t}`).classList.add('hidden');
                 const btn = document.getElementById(`tab-btn-${t}`);
                 if (btn) {
-                    btn.className = 'px-3 py-2 text-xs sm:text-sm font-semibold rounded-t-xl border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition flex items-center gap-1.5 shrink-0 whitespace-nowrap';
+                    btn.className = 'px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-xl text-stone-300 hover:text-white transition flex items-center gap-1.5 shrink-0 whitespace-nowrap';
                 }
             });
 
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
             const activeBtn = document.getElementById(`tab-btn-${tabId}`);
             if (activeBtn) {
-                activeBtn.className = 'px-3 py-2 text-xs sm:text-sm font-semibold rounded-t-xl border-b-2 border-cyan-400 text-cyan-400 transition flex items-center gap-1.5 shrink-0 whitespace-nowrap';
+                activeBtn.className = 'neu-btn-primary px-3.5 py-2 text-xs sm:text-sm font-black rounded-xl text-black bg-[#F7F06D] transition flex items-center gap-1.5 shrink-0 whitespace-nowrap';
             }
         }
 
@@ -921,11 +1139,15 @@
             });
         }
 
-        document.getElementById('landing-htno-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                submitHallTicket(false);
-            }
-        });
+        const landingInput = document.getElementById('landing-htno-input');
+        if (landingInput) {
+            landingInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    submitHallTicket(false);
+                }
+            });
+        }
     </script>
 
 

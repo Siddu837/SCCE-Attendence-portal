@@ -210,8 +210,113 @@ class PortalHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
             self.wfile.write(json.dumps({'status': 'online', 'mode': 'live-auto-update', 'ttl_seconds': CACHE_TTL}).encode('utf-8'))
+        elif parsed.path == '/api/user-events':
+            hosted_file = os.path.join(DIRECTORY, "data", "user_hosted_events.json")
+            hosted_list = []
+            if os.path.exists(hosted_file):
+                try:
+                    with open(hosted_file, 'r', encoding='utf-8') as f:
+                        hosted_list = json.load(f)
+                except Exception:
+                    hosted_list = []
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps(hosted_list, indent=2).encode('utf-8'))
         else:
             super().do_GET()
+
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.end_headers()
+
+    def do_POST(self):
+        parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == '/api/host-event':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                event_data = json.loads(post_data.decode('utf-8'))
+                
+                # Assign unique ID if not present
+                if not event_data.get('id'):
+                    event_data['id'] = f"scce_host_{int(time.time()*1000)}"
+                event_data['isCampusHosted'] = True
+                event_data['createdAt'] = time.strftime("%Y-%m-%d %H:%M:%S")
+
+                # Ensure data directories exist
+                os.makedirs(os.path.join(DIRECTORY, "data"), exist_ok=True)
+                os.makedirs(os.path.join(DIRECTORY, "public", "data"), exist_ok=True)
+
+                # 1. Save to data/user_hosted_events.json
+                hosted_file = os.path.join(DIRECTORY, "data", "user_hosted_events.json")
+                pub_hosted_file = os.path.join(DIRECTORY, "public", "data", "user_hosted_events.json")
+                
+                hosted_list = []
+                if os.path.exists(hosted_file):
+                    try:
+                        with open(hosted_file, 'r', encoding='utf-8') as f:
+                            hosted_list = json.load(f)
+                    except Exception:
+                        hosted_list = []
+                
+                # Remove duplicate by ID if re-submitted
+                hosted_list = [e for e in hosted_list if e.get('id') != event_data['id']]
+                hosted_list.insert(0, event_data)
+
+                with open(hosted_file, 'w', encoding='utf-8') as f:
+                    json.dump(hosted_list, f, indent=2)
+                with open(pub_hosted_file, 'w', encoding='utf-8') as f:
+                    json.dump(hosted_list, f, indent=2)
+
+                # 2. Merge directly into data/events.json and public/data/events.json
+                events_file = os.path.join(DIRECTORY, "data", "events.json")
+                pub_events_file = os.path.join(DIRECTORY, "public", "data", "events.json")
+
+                if os.path.exists(events_file):
+                    with open(events_file, 'r', encoding='utf-8') as f:
+                        all_data = json.load(f)
+                    
+                    # Remove existing if any
+                    existing_events = [e for e in all_data.get('events', []) if e.get('id') != event_data['id']]
+                    # Prepend new at index 0 so it displays first
+                    existing_events.insert(0, event_data)
+                    all_data['events'] = existing_events
+                    all_data['totalCount'] = len(existing_events)
+                    
+                    # Recalculate category stats
+                    cat = event_data.get('category', 'hackathon').lower()
+                    if 'categories' not in all_data:
+                        all_data['categories'] = {'hackathons': 0, 'workshops': 0, 'competitions': 0, 'meetups': 0}
+                    cat_key = f"{cat}s" if not cat.endswith('s') else cat
+                    all_data['categories'][cat_key] = all_data['categories'].get(cat_key, 0) + 1
+
+                    with open(events_file, 'w', encoding='utf-8') as f:
+                        json.dump(all_data, f, indent=2)
+                    with open(pub_events_file, 'w', encoding='utf-8') as f:
+                        json.dump(all_data, f, indent=2)
+
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({'success': True, 'event': event_data}).encode('utf-8'))
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({'error': str(e)}).encode('utf-8'))
+        else:
+            self.send_response(404)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({'error': 'Not found'}).encode('utf-8'))
 
 class ThreadedHTTPServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
     daemon_threads = True

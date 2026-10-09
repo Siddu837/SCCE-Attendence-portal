@@ -46,77 +46,192 @@
     </script>
 
     <style>
+        :root {
+            --bg-base: #1D1A05;
+            --surface-card: #242007;
+            --surface-raised: #2a2509;
+            --surface-inset: #161403;
+            --shadow-dark: #0c0b02;
+            --shadow-light: #362f0a;
+            --border-neu: rgba(247, 240, 109, 0.18);
+            --text-main: #ffffff;
+            --text-muted: #e7e5e4;
+            --text-subtle: #a8a29e;
+            --accent-yellow: #F7F06D;
+            --accent-hover: #ede559;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
-            background-color: #070A11;
-            color: #F8FAFC;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #1D1A05;
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 35%, rgba(6, 182, 212, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 15% 15%, #2c2708 0%, transparent 60%),
+                radial-gradient(circle at 85% 85%, #141203 0%, transparent 60%);
             background-attachment: fixed;
+            min-height: 100vh;
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        /* Neumorphic Raised / Extruded Surfaces (no rounded-full corners) */
+        .neu-flat {
+            background: #242007;
+            box-shadow: 6px 6px 16px var(--shadow-dark), -5px -5px 14px var(--shadow-light);
+            border: 1px solid var(--border-neu);
+            border-radius: 14px;
         }
 
-        .glass-nav {
-            background: rgba(10, 15, 29, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .neu-card {
+            background: #242007;
+            box-shadow: 7px 7px 18px var(--shadow-dark), -6px -6px 16px var(--shadow-light);
+            border: 1px solid var(--border-neu);
+            border-radius: 16px;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .card-hover-glow {
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        .neu-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 9px 9px 22px var(--shadow-dark), -7px -7px 18px #40380c;
         }
-        .card-hover-glow:hover {
-            transform: translateY(-4px);
-            border-color: rgba(6, 182, 212, 0.35);
-            box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.15);
+
+        /* Neumorphic Inset / Sunken / Debossed Surfaces */
+        .neu-inset {
+            background: #171403;
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.14);
+            border-radius: 12px;
+        }
+
+        .neu-inset-subtle {
+            background: #1a1704;
+            box-shadow: inset 2px 2px 6px var(--shadow-dark), inset -2px -2px 6px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.12);
+            border-radius: 10px;
+        }
+
+        /* Neumorphic Secondary / Nav Button */
+        .neu-btn {
+            background: #242007;
+            color: #ffffff;
+            box-shadow: 4px 4px 10px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.25);
+            border-radius: 12px;
+            transition: all 0.18s ease-in-out;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .neu-btn:hover {
+            background: #F7F06D;
+            color: #000000;
+            border-color: #F7F06D;
+            box-shadow: 5px 5px 14px var(--shadow-dark), -3px -3px 10px #40380c, 0 0 12px rgba(247, 240, 109, 0.3);
+        }
+
+        .neu-btn:active, .neu-btn.active {
+            background: #F7F06D;
+            color: #000000;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(255, 255, 255, 0.3);
+            transform: translateY(1px);
+        }
+
+        /* Primary Button: #F7F06D Solar Yellow with Black Text */
+        .neu-btn-primary {
+            background: #F7F06D !important;
+            color: #000000 !important;
+            box-shadow: 4px 4px 14px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 15px rgba(247, 240, 109, 0.25);
+            border: 1px solid #F7F06D;
+            border-radius: 12px;
+            transition: all 0.18s ease-in-out;
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .neu-btn-primary:hover {
+            background: #ede559 !important;
+            color: #000000 !important;
+            box-shadow: 5px 5px 18px var(--shadow-dark), -3px -3px 10px #40380c, 0 0 22px rgba(247, 240, 109, 0.45);
+        }
+
+        .neu-btn-primary:active {
+            background: #e0d84a !important;
+            color: #000000 !important;
+            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.5), inset -2px -2px 5px rgba(255, 255, 255, 0.4);
+            transform: translateY(1px);
+        }
+
+        /* Neumorphic Small Chips & Badges */
+        .neu-chip {
+            background: #242007;
+            color: #F7F06D;
+            box-shadow: 3px 3px 7px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.25);
+            border-radius: 8px;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .neu-chip:hover {
+            background: #2c2709;
+        }
+
+        .neu-chip:active, .neu-chip.active {
+            box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
         }
 
         /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #070A11; }
-        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: #161403; }
+        ::-webkit-scrollbar-thumb { background: #3a330b; border-radius: 6px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4f4510; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
+<body class="text-white min-h-screen flex flex-col selection:bg-[#F7F06D] selection:text-black">
 
     <!-- Sticky Floating Navigation Bar -->
     <header class="sticky top-3 z-50 px-3 sm:px-6 w-full max-w-7xl mx-auto">
-        <nav class="glass-nav rounded-2xl px-3 sm:px-5 py-2.5 flex items-center justify-between shadow-2xl shadow-black/50 transition-all">
+        <nav class="neu-flat rounded-2xl px-4 sm:px-6 py-2.5 flex items-center justify-between transition-all">
             <!-- Left: Back to Portal button -->
-            <a href="index.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.08] transition shadow-sm active:scale-95 shrink-0">
-                <i data-lucide="arrow-left" class="w-4 h-4 text-cyan-400"></i>
+            <a href="index.html" class="neu-btn-primary inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black text-black transition active:scale-95 shrink-0">
+                <i data-lucide="arrow-left" class="w-4 h-4 text-black"></i>
                 <span>Attendance Portal</span>
             </a>
 
             <!-- Center: Brand Logo -->
             <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500/20 via-indigo-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl neu-inset flex items-center justify-center text-[#F7F06D] shrink-0">
                     <i data-lucide="sparkles" class="w-4 h-4"></i>
                 </div>
                 <div class="text-left hidden xs:block">
                     <div class="font-bold text-sm tracking-tight text-white flex items-center gap-1.5">
                         <span>SCCE HackEvents</span>
-                        <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">LIVE</span>
+                        <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold neu-chip text-[#F7F06D]">LIVE</span>
                     </div>
-                    <div class="text-[10px] text-slate-400 font-medium">Sree Chaitanya College of Engineering</div>
+                    <div class="text-[10px] text-stone-300 font-medium">Sree Chaitanya College of Engineering</div>
                 </div>
             </div>
 
-            <!-- Right: Status Pill -->
+            <!-- Right: Host Event Action & Status Pill -->
             <div class="flex items-center gap-2">
-                <div class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span id="nav-count-badge">70+ Events</span>
+                <button onclick="openHostModal()" class="neu-btn-primary inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black text-black transition active:scale-95 shrink-0 shadow-md">
+                    <i data-lucide="plus-circle" class="w-4 h-4 text-black"></i>
+                    <span>Host Event</span>
+                </button>
+                <div class="neu-inset-subtle inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold text-emerald-300 hidden xs:inline-flex">
+                    <span class="w-2 h-2 rounded-sm bg-emerald-500 animate-pulse"></span>
+                    <span id="nav-count-badge">313 Events</span>
                 </div>
             </div>
         </nav>
@@ -127,102 +242,118 @@
         
         <!-- Hero Banner -->
         <section class="text-center space-y-4 max-w-3xl mx-auto pt-2 sm:pt-4">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-purple-500/10 border border-cyan-500/25 text-cyan-300 text-xs font-semibold tracking-wide shadow-sm">
-                <i data-lucide="trophy" class="w-3.5 h-3.5 text-amber-400"></i>
+            <div class="neu-chip inline-flex items-center gap-2 px-4 py-1.5 rounded-xl text-[#F7F06D] text-xs font-bold tracking-wide">
+                <i data-lucide="trophy" class="w-3.5 h-3.5 text-[#F7F06D]"></i>
                 <span>Opportunities Hub for Students & Developers</span>
             </div>
 
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                Discover, Compete & <span class="bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Win Big</span>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+                Discover, Compete & <span class="text-[#F7F06D]">Win Big</span>
             </h1>
 
-            <p class="text-sm sm:text-base text-slate-400 leading-relaxed max-w-2xl mx-auto">
+            <p class="text-sm sm:text-base text-stone-300 leading-relaxed max-w-2xl mx-auto">
                 Explore live hackathons, technical workshops, competitive programming contests, and tech meetups aggregated in real-time from Devpost, Devfolio, Unstop, and community networks.
             </p>
 
+            <!-- College Event Host Invitation Banner -->
+            <div class="pt-1">
+                <button onclick="openHostModal()" class="neu-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold text-[#F7F06D] hover:text-black hover:bg-[#F7F06D] transition flex items-center justify-center gap-2 mx-auto active:scale-95 shadow-sm">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-[#F7F06D]"></i>
+                    <span>Hosting a Hackathon, Workshop or College Fest? Click to Add Here ↗</span>
+                </button>
+            </div>
+
             <!-- Quick Metrics Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-3">
-                <div class="glass-panel p-3 sm:p-4 rounded-2xl text-center">
-                    <div class="text-lg sm:text-2xl font-mono font-bold text-cyan-400" id="stat-total-opps">72</div>
-                    <div class="text-[11px] sm:text-xs text-slate-400 font-medium">Live Opportunities</div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-3">
+                <div class="neu-card p-3.5 sm:p-4 rounded-2xl text-center">
+                    <div class="text-lg sm:text-2xl font-mono font-black text-[#F7F06D]" id="stat-total-opps">313</div>
+                    <div class="text-[11px] sm:text-xs text-stone-300 font-bold">Live Opportunities</div>
                 </div>
-                <div class="glass-panel p-3 sm:p-4 rounded-2xl text-center">
-                    <div class="text-lg sm:text-2xl font-mono font-bold text-emerald-400" id="stat-hackathons">42</div>
-                    <div class="text-[11px] sm:text-xs text-slate-400 font-medium">Active Hackathons</div>
+                <div class="neu-card p-3.5 sm:p-4 rounded-2xl text-center">
+                    <div class="text-lg sm:text-2xl font-mono font-black text-emerald-400" id="stat-hackathons">131</div>
+                    <div class="text-[11px] sm:text-xs text-stone-300 font-bold">Active Hackathons</div>
                 </div>
-                <div class="glass-panel p-3 sm:p-4 rounded-2xl text-center">
-                    <div class="text-lg sm:text-2xl font-mono font-bold text-amber-400">₹2.5 Cr+</div>
-                    <div class="text-[11px] sm:text-xs text-slate-400 font-medium">Total Prize Pools</div>
+                <div class="neu-card p-3.5 sm:p-4 rounded-2xl text-center">
+                    <div class="text-lg sm:text-2xl font-mono font-black text-cyan-400">160+</div>
+                    <div class="text-[11px] sm:text-xs text-stone-300 font-bold">In-Person & Campus</div>
                 </div>
-                <div class="glass-panel p-3 sm:p-4 rounded-2xl text-center">
-                    <div class="text-lg sm:text-2xl font-mono font-bold text-indigo-400">100%</div>
-                    <div class="text-[11px] sm:text-xs text-slate-400 font-medium">Free To Enter</div>
+                <div class="neu-card p-3.5 sm:p-4 rounded-2xl text-center">
+                    <div class="text-lg sm:text-2xl font-mono font-black text-[#F7F06D]">250+</div>
+                    <div class="text-[11px] sm:text-xs text-stone-300 font-bold">Free To Enter</div>
                 </div>
             </div>
         </section>
 
         <!-- Category Tabs Navigation -->
         <section class="space-y-4">
-            <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-white/[0.08]" id="category-tabs">
-                <button onclick="setCategory('all')" data-cat="all" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                    <i data-lucide="layout-grid" class="w-4 h-4"></i>
+            <div class="neu-inset rounded-xl p-1.5 flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none" id="category-tabs">
+                <button onclick="setCategory('all')" data-cat="all" class="cat-tab neu-btn-primary px-4 py-2 rounded-lg text-xs sm:text-sm font-black flex items-center gap-2 whitespace-nowrap transition text-black bg-[#F7F06D]">
+                    <i data-lucide="layout-grid" class="w-4 h-4 text-black"></i>
                     <span>All Opportunities</span>
-                    <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-cyan-500/20 text-cyan-200" id="badge-all">72</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-black/10 text-black" id="badge-all">313</span>
                 </button>
-                <button onclick="setCategory('hackathon')" data-cat="hackathon" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-slate-400 hover:text-white hover:bg-white/[0.04]">
+                <button onclick="setCategory('hackathon')" data-cat="hackathon" class="cat-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-stone-300 hover:text-white">
                     <i data-lucide="code" class="w-4 h-4"></i>
                     <span>Hackathons</span>
-                    <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300" id="badge-hackathon">42</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-mono neu-chip text-stone-300" id="badge-hackathon">131</span>
                 </button>
-                <button onclick="setCategory('workshop')" data-cat="workshop" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-slate-400 hover:text-white hover:bg-white/[0.04]">
+                <button onclick="setCategory('workshop')" data-cat="workshop" class="cat-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-stone-300 hover:text-white">
                     <i data-lucide="wrench" class="w-4 h-4"></i>
                     <span>Workshops</span>
-                    <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300" id="badge-workshop">15</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-mono neu-chip text-stone-300" id="badge-workshop">80</span>
                 </button>
-                <button onclick="setCategory('competition')" data-cat="competition" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-slate-400 hover:text-white hover:bg-white/[0.04]">
+                <button onclick="setCategory('competition')" data-cat="competition" class="cat-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-stone-300 hover:text-white">
                     <i data-lucide="award" class="w-4 h-4"></i>
                     <span>Competitions</span>
-                    <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300" id="badge-competition">12</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-mono neu-chip text-stone-300" id="badge-competition">99</span>
                 </button>
-                <button onclick="setCategory('meetup')" data-cat="meetup" class="cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-slate-400 hover:text-white hover:bg-white/[0.04]">
+                <button onclick="setCategory('meetup')" data-cat="meetup" class="cat-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-stone-300 hover:text-white">
                     <i data-lucide="users" class="w-4 h-4"></i>
                     <span>Meetups</span>
-                    <span class="px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-slate-800 text-slate-300" id="badge-meetup">3</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-mono neu-chip text-stone-300" id="badge-meetup">3</span>
                 </button>
             </div>
 
-            <!-- Search & Filters Toolbar (Shadcn style) -->
-            <div class="glass-panel p-3.5 sm:p-4 rounded-2xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4">
+            <!-- Search & Filters Toolbar (Fully Responsive, Zero Clipping on Mobile) -->
+            <div class="neu-card p-3.5 sm:p-4 rounded-xl flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
                 
                 <!-- Search Box -->
-                <div class="relative flex-grow max-w-md">
-                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
-                    <input type="text" id="event-search" oninput="handleSearch()" placeholder="Search by title, organizer, or tag (AI, Web3, Python)..." class="w-full pl-10 pr-4 py-2 bg-slate-900/90 text-sm text-white placeholder-slate-500 rounded-xl border border-white/[0.08] focus:border-cyan-500/50 focus:outline-none focus:ring-1 focus:ring-cyan-500/30 transition">
+                <div class="relative flex-grow">
+                    <div class="neu-inset rounded-xl flex items-center px-3.5 py-2">
+                        <i data-lucide="search" class="w-4 h-4 text-stone-400 shrink-0 mr-2.5"></i>
+                        <input type="text" id="event-search" oninput="handleSearch()" placeholder="Search by title, organizer, or tag (AI, Web3, Python)..." class="w-full bg-transparent text-sm text-white placeholder-stone-400 focus:outline-none font-medium">
+                    </div>
                 </div>
 
-                <!-- Dropdown / Pill Filter Controls -->
-                <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+                <!-- Dropdown / Filter Controls (Wraps gracefully on narrow screens) -->
+                <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
                     
                     <!-- Mode Filter -->
-                    <div class="flex items-center gap-1 bg-slate-900/80 p-1 rounded-xl border border-white/[0.08]">
-                        <button onclick="setMode('all')" data-mode="all" class="mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-cyan-500/20 text-cyan-300">All</button>
-                        <button onclick="setMode('online')" data-mode="online" class="mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-400 hover:text-white">Online</button>
-                        <button onclick="setMode('offline')" data-mode="offline" class="mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-400 hover:text-white">In-Person</button>
+                    <div class="neu-inset rounded-xl p-1 flex items-center gap-1 shrink-0">
+                        <span class="text-[10px] text-stone-400 font-bold px-1.5 hidden xs:inline">Mode:</span>
+                        <button onclick="setMode('all')" data-mode="all" class="mode-btn px-2.5 py-1 text-xs font-black rounded-lg text-black bg-[#F7F06D]">All</button>
+                        <button onclick="setMode('online')" data-mode="online" class="mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-stone-300 hover:text-white">Online</button>
+                        <button onclick="setMode('offline')" data-mode="offline" class="mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-stone-300 hover:text-white">In-Person</button>
                     </div>
 
                     <!-- Cost Filter -->
-                    <div class="flex items-center gap-1 bg-slate-900/80 p-1 rounded-xl border border-white/[0.08]">
-                        <button onclick="setFee('all')" data-fee="all" class="fee-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-cyan-500/20 text-cyan-300">All</button>
-                        <button onclick="setFee('free')" data-fee="free" class="fee-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-400 hover:text-white">Free</button>
+                    <div class="neu-inset rounded-xl p-1 flex items-center gap-1 shrink-0">
+                        <span class="text-[10px] text-stone-400 font-bold px-1.5 hidden xs:inline">Fee:</span>
+                        <button onclick="setFee('all')" data-fee="all" class="fee-btn px-2.5 py-1 text-xs font-black rounded-lg text-black bg-[#F7F06D]">All</button>
+                        <button onclick="setFee('free')" data-fee="free" class="fee-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-stone-300 hover:text-white">Free</button>
+                        <button onclick="setFee('paid')" data-fee="paid" class="fee-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-stone-300 hover:text-white">Paid</button>
                     </div>
 
                     <!-- Platform Filter -->
-                    <select id="platform-select" onchange="handlePlatformFilter()" class="bg-slate-900 text-xs font-semibold text-slate-300 px-3 py-1.5 rounded-xl border border-white/[0.08] focus:outline-none focus:border-cyan-500/50 cursor-pointer">
-                        <option value="all">All Platforms</option>
-                        <option value="Devpost">Devpost</option>
-                        <option value="Devfolio">Devfolio</option>
-                        <option value="Unstop">Unstop</option>
-                    </select>
+                    <div class="neu-inset rounded-xl p-1 flex items-center shrink-0">
+                        <select id="platform-select" onchange="handlePlatformFilter()" class="bg-transparent text-xs font-bold text-white px-2.5 py-1 rounded-lg focus:outline-none cursor-pointer">
+                            <option value="all" class="bg-[#242007] text-white">All Platforms</option>
+                            <option value="SCCE Campus" class="bg-[#242007] text-[#F7F06D] font-bold">⭐ SCCE Campus</option>
+                            <option value="Devpost" class="bg-[#242007] text-white">Devpost</option>
+                            <option value="Devfolio" class="bg-[#242007] text-white">Devfolio</option>
+                            <option value="Unstop" class="bg-[#242007] text-white">Unstop</option>
+                        </select>
+                    </div>
 
                 </div>
 
@@ -236,33 +367,230 @@
             </div>
 
             <!-- Empty State -->
-            <div id="empty-state" class="hidden text-center py-16 px-4 glass-panel rounded-3xl space-y-4 max-w-lg mx-auto my-8">
-                <div class="w-16 h-16 rounded-full bg-slate-800/80 flex items-center justify-center mx-auto text-slate-500">
-                    <i data-lucide="calendar-x" class="w-8 h-8"></i>
+            <div id="empty-state" class="hidden text-center py-16 px-4 neu-card rounded-3xl space-y-4 max-w-lg mx-auto my-8">
+                <div class="w-14 h-14 rounded-2xl neu-inset flex items-center justify-center mx-auto text-stone-400">
+                    <i data-lucide="calendar-x" class="w-7 h-7"></i>
                 </div>
                 <h3 class="text-lg font-bold text-white">No Matching Opportunities Found</h3>
-                <p class="text-xs sm:text-sm text-slate-400">Try tweaking your search keywords or resetting filters to view all active events.</p>
-                <button onclick="resetAllFilters()" class="px-4 py-2 rounded-xl text-xs font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/20 transition">
+                <p class="text-xs sm:text-sm text-stone-300">Try tweaking your search keywords or resetting filters to view all active events.</p>
+                <button onclick="resetAllFilters()" class="neu-btn-primary px-4 py-2 rounded-xl text-xs font-black text-black transition active:scale-95">
                     Reset All Filters
                 </button>
             </div>
         </section>
 
+        <!-- Host Event Modal (Persistent across mobile & desktop) -->
+        <div id="host-event-modal" onclick="closeHostModal()" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md overflow-y-auto">
+            <div class="neu-card rounded-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto p-4 sm:p-7 space-y-5 my-auto relative border border-[#F7F06D]/30 shadow-2xl" onclick="event.stopPropagation()">
+                
+                <!-- Modal Header -->
+                <div class="flex items-start justify-between gap-3 border-b border-white/10 pb-4">
+                    <div>
+                        <div class="neu-chip inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-[#F7F06D] mb-1">
+                            <span>🎓</span> CAMPUS OPPORTUNITY CREATOR
+                        </div>
+                        <h3 class="text-lg sm:text-2xl font-black text-white tracking-tight">Host an Event or Hackathon</h3>
+                        <p class="text-xs sm:text-sm text-stone-300">Publish your department hackathon, technical workshop, or coding challenge. Saved locally and synchronized across all devices.</p>
+                    </div>
+                    <button type="button" onclick="closeHostModal()" class="w-8 h-8 rounded-xl neu-btn flex items-center justify-center text-stone-300 hover:text-white shrink-0" title="Close">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Form Body -->
+                <form id="host-event-form" onsubmit="handleHostEventSubmit(event)" class="space-y-4">
+                    
+                    <!-- Grid: Title & Category -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                                Event / Hackathon Name <span class="text-[#F7F06D]">*</span>
+                            </label>
+                            <div class="neu-inset rounded-xl px-3 py-2">
+                                <input type="text" id="host-title" required placeholder="e.g. SCCE HackArena 2026" class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                                Event Type / Category <span class="text-[#F7F06D]">*</span>
+                            </label>
+                            <div class="neu-inset rounded-xl px-3 py-2">
+                                <select id="host-category" required class="w-full bg-transparent text-sm text-white font-semibold focus:outline-none cursor-pointer">
+                                    <option value="hackathon" class="bg-[#242007] text-white">🚀 Hackathon</option>
+                                    <option value="workshop" class="bg-[#242007] text-white">🛠️ Workshop / Bootcamp</option>
+                                    <option value="competition" class="bg-[#242007] text-white">🏆 Competition / Contest</option>
+                                    <option value="meetup" class="bg-[#242007] text-white">🤝 Meetup / Tech Fest</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grid: College Name / Organizer & Mode -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                                College / Dept / Club Name <span class="text-[#F7F06D]">*</span>
+                            </label>
+                            <div class="neu-inset rounded-xl px-3 py-2">
+                                <input type="text" id="host-organizer" required placeholder="e.g. SCCE CSE Dept / Coding Club" class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                                Mode of Event <span class="text-[#F7F06D]">*</span>
+                            </label>
+                            <div class="neu-inset rounded-xl px-3 py-2">
+                                <select id="host-mode" required class="w-full bg-transparent text-sm text-white font-semibold focus:outline-none cursor-pointer">
+                                    <option value="offline" class="bg-[#242007] text-white">📍 In-Person (On-Campus)</option>
+                                    <option value="online" class="bg-[#242007] text-white">🌐 Online (Virtual)</option>
+                                    <option value="hybrid" class="bg-[#242007] text-white">⚡ Hybrid (Online + Offline)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location / Venue -->
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                            Location / Venue / Hall <span class="text-[#F7F06D]">*</span>
+                        </label>
+                        <div class="neu-inset rounded-xl px-3 py-2">
+                            <input type="text" id="host-location" required placeholder="e.g. SCCE Main Auditorium / Lab 3, Karimnagar (or Online Link)" class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Grid: Date & Time + Registration Deadline -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                                Event Date & Time <span class="text-[#F7F06D]">*</span>
+                            </label>
+                            <div class="neu-inset rounded-xl px-3 py-2">
+                                <input type="text" id="host-start-date" required placeholder="e.g. Oct 28, 2026 - 10:00 AM" class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                                Registration Deadline / Timeline <span class="text-[#F7F06D]">*</span>
+                            </label>
+                            <div class="neu-inset rounded-xl px-3 py-2">
+                                <input type="text" id="host-deadline" required placeholder="e.g. Oct 26, 2026 (or 4 days left)" class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grid: Entry Fee & Prize Money -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                                Entry Fee <span class="text-[#F7F06D]">*</span>
+                            </label>
+                            <div class="neu-inset rounded-xl px-3 py-2 flex items-center gap-2">
+                                <select id="host-fee-type" onchange="toggleFeeInput()" class="bg-transparent text-sm text-white font-semibold focus:outline-none cursor-pointer">
+                                    <option value="free" class="bg-[#242007] text-white">Free (₹0)</option>
+                                    <option value="paid" class="bg-[#242007] text-white">Paid Entry</option>
+                                </select>
+                                <input type="text" id="host-fee-amount" placeholder="Amount (e.g. ₹150)" class="hidden w-full bg-transparent text-sm text-[#F7F06D] font-mono font-bold focus:outline-none pl-2 border-l border-white/10">
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                                Prize Money / Perks <span class="text-[#F7F06D]">*</span>
+                            </label>
+                            <div class="neu-inset rounded-xl px-3 py-2">
+                                <input type="text" id="host-prize" required placeholder="e.g. ₹20,000 Cash + Certificates + Mementos" class="w-full bg-transparent text-sm text-[#F7F06D] placeholder-stone-500 font-bold focus:outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Registration Link -->
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                            Registration / Google Form URL <span class="text-[#F7F06D]">*</span>
+                        </label>
+                        <div class="neu-inset rounded-xl px-3 py-2">
+                            <input type="url" id="host-reg-url" required placeholder="e.g. https://forms.gle/... or https://unstop.com/..." class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Banner Image / Poster -->
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                            Poster / Banner Image (Upload from phone/PC or paste URL)
+                        </label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <div class="neu-inset rounded-xl px-3 py-2 flex items-center gap-2">
+                                <i data-lucide="upload" class="w-4 h-4 text-[#F7F06D] shrink-0"></i>
+                                <input type="file" id="host-image-file" accept="image/*" onchange="handleImageFileUpload(event)" class="text-xs text-stone-300 file:mr-2 file:py-1 file:px-2 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-[#F7F06D] file:text-black cursor-pointer w-full">
+                            </div>
+                            <div class="neu-inset rounded-xl px-3 py-2">
+                                <input type="url" id="host-image-url" oninput="handleImageUrlInput()" placeholder="Or paste image web link..." class="w-full bg-transparent text-xs text-white placeholder-stone-500 focus:outline-none">
+                            </div>
+                        </div>
+                        <!-- Preview Box -->
+                        <div id="host-image-preview-container" class="hidden mt-2 relative w-full h-28 rounded-xl overflow-hidden neu-inset">
+                            <img id="host-image-preview" src="" alt="Banner Preview" class="w-full h-full object-cover">
+                            <button type="button" onclick="clearHostImagePreview()" class="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-black/75 text-[11px] font-bold text-white hover:text-red-400">Remove</button>
+                        </div>
+                    </div>
+
+                    <!-- Tags / Stacks -->
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                            Tags / Tech Stacks (comma separated)
+                        </label>
+                        <div class="neu-inset rounded-xl px-3 py-2">
+                            <input type="text" id="host-tags" placeholder="e.g. AI/ML, Web Dev, Python, Beginners, IoT" class="w-full bg-transparent text-xs text-white placeholder-stone-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Description / Eligibility -->
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+                            Description, Rules & Eligibility Details
+                        </label>
+                        <div class="neu-inset rounded-xl px-3 py-2">
+                            <textarea id="host-desc" rows="3" placeholder="Explain team size (e.g. 2-4 members), problem statements, eligibility criteria, lunch provided, etc..." class="w-full bg-transparent text-xs text-white placeholder-stone-500 focus:outline-none resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit Actions -->
+                    <div class="pt-3 flex flex-col sm:flex-row items-center justify-end gap-2.5">
+                        <button type="button" onclick="closeHostModal()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl neu-btn text-xs font-bold text-stone-300 hover:text-white">
+                            Cancel
+                        </button>
+                        <button type="submit" id="host-submit-btn" class="w-full sm:w-auto px-6 py-2.5 rounded-xl neu-btn-primary text-black font-black text-xs sm:text-sm flex items-center justify-center gap-2 active:scale-95 shadow-md">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-black"></i>
+                            <span id="host-submit-btn-text">Publish & Host Event</span>
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <!-- Floating Live Toast Notification -->
+        <div id="host-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:right-6 sm:translate-x-0 z-50 px-4 py-3 rounded-xl neu-flat text-[#F7F06D] text-xs font-bold flex items-center gap-2.5 max-w-[90vw] border border-[#F7F06D]/30 shadow-2xl">
+            <span class="text-base">🎉</span>
+            <span id="host-toast-msg" class="truncate">Event hosted successfully!</span>
+        </div>
+
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-white/[0.08] py-8 text-center text-xs text-slate-400 space-y-3 px-4 mt-auto w-full bg-slate-950/60">
-        <div class="flex items-center justify-center gap-2 flex-wrap text-sm">
-            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 font-medium tracking-wide shadow-sm">
+    <footer class="neu-flat border-t-0 py-4 sm:py-5 text-center text-xs text-stone-400 space-y-2 px-4 mt-auto w-full">
+        <div class="flex items-center justify-center gap-2 flex-wrap">
+            <span class="neu-chip inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[#F7F06D] font-bold text-[10px] sm:text-[11px] tracking-wide">
                 <span>🎓</span> <span>Made for students of SCCE</span>
             </span>
         </div>
-        <div class="text-[11px] text-slate-500 flex items-center justify-center gap-2 flex-wrap">
+        <div class="text-[9px] sm:text-[10px] text-stone-400 flex items-center justify-center gap-2 flex-wrap">
             <span>SCCE HackEvents Gateway</span>
             <span>•</span>
             <span>Real-time Aggregation Engine</span>
             <span>•</span>
-            <a href="index.html" class="text-cyan-400 hover:underline">Return to Attendance Portal</a>
+            <a href="index.html" class="text-[#F7F06D] font-bold hover:underline">Return to Attendance Portal</a>
         </div>
     </footer>
 
@@ -274,40 +602,382 @@
         let activeFee = 'all';
         let activePlatform = 'all';
         let searchQuery = '';
+        let uploadedImageDataUri = '';
+
+        const STORAGE_KEY = 'scce_user_hosted_events';
+
+        // Local Storage Helpers (Persists across restarts and offline)
+        function getLocalHostedEvents() {
+            try {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                return stored ? JSON.parse(stored) : [];
+            } catch (e) {
+                console.warn("Could not read local hosted events:", e);
+                return [];
+            }
+        }
+
+        function saveLocalHostedEvent(ev) {
+            try {
+                let list = getLocalHostedEvents();
+                list = list.filter(item => item.id !== ev.id);
+                list.unshift(ev);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+            } catch (e) {
+                console.warn("Could not save to localStorage:", e);
+            }
+        }
+
+        // Modal Controls
+        function openHostModal() {
+            const modal = document.getElementById('host-event-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeHostModal() {
+            const modal = document.getElementById('host-event-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Toggle Fee Input
+        function toggleFeeInput() {
+            const type = document.getElementById('host-fee-type').value;
+            const amountInput = document.getElementById('host-fee-amount');
+            if (type === 'paid') {
+                amountInput.classList.remove('hidden');
+                amountInput.required = true;
+                amountInput.focus();
+            } else {
+                amountInput.classList.add('hidden');
+                amountInput.required = false;
+                amountInput.value = '';
+            }
+        }
+
+        // Image Handling (File Upload from mobile/PC or URL)
+        function handleImageFileUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (file.size > 2.5 * 1024 * 1024) {
+                alert("Selected image is larger than 2.5MB. Please choose a smaller photo or paste an Image URL.");
+                e.target.value = '';
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                uploadedImageDataUri = evt.target.result;
+                document.getElementById('host-image-preview').src = uploadedImageDataUri;
+                document.getElementById('host-image-preview-container').classList.remove('hidden');
+                document.getElementById('host-image-url').value = '';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function handleImageUrlInput() {
+            const url = document.getElementById('host-image-url').value.trim();
+            if (url) {
+                uploadedImageDataUri = '';
+                document.getElementById('host-image-preview').src = url;
+                document.getElementById('host-image-preview-container').classList.remove('hidden');
+                document.getElementById('host-image-file').value = '';
+            }
+        }
+
+        function clearHostImagePreview() {
+            uploadedImageDataUri = '';
+            document.getElementById('host-image-url').value = '';
+            document.getElementById('host-image-file').value = '';
+            document.getElementById('host-image-preview-container').classList.add('hidden');
+        }
+
+        // Toast Feedback
+        function showToast(msg) {
+            const toast = document.getElementById('host-toast');
+            const msgEl = document.getElementById('host-toast-msg');
+            if (!toast || !msgEl) return;
+            msgEl.innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Submit New Hosted Event
+        async function handleHostEventSubmit(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('host-submit-btn');
+            const submitText = document.getElementById('host-submit-btn-text');
+            
+            submitBtn.disabled = true;
+            submitText.innerText = "Publishing...";
+
+            const title = document.getElementById('host-title').value.trim();
+            const category = document.getElementById('host-category').value;
+            const organizer = document.getElementById('host-organizer').value.trim();
+            const mode = document.getElementById('host-mode').value;
+            const location = document.getElementById('host-location').value.trim();
+            const startDate = document.getElementById('host-start-date').value.trim();
+            const deadline = document.getElementById('host-deadline').value.trim();
+            const feeType = document.getElementById('host-fee-type').value;
+            const feeAmount = document.getElementById('host-fee-amount').value.trim();
+            const prize = document.getElementById('host-prize').value.trim();
+            const regUrl = document.getElementById('host-reg-url').value.trim();
+            const tagsInput = document.getElementById('host-tags').value.trim();
+            const desc = document.getElementById('host-desc').value.trim();
+
+            let bannerUrl = uploadedImageDataUri || document.getElementById('host-image-url').value.trim();
+            if (!bannerUrl) {
+                if (category === 'workshop') bannerUrl = 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80';
+                else if (category === 'competition') bannerUrl = 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80';
+                else if (category === 'meetup') bannerUrl = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80';
+                else bannerUrl = 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80';
+            }
+
+            const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()).filter(Boolean) : ['SCCE Campus', 'Student Tech'];
+
+            const newEvent = {
+                id: `scce_host_${Date.now()}`,
+                title: title,
+                platform: 'SCCE Campus',
+                isCampusHosted: true,
+                category: category,
+                mode: mode,
+                location: location,
+                isFree: feeType === 'free',
+                feeDetails: feeType === 'paid' ? (feeAmount || 'Paid') : 'Free',
+                status: 'upcoming',
+                organizer: organizer,
+                prizePool: prize,
+                startDate: startDate,
+                endDate: startDate,
+                deadline: deadline,
+                daysLeft: deadline,
+                bannerUrl: bannerUrl,
+                registrationUrl: regUrl,
+                tags: tags,
+                description: desc,
+                createdAt: new Date().toISOString()
+            };
+
+            // 1. Save locally to mobile/desktop storage (guaranteed offline persistence after longtime)
+            saveLocalHostedEvent(newEvent);
+
+            // 2. Prepend to current session state and re-render
+            allEvents = allEvents.filter(item => item.id !== newEvent.id);
+            allEvents.unshift(newEvent);
+
+            // Update visible counts
+            updateMetricBadges();
+            renderEvents();
+
+            // 3. Post to local server backend (makes it visible to ANY other mobile or desktop accessing the site)
+            try {
+                await fetch('/api/host-event', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newEvent)
+                });
+            } catch (err) {
+                console.warn("Saved to local storage, backend sync will retry on connect:", err);
+            }
+
+            // 4. Reset & Close Modal
+            submitBtn.disabled = false;
+            submitText.innerText = "Publish & Host Event";
+            document.getElementById('host-event-form').reset();
+            clearHostImagePreview();
+            closeHostModal();
+
+            // 5. Toast
+            showToast("🎉 Event published successfully! Saved locally & visible across devices.");
+
+            // Smooth scroll to top of events grid
+            window.scrollTo({ top: 350, behavior: 'smooth' });
+        }
+
+        function updateMetricBadges() {
+            const total = allEvents.length;
+            const hackathons = allEvents.filter(e => e.category === 'hackathon').length;
+            const workshops = allEvents.filter(e => e.category === 'workshop').length;
+            const competitions = allEvents.filter(e => e.category === 'competition').length;
+            const meetups = allEvents.filter(e => e.category === 'meetup').length;
+
+            const totalEl = document.getElementById('stat-total-opps');
+            if (totalEl) totalEl.innerText = total;
+            const hackEl = document.getElementById('stat-hackathons');
+            if (hackEl) hackEl.innerText = hackathons;
+            const badgeAll = document.getElementById('badge-all');
+            if (badgeAll) badgeAll.innerText = total;
+            const badgeHack = document.getElementById('badge-hackathon');
+            if (badgeHack) badgeHack.innerText = hackathons;
+            const badgeWork = document.getElementById('badge-workshop');
+            if (badgeWork) badgeWork.innerText = workshops;
+            const badgeComp = document.getElementById('badge-competition');
+            if (badgeComp) badgeComp.innerText = competitions;
+            const badgeMeet = document.getElementById('badge-meetup');
+            if (badgeMeet) badgeMeet.innerText = meetups;
+            const navBadge = document.getElementById('nav-count-badge');
+            if (navBadge) navBadge.innerText = `${total} Events`;
+        }
 
         async function loadEventsData() {
             try {
-                // Fetch cached aggregated events
-                const res = await fetch('data/events.json');
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                const data = await res.json();
-                allEvents = data.events || [];
-                
-                // Update stats
-                document.getElementById('stat-total-opps').innerText = data.totalCount || allEvents.length;
-                document.getElementById('stat-hackathons').innerText = data.categories?.hackathons || 0;
-                document.getElementById('badge-all').innerText = data.totalCount || allEvents.length;
-                document.getElementById('badge-hackathon').innerText = data.categories?.hackathons || 0;
-                document.getElementById('badge-workshop').innerText = data.categories?.workshops || 0;
-                document.getElementById('badge-competition').innerText = data.categories?.competitions || 0;
-                document.getElementById('badge-meetup').innerText = data.categories?.meetups || 0;
-                document.getElementById('nav-count-badge').innerText = `${allEvents.length} Events`;
+                // Fetch cached aggregated events from backend
+                let res = await fetch('data/events.json').catch(() => null);
+                if (!res || !res.ok) {
+                    res = await fetch('public/data/events.json').catch(() => null);
+                }
+                if (res && res.ok) {
+                    const data = await res.json();
+                    allEvents = data.events || [];
+                    
+                    // Merge local user-hosted events (stored in mobile/desktop browser)
+                    const localEvents = getLocalHostedEvents();
+                    localEvents.forEach(lev => {
+                        if (!allEvents.some(e => e.id === lev.id)) {
+                            allEvents.unshift(lev);
+                        }
+                    });
 
-                renderEvents();
+                    updateMetricBadges();
+                    renderEvents();
+                    return;
+                }
+                throw new Error("Unable to fetch events.json");
             } catch (err) {
-                console.error("Failed to load events.json, falling back:", err);
-                // Fallback to embedded data if opened directly without web server
+                console.warn("Using embedded fallback events:", err);
                 loadFallbackEvents();
             }
+        }
+
+        function loadFallbackEvents() {
+            allEvents = [
+                {
+                    "id": "unstop_1768097",
+                    "title": "C Code Auction Arena 2026",
+                    "platform": "Unstop",
+                    "category": "hackathon",
+                    "mode": "offline",
+                    "location": "Talegaon Dabhade, Maharashtra",
+                    "isFree": true,
+                    "status": "ongoing",
+                    "organizer": "Nutan Maharashtra Institute of Engineering",
+                    "prizePool": "₹7,000",
+                    "daysLeft": "3 days left",
+                    "bannerUrl": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6ac859274d3f2_logo.png",
+                    "registrationUrl": "https://unstop.com/hackathons/c-code-auction-arena-2026-nutan-maharashtra-institue-of-engineering-and-technology-1768097",
+                    "tags": ["C Programming", "Problem Solving", "Logic"]
+                },
+                {
+                    "id": "devpost_31302",
+                    "title": "PayPal AI Hackathon",
+                    "platform": "Devpost",
+                    "category": "hackathon",
+                    "mode": "online",
+                    "location": "Online",
+                    "isFree": true,
+                    "status": "ongoing",
+                    "organizer": "PayPal",
+                    "prizePool": "$67,500",
+                    "daysLeft": "about 1 month left",
+                    "bannerUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/288/985/datas/medium_square.png",
+                    "registrationUrl": "https://paypalaihackathon.devpost.com/",
+                    "tags": ["AI", "FinTech", "Web"]
+                },
+                {
+                    "id": "devpost_30984",
+                    "title": "OpenCV AI Competition 2026, powered by AWS",
+                    "platform": "Devpost",
+                    "category": "hackathon",
+                    "mode": "online",
+                    "location": "Online",
+                    "isFree": true,
+                    "status": "ongoing",
+                    "organizer": "OpenCV & AWS",
+                    "prizePool": "$20,250",
+                    "daysLeft": "19 days left",
+                    "bannerUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/087/526/datas/medium_square.png",
+                    "registrationUrl": "https://opencv26.devpost.com/",
+                    "tags": ["Computer Vision", "AWS", "IoT"]
+                },
+                {
+                    "id": "devpost_31024",
+                    "title": "Meta VR Start Developer Competition 2026",
+                    "platform": "Devpost",
+                    "category": "hackathon",
+                    "mode": "online",
+                    "location": "Online",
+                    "isFree": true,
+                    "status": "ongoing",
+                    "organizer": "Meta",
+                    "prizePool": "$1,000,000",
+                    "daysLeft": "about 1 month left",
+                    "bannerUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/374/843/datas/medium_square.png",
+                    "registrationUrl": "https://start-developer-competition-26.devpost.com/",
+                    "tags": ["VR/AR", "Meta Quest", "AI"]
+                },
+                {
+                    "id": "devfolio_ethindia26",
+                    "title": "ETHIndia 2026",
+                    "platform": "Devfolio",
+                    "category": "hackathon",
+                    "mode": "offline",
+                    "location": "Bengaluru, Karnataka",
+                    "isFree": true,
+                    "status": "upcoming",
+                    "organizer": "Devfolio Team",
+                    "prizePool": "$100,000+",
+                    "daysLeft": "Upcoming",
+                    "bannerUrl": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80",
+                    "registrationUrl": "https://devfolio.co/hackathons",
+                    "tags": ["Web3", "Ethereum", "Smart Contracts"]
+                },
+                {
+                    "id": "devpost_31503",
+                    "title": "Life After Code - GitLab Hackathon",
+                    "platform": "Devpost",
+                    "category": "hackathon",
+                    "mode": "online",
+                    "location": "Online",
+                    "isFree": true,
+                    "status": "ongoing",
+                    "organizer": "GitLab",
+                    "prizePool": "$45,000",
+                    "daysLeft": "19 days left",
+                    "bannerUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/376/754/datas/medium_square.png",
+                    "registrationUrl": "https://gitlab-transcend.devpost.com/",
+                    "tags": ["DevOps", "AI", "Productivity"]
+                }
+            ];
+
+            // Merge local user-hosted events
+            const localEvents = getLocalHostedEvents();
+            localEvents.forEach(lev => {
+                if (!allEvents.some(e => e.id === lev.id)) {
+                    allEvents.unshift(lev);
+                }
+            });
+
+            updateMetricBadges();
+            renderEvents();
         }
 
         function setCategory(cat) {
             activeCategory = cat;
             document.querySelectorAll('.cat-tab').forEach(b => {
                 if (b.dataset.cat === cat) {
-                    b.className = "cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition bg-cyan-500/20 text-cyan-300 border border-cyan-500/30";
+                    b.className = "cat-tab neu-btn-primary px-4 py-2 rounded-lg text-xs sm:text-sm font-black flex items-center gap-2 whitespace-nowrap transition text-black bg-[#F7F06D]";
+                    const badge = b.querySelector('span:last-child');
+                    if (badge) badge.className = "px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-black/10 text-black";
                 } else {
-                    b.className = "cat-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-slate-400 hover:text-white hover:bg-white/[0.04]";
+                    b.className = "cat-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition text-stone-300 hover:text-white";
+                    const badge = b.querySelector('span:last-child');
+                    if (badge) badge.className = "px-2 py-0.5 rounded-md text-[10px] font-mono neu-chip text-stone-300";
                 }
             });
             renderEvents();
@@ -317,9 +987,9 @@
             activeMode = mode;
             document.querySelectorAll('.mode-btn').forEach(b => {
                 if (b.dataset.mode === mode) {
-                    b.className = "mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-cyan-500/20 text-cyan-300";
+                    b.className = "mode-btn px-2.5 py-1 text-xs font-black rounded-lg text-black bg-[#F7F06D]";
                 } else {
-                    b.className = "mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-400 hover:text-white";
+                    b.className = "mode-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-stone-300 hover:text-white";
                 }
             });
             renderEvents();
@@ -329,9 +999,9 @@
             activeFee = fee;
             document.querySelectorAll('.fee-btn').forEach(b => {
                 if (b.dataset.fee === fee) {
-                    b.className = "fee-btn px-2.5 py-1 text-xs font-semibold rounded-lg bg-cyan-500/20 text-cyan-300";
+                    b.className = "fee-btn px-2.5 py-1 text-xs font-black rounded-lg text-black bg-[#F7F06D]";
                 } else {
-                    b.className = "fee-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-slate-400 hover:text-white";
+                    b.className = "fee-btn px-2.5 py-1 text-xs font-semibold rounded-lg text-stone-300 hover:text-white";
                 }
             });
             renderEvents();
@@ -370,8 +1040,9 @@
                 if (activeCategory !== 'all' && ev.category !== activeCategory) return false;
                 // Mode
                 if (activeMode !== 'all' && ev.mode !== activeMode) return false;
-                // Fee
+                // Fee (All / Free / Paid)
                 if (activeFee === 'free' && !ev.isFree) return false;
+                if (activeFee === 'paid' && ev.isFree) return false;
                 // Platform
                 if (activePlatform !== 'all' && ev.platform !== activePlatform) return false;
                 // Search
@@ -379,7 +1050,8 @@
                     const matchTitle = ev.title.toLowerCase().includes(searchQuery);
                     const matchOrg = (ev.organizer || '').toLowerCase().includes(searchQuery);
                     const matchTags = (ev.tags || []).some(t => t.toLowerCase().includes(searchQuery));
-                    if (!matchTitle && !matchOrg && !matchTags) return false;
+                    const matchLoc = (ev.location || '').toLowerCase().includes(searchQuery);
+                    if (!matchTitle && !matchOrg && !matchTags && !matchLoc) return false;
                 }
                 return true;
             });
@@ -394,71 +1066,74 @@
             empty.classList.add('hidden');
 
             filtered.forEach(ev => {
-                // Platform Badge Color
-                let platClass = "bg-indigo-500/20 text-indigo-300 border-indigo-500/30";
-                if (ev.platform === 'Devfolio') platClass = "bg-blue-500/20 text-blue-300 border-blue-500/30";
-                if (ev.platform === 'Unstop') platClass = "bg-emerald-500/20 text-emerald-300 border-emerald-500/30";
-                if (ev.platform === 'Google Developers') platClass = "bg-amber-500/20 text-amber-300 border-amber-500/30";
-
-                // Mode Badge
+                const isCampus = ev.isCampusHosted || ev.platform === 'SCCE Campus';
                 let modeText = ev.mode === 'online' ? '🌐 Online' : `📍 ${ev.location || 'In-Person'}`;
 
                 // Card HTML
                 const card = document.createElement('div');
-                card.className = "glass-panel rounded-2xl overflow-hidden flex flex-col card-hover-glow";
+                card.className = `neu-card rounded-xl overflow-hidden flex flex-col ${isCampus ? 'border-2 border-[#F7F06D]/60 shadow-lg' : ''}`;
                 card.innerHTML = `
-                    <!-- Image Banner -->
-                    <div class="relative w-full h-44 overflow-hidden bg-slate-900">
-                        <img src="${ev.bannerUrl}" alt="${ev.title}" class="w-full h-full object-cover transition duration-300 hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80';">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                    <!-- Image Banner (Full Cover) -->
+                    <div class="relative w-full h-44 overflow-hidden bg-[#161403]">
+                        <img src="${ev.bannerUrl}" alt="${ev.title}" class="w-full h-full object-cover transition duration-300 hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#242007] via-transparent to-transparent"></div>
                         
-                        <!-- Top Floating Badges -->
-                        <div class="absolute top-3 left-3 flex items-center gap-1.5">
-                            <span class="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold border backdrop-blur-md ${platClass}">
-                                ${ev.platform}
+                        <!-- Top Floating Badges (Platform, Free/Paid, Mode) -->
+                        <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 flex-wrap">
+                            ${isCampus ? `
+                                <span class="px-2.5 py-1 rounded-md text-[10px] font-mono font-black text-black bg-[#F7F06D] shadow-md flex items-center gap-1">
+                                    <span>⭐</span> SCCE CAMPUS
+                                </span>
+                            ` : `
+                                <span class="neu-chip px-2.5 py-1 rounded-md text-[10px] font-mono font-bold text-[#F7F06D]">
+                                    ${ev.platform}
+                                </span>
+                            `}
+                            <span class="neu-chip px-2 py-0.5 rounded-md text-[10px] font-bold ${ev.isFree ? 'text-emerald-300' : 'text-amber-300'}">
+                                ${ev.isFree ? 'Free' : (ev.feeDetails || 'Paid')}
                             </span>
                         </div>
-                        <div class="absolute top-3 right-3">
-                            <span class="px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-black/60 text-slate-200 border border-white/10 backdrop-blur-md">
+                        <div class="absolute top-2.5 right-2.5">
+                            <span class="neu-chip px-2.5 py-1 rounded-md text-[10px] font-bold text-white">
                                 ${modeText}
                             </span>
                         </div>
                     </div>
 
                     <!-- Content Body -->
-                    <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between space-y-4">
-                        <div class="space-y-2">
-                            <div class="text-[11px] font-medium text-slate-400 flex items-center gap-1.5 truncate">
-                                <i data-lucide="building-2" class="w-3.5 h-3.5 text-cyan-400 shrink-0"></i>
+                    <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between space-y-3.5">
+                        <div class="space-y-1.5">
+                            <div class="text-[11px] font-bold text-stone-300 flex items-center gap-1.5 truncate">
+                                <i data-lucide="${isCampus ? 'award' : 'building-2'}" class="w-3.5 h-3.5 text-[#F7F06D] shrink-0"></i>
                                 <span class="truncate">${ev.organizer || 'Student Opportunity'}</span>
                             </div>
-                            <h3 class="text-base font-bold text-white leading-snug line-clamp-2 hover:text-cyan-300 transition">
+                            <h3 class="text-base font-bold text-white leading-snug line-clamp-2 hover:text-[#F7F06D] transition">
                                 ${ev.title}
                             </h3>
                         </div>
 
                         <!-- Highlights: Prize & Deadline -->
-                        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-white/[0.06] text-xs">
+                        <div class="neu-inset-subtle p-3 rounded-lg grid grid-cols-2 gap-2 text-xs">
                             <div class="flex flex-col">
-                                <span class="text-[10px] text-slate-400">Prize Pool / Benefits</span>
-                                <span class="font-mono font-bold text-amber-300 truncate">${ev.prizePool || 'Certificates'}</span>
+                                <span class="text-[10px] text-stone-300 font-bold">Prize Pool / Perks</span>
+                                <span class="font-mono font-bold text-[#F7F06D] truncate">${ev.prizePool || 'Certificates'}</span>
                             </div>
                             <div class="flex flex-col text-right">
-                                <span class="text-[10px] text-slate-400">Deadline</span>
-                                <span class="font-mono font-semibold text-emerald-400 truncate">${ev.daysLeft || 'Upcoming'}</span>
+                                <span class="text-[10px] text-stone-300 font-bold">Timeline / Deadline</span>
+                                <span class="font-mono font-bold text-emerald-300 truncate">${ev.daysLeft || ev.deadline || 'Upcoming'}</span>
                             </div>
                         </div>
 
-                        <!-- Tech Tags -->
-                        <div class="flex items-center gap-1.5 flex-wrap pt-1">
-                            ${(ev.tags || []).map(t => `<span class="px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-800/80 text-slate-300 border border-white/5">${t}</span>`).join('')}
+                        <!-- Tech Tags (non-curved) -->
+                        <div class="flex items-center gap-1.5 flex-wrap pt-0.5">
+                            ${(ev.tags || []).map(t => `<span class="neu-chip px-2 py-0.5 rounded-md text-[10px] font-semibold text-stone-300">${t}</span>`).join('')}
                         </div>
 
-                        <!-- Action Button -->
+                        <!-- Action Button (#F7F06D with Black Text) -->
                         <div class="pt-2">
-                            <a href="${ev.registrationUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 border border-cyan-400/30 transition shadow-lg shadow-cyan-500/10 active:scale-[0.98]">
-                                <span>Register / Explore</span>
-                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            <a href="${ev.registrationUrl}" target="_blank" rel="noopener noreferrer" class="neu-btn-primary w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black text-black active:scale-[0.98]">
+                                <span>${isCampus ? 'Register for Event' : 'Register / Explore'}</span>
+                                <i data-lucide="external-link" class="w-3.5 h-3.5 text-black"></i>
                             </a>
                         </div>
                     </div>
@@ -466,13 +1141,24 @@
                 grid.appendChild(card);
             });
 
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
         }
 
         // Initialize on load
         document.addEventListener('DOMContentLoaded', () => {
             loadEventsData();
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
+
+            // Auto-open modal if URL has ?host=true
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('host') === 'true') {
+                openHostModal();
+            }
+
+            // Close modal on Escape
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeHostModal();
+            });
         });
     </script>
 </body>
