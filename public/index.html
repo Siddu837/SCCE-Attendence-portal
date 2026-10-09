@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>SCCE Smart Academic Gateway | Attendance & Student Analytics</title>
+    <title>Students Portal | Attendance & Academic Hub</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,11 +32,11 @@
                     },
                     colors: {
                         surface: {
-                            base: '#070A11',
-                            card: '#101726',
-                            cardHover: '#172238',
+                            base: '#050404',
+                            card: '#0d0b0b',
+                            cardHover: '#141212',
                             border: 'rgba(255, 255, 255, 0.08)',
-                            subtle: '#1E293B',
+                            subtle: '#141212',
                         },
                         cyber: {
                             cyan: '#06B6D4',
@@ -53,16 +53,16 @@
     </script>
     <style>
         :root {
-            --bg-base: #1D1A05;
-            --surface-card: #242007;
-            --surface-raised: #2a2509;
-            --surface-inset: #161403;
-            --shadow-dark: #0c0b02;
-            --shadow-light: #362f0a;
-            --border-neu: rgba(247, 240, 109, 0.18);
+            --bg-base: #050404;
+            --surface-card: #0d0b0b;
+            --surface-raised: #121010;
+            --surface-inset: #020202;
+            --shadow-dark: #000000;
+            --shadow-light: #161313;
+            --border-neu: rgba(247, 240, 109, 0.14);
             --text-main: #ffffff;
-            --text-muted: #e7e5e4;
-            --text-subtle: #a8a29e;
+            --text-muted: #e5e7eb;
+            --text-subtle: #9ca3af;
             --accent-yellow: #F7F06D;
             --accent-hover: #ede559;
         }
@@ -82,10 +82,10 @@
         }
 
         body {
-            background-color: #1D1A05;
+            background-color: #050404;
             background-image: 
-                radial-gradient(circle at 15% 15%, #2c2708 0%, transparent 60%),
-                radial-gradient(circle at 85% 85%, #141203 0%, transparent 60%);
+                radial-gradient(circle at 15% 15%, #141010 0%, transparent 60%),
+                radial-gradient(circle at 85% 85%, #020202 0%, transparent 60%);
             background-attachment: fixed;
             min-height: 100vh;
             color: #ffffff;
@@ -93,45 +93,45 @@
 
         /* Neumorphic Raised / Extruded Surfaces (no rounded-full corners) */
         .neu-flat {
-            background: #242007;
-            box-shadow: 6px 6px 16px var(--shadow-dark), -5px -5px 14px var(--shadow-light);
+            background: #0d0b0b;
+            box-shadow: 5px 5px 14px var(--shadow-dark), -4px -4px 12px var(--shadow-light);
             border: 1px solid var(--border-neu);
             border-radius: 14px;
         }
 
         .neu-card {
-            background: #242007;
-            box-shadow: 7px 7px 18px var(--shadow-dark), -6px -6px 16px var(--shadow-light);
+            background: #0d0b0b;
+            box-shadow: 6px 6px 16px var(--shadow-dark), -5px -5px 14px var(--shadow-light);
             border: 1px solid var(--border-neu);
             border-radius: 16px;
             transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .neu-card:hover {
-            box-shadow: 9px 9px 22px var(--shadow-dark), -7px -7px 18px #40380c;
+            box-shadow: 8px 8px 20px var(--shadow-dark), -6px -6px 16px #1c1818;
         }
 
         /* Neumorphic Inset / Sunken / Debossed Surfaces */
         .neu-inset {
-            background: #171403;
-            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
-            border: 1px solid rgba(247, 240, 109, 0.14);
+            background: #020202;
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -3px -3px 8px #141111;
+            border: 1px solid rgba(247, 240, 109, 0.12);
             border-radius: 12px;
         }
 
         .neu-inset-subtle {
-            background: #1a1704;
-            box-shadow: inset 2px 2px 6px var(--shadow-dark), inset -2px -2px 6px var(--shadow-light);
-            border: 1px solid rgba(247, 240, 109, 0.12);
+            background: #060505;
+            box-shadow: inset 2px 2px 6px var(--shadow-dark), inset -2px -2px 6px #120f0f;
+            border: 1px solid rgba(247, 240, 109, 0.10);
             border-radius: 10px;
         }
 
         /* Neumorphic Secondary / Nav Button */
         .neu-btn {
-            background: #242007;
+            background: #0d0b0b;
             color: #ffffff;
             box-shadow: 4px 4px 10px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
-            border: 1px solid rgba(247, 240, 109, 0.25);
+            border: 1px solid rgba(247, 240, 109, 0.22);
             border-radius: 12px;
             transition: all 0.18s ease-in-out;
             cursor: pointer;
@@ -142,7 +142,7 @@
             background: #F7F06D;
             color: #000000;
             border-color: #F7F06D;
-            box-shadow: 5px 5px 14px var(--shadow-dark), -3px -3px 10px #40380c, 0 0 12px rgba(247, 240, 109, 0.3);
+            box-shadow: 4px 4px 14px var(--shadow-dark), -3px -3px 10px #1c1818, 0 0 12px rgba(247, 240, 109, 0.3);
         }
 
         .neu-btn:active, .neu-btn.active {
@@ -156,7 +156,7 @@
         .neu-btn-primary {
             background: #F7F06D !important;
             color: #000000 !important;
-            box-shadow: 4px 4px 14px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 15px rgba(247, 240, 109, 0.25);
+            box-shadow: 4px 4px 14px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 14px rgba(247, 240, 109, 0.25);
             border: 1px solid #F7F06D;
             border-radius: 12px;
             transition: all 0.18s ease-in-out;
@@ -167,7 +167,7 @@
         .neu-btn-primary:hover {
             background: #ede559 !important;
             color: #000000 !important;
-            box-shadow: 5px 5px 18px var(--shadow-dark), -3px -3px 10px #40380c, 0 0 22px rgba(247, 240, 109, 0.45);
+            box-shadow: 5px 5px 18px var(--shadow-dark), 0 0 20px rgba(247, 240, 109, 0.45);
         }
 
         .neu-btn-primary:active {
@@ -179,16 +179,16 @@
 
         /* Neumorphic Small Chips & Badges */
         .neu-chip {
-            background: #242007;
+            background: #0d0b0b;
             color: #F7F06D;
             box-shadow: 3px 3px 7px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
-            border: 1px solid rgba(247, 240, 109, 0.25);
+            border: 1px solid rgba(247, 240, 109, 0.20);
             border-radius: 8px;
             transition: all 0.15s ease-in-out;
         }
 
         .neu-chip:hover {
-            background: #2c2709;
+            background: #141111;
         }
 
         .neu-chip:active, .neu-chip.active {
@@ -203,9 +203,9 @@
 
         /* Custom scrollbars */
         ::-webkit-scrollbar { width: 5px; height: 5px; }
-        ::-webkit-scrollbar-track { background: #161403; }
-        ::-webkit-scrollbar-thumb { background: #3a330b; border-radius: 6px; }
-        ::-webkit-scrollbar-thumb:hover { background: #4f4510; }
+        ::-webkit-scrollbar-track { background: #020202; }
+        ::-webkit-scrollbar-thumb { background: #221f1f; border-radius: 6px; }
+        ::-webkit-scrollbar-thumb:hover { background: #332e2e; }
 
         .scrollbar-none::-webkit-scrollbar { display: none; }
         .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
@@ -217,7 +217,7 @@
     <header class="sticky top-2 sm:top-4 z-50 px-2.5 sm:px-6 w-full flex justify-center">
         <div class="max-w-2xl w-full rounded-2xl neu-flat px-3 sm:px-5 py-2 sm:py-2.5 flex items-center justify-between gap-2">
             
-            <!-- College Academic Crest Logo -->
+            <!-- Brand Logo -->
             <div class="flex items-center gap-2 cursor-pointer select-none min-w-0" onclick="returnToLanding()">
                 <div class="w-8 h-8 rounded-xl neu-inset p-[2px] flex items-center justify-center shrink-0">
                     <div class="w-full h-full rounded-lg flex items-center justify-center text-[#F7F06D]">
@@ -227,20 +227,17 @@
                         </svg>
                     </div>
                 </div>
-                <div class="flex items-center gap-1.5 min-w-0">
-                    <span class="text-xs sm:text-sm font-extrabold tracking-tight text-white whitespace-nowrap">Sree Chaitanya</span>
-                    <span class="hidden sm:inline-block px-2 py-0.5 text-[10px] font-bold rounded-md neu-chip text-[#F7F06D] font-mono shrink-0">
-                        Attendance
-                    </span>
+                <div class="flex items-center min-w-0">
+                    <span class="text-xs sm:text-base font-extrabold tracking-tight text-white whitespace-nowrap">Students<sup class="text-[10px] text-[#F7F06D] font-mono font-bold ml-0.5">SC</sup></span>
                 </div>
             </div>
 
             <!-- Right Status & Navigation -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <!-- SCCE HackEvents Button -->
+                <!-- Hack Events Button -->
                 <a href="events.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black text-black neu-btn-primary hover:brightness-105 transition active:scale-95 shrink-0">
                     <span>⚡</span>
-                    <span>HackEvents</span>
+                    <span>Hack Events</span>
                     <span class="w-1.5 h-1.5 rounded-sm bg-black/60 animate-pulse"></span>
                 </a>
 
@@ -262,7 +259,7 @@
             
             <!-- Main Headline -->
             <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
-                SCCE Student Portal
+                Student Portal
             </h1>
 
             <!-- Normal Sized Input & Attendance Button Box (Mobile-Responsive) -->
@@ -291,7 +288,7 @@
                     </button>
                 </div>
 
-                <!-- HackEvents Promotion Banner -->
+                <!-- Hack Events Promotion Banner -->
                 <div class="mt-4 p-3 sm:p-3.5 rounded-xl neu-card flex items-center justify-between gap-2.5 text-left">
                     <div class="flex items-center gap-2.5 min-w-0 flex-1">
                         <div class="w-9 h-9 rounded-lg neu-inset flex items-center justify-center text-base shrink-0">
@@ -299,16 +296,13 @@
                         </div>
                         <div class="min-w-0 flex-1">
                             <div class="font-bold text-xs sm:text-sm text-white flex items-center gap-1.5 flex-wrap">
-                                <span class="whitespace-nowrap">SCCE HackEvents</span>
+                                <span class="whitespace-nowrap">Hack Events</span>
                                 <span class="px-1.5 py-0.2 rounded text-[9px] font-mono neu-chip font-bold text-[#F7F06D] shrink-0">313 LIVE</span>
                             </div>
                             <div class="text-[10px] text-stone-300 truncate">313 Active Opportunities across Unstop, Devpost & Devfolio</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-1.5 shrink-0">
-                        <a href="events.html?host=true" class="neu-btn px-2.5 py-1.5 rounded-lg text-xs font-bold text-[#F7F06D] whitespace-nowrap active:scale-95 flex items-center gap-1">
-                            <span>+ Host</span>
-                        </a>
                         <a href="events.html" class="neu-btn-primary px-3 py-1.5 rounded-lg text-xs font-bold text-black whitespace-nowrap active:scale-95 flex items-center gap-1">
                             <span>Explore ↗</span>
                         </a>
@@ -405,12 +399,12 @@
                             Teamwork, Mentorship & Visibility
                         </h3>
                         <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
-                            Collaborate with passionate coders, get 1-on-1 code reviews from senior industry architects, and represent Sree Chaitanya College of Engineering on national Unstop, Devpost, and Devfolio leaderboards.
+                            Collaborate with passionate coders, get 1-on-1 code reviews from senior industry architects, and represent your college on national Unstop, Devpost, and Devfolio leaderboards.
                         </p>
                     </div>
                     <div class="pt-2 flex items-center gap-2">
                         <span class="neu-chip px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-cyan-300">Industry Mentors</span>
-                        <span class="neu-chip px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-stone-300">SCCE Pride</span>
+                        <span class="neu-chip px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold text-stone-300">Student Pride</span>
                     </div>
                 </div>
 
@@ -515,7 +509,7 @@
         <!-- Live Toast Notification -->
         <div id="sync-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:right-6 sm:translate-x-0 z-50 px-4 py-2.5 rounded-xl neu-flat text-emerald-300 text-xs font-bold flex items-center gap-2 max-w-[90vw]">
             <span>✅</span>
-            <span id="sync-toast-msg" class="truncate">Attendance refreshed directly from SCCE.</span>
+            <span id="sync-toast-msg" class="truncate">Attendance refreshed directly.</span>
         </div>
 
         <!-- Student Profile Card (Mobile & Desktop Responsive) -->
@@ -648,7 +642,7 @@
             <!-- Fully Responsive Subjects Table Container -->
             <div class="overflow-x-auto rounded-xl neu-inset p-1 w-full">
                 <table class="w-full text-left text-xs sm:text-sm">
-                    <thead class="text-[11px] sm:text-xs uppercase text-stone-300 font-mono border-b border-[rgba(247,240,109,0.15)] bg-[#242007]">
+                    <thead class="text-[11px] sm:text-xs uppercase text-stone-300 font-mono border-b border-[rgba(247,240,109,0.15)] bg-[#121010]">
                         <tr>
                             <th class="px-2.5 sm:px-4 py-2.5 font-bold">Subject</th>
                             <th class="px-2 sm:px-3 py-2.5 text-center font-bold">Conducted</th>
@@ -729,7 +723,7 @@
 
                     <div class="overflow-x-auto rounded-xl neu-inset p-1 max-h-[420px] overflow-y-auto w-full">
                         <table class="w-full text-left text-xs min-w-[320px]">
-                            <thead class="bg-[#242007] text-[11px] uppercase text-stone-300 font-mono sticky top-0">
+                            <thead class="bg-[#121010] text-[11px] uppercase text-stone-300 font-mono sticky top-0">
                                 <tr>
                                     <th class="px-2.5 py-2">S.No</th>
                                     <th class="px-2.5 py-2">Date</th>
@@ -762,21 +756,7 @@
 
     </section>
 
-    <!-- Footer with Developer Credit -->
-    <footer class="neu-flat border-t-0 py-4 sm:py-5 text-center text-slate-400 space-y-2 px-4 mt-auto w-full">
-        <div class="flex items-center justify-center gap-1.5 flex-wrap">
-            <span class="neu-chip inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[10px] sm:text-[11px] text-[#F7F06D] font-bold tracking-wide">
-                <span>🎓</span> <span>Made for students of SCCE</span>
-            </span>
-        </div>
-        <div class="text-[9px] sm:text-[10px] text-stone-400 flex items-center justify-center gap-1.5 flex-wrap">
-            <span>SCCE Smart Academic Gateway</span>
-            <span>•</span>
-            <span>Sree Chaitanya Educational Institutions</span>
-            <span>•</span>
-            <span class="font-mono text-stone-500">2026</span>
-        </div>
-    </footer>
+
 
     <!-- App JavaScript Logic -->
     <script>
@@ -812,7 +792,7 @@
                 revealDashboard(data);
 
                 if (forceRefresh) {
-                    showSyncToast("Live attendance refreshed directly from SCCE!");
+                    showSyncToast("Live attendance refreshed directly!");
                 }
 
             } catch (err) {
@@ -960,13 +940,13 @@
             // Status Badge
             const pill = document.getElementById('status-pill');
             if (data.percentage >= 75) {
-                pill.className = 'neu-chip inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-emerald-300 bg-[#242007] border border-[#ceb5a7]';
+                pill.className = 'neu-chip inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-emerald-300 border border-emerald-500/30';
                 pill.innerHTML = '<span>🟢</span> Safe (Above 75.00%)';
             } else if (data.percentage >= 65) {
-                pill.className = 'neu-chip inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-[#f7d488] bg-[#242007] border border-[#f9a03f]/30';
+                pill.className = 'neu-chip inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-[#F7F06D] border border-[#F7F06D]/30';
                 pill.innerHTML = '<span>⚠️</span> Condonation Eligible (65% – 75%)';
             } else {
-                pill.className = 'neu-chip inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-rose-300 bg-[#ceb5a7]/40 border border-[#ceb5a7]';
+                pill.className = 'neu-chip inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-rose-400 border border-rose-500/30';
                 pill.innerHTML = '<span>🚨</span> Critical Attendance Shortage (< 65%)';
             }
 
@@ -1006,7 +986,7 @@
                 }
 
                 const tr = document.createElement('tr');
-                tr.className = 'hover:bg-[#2e290a]/70 transition';
+                tr.className = 'hover:bg-white/[0.04] transition';
                 tr.innerHTML = `
                     <td class="px-2.5 sm:px-4 py-2.5 sm:py-3">
                         <div class="flex items-center gap-1.5 sm:gap-2">
@@ -1046,7 +1026,7 @@
             let totalBadgeClass = overallPercentage >= 75 ? 'bg-emerald-400/10 text-emerald-400 border-emerald-500/20' : (overallPercentage >= 65 ? 'bg-amber-500/10 text-amber-300 border-amber-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20');
             
             tfoot.innerHTML = `
-                <tr class="bg-[#242007]">
+                <tr class="bg-[#121010]">
                     <td class="px-2.5 sm:px-4 py-3 text-xs sm:text-sm text-white">
                         <span class="font-black tracking-wide uppercase font-mono text-[#F7F06D]">Overall Aggregate</span>
                     </td>
@@ -1129,7 +1109,7 @@
 
         function copySummary() {
             if (!currentStudentData) return;
-            const text = `SCCE Attendance Report\nHall Ticket: ${currentStudentData.hallTicket}\nName: ${currentStudentData.studentName}\nAttended: ${currentStudentData.totalAttended} / ${currentStudentData.totalConducted}\nOverall Percentage: ${currentStudentData.percentage}%\nStatus: ${currentStudentData.percentage >= 75 ? 'Safe' : 'Condonation'}`;
+            const text = `Student Attendance Report\nHall Ticket: ${currentStudentData.hallTicket}\nName: ${currentStudentData.studentName}\nAttended: ${currentStudentData.totalAttended} / ${currentStudentData.totalConducted}\nOverall Percentage: ${currentStudentData.percentage}%\nStatus: ${currentStudentData.percentage >= 75 ? 'Safe' : 'Condonation'}`;
             navigator.clipboard.writeText(text).then(() => {
                 const btn = document.getElementById('copy-btn');
                 btn.innerHTML = '<span>✅</span> <span>Copied</span>';

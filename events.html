@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>SCCE HackEvents | Hackathons, Workshops & Competitions for Students</title>
+    <title>Hack Events | Hackathons, Workshops & Competitions for Students</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -47,13 +47,13 @@
 
     <style>
         :root {
-            --bg-base: #1D1A05;
-            --surface-card: #242007;
-            --surface-raised: #2a2509;
-            --surface-inset: #161403;
-            --shadow-dark: #0c0b02;
-            --shadow-light: #362f0a;
-            --border-neu: rgba(247, 240, 109, 0.18);
+            --bg-base: #050404;
+            --surface-card: #0d0b0b;
+            --surface-raised: #141111;
+            --surface-inset: #020202;
+            --shadow-dark: #000000;
+            --shadow-light: #161313;
+            --border-neu: rgba(247, 240, 109, 0.16);
             --text-main: #ffffff;
             --text-muted: #e7e5e4;
             --text-subtle: #a8a29e;
@@ -76,10 +76,10 @@
         }
 
         body {
-            background-color: #1D1A05;
+            background-color: #050404;
             background-image: 
-                radial-gradient(circle at 15% 15%, #2c2708 0%, transparent 60%),
-                radial-gradient(circle at 85% 85%, #141203 0%, transparent 60%);
+                radial-gradient(circle at 15% 15%, #131010 0%, transparent 60%),
+                radial-gradient(circle at 85% 85%, #020202 0%, transparent 60%);
             background-attachment: fixed;
             min-height: 100vh;
             color: #ffffff;
@@ -88,15 +88,15 @@
 
         /* Neumorphic Raised / Extruded Surfaces (no rounded-full corners) */
         .neu-flat {
-            background: #242007;
-            box-shadow: 6px 6px 16px var(--shadow-dark), -5px -5px 14px var(--shadow-light);
+            background: #0d0b0b;
+            box-shadow: 5px 5px 14px var(--shadow-dark), -3px -3px 10px var(--shadow-light);
             border: 1px solid var(--border-neu);
             border-radius: 14px;
         }
 
         .neu-card {
-            background: #242007;
-            box-shadow: 7px 7px 18px var(--shadow-dark), -6px -6px 16px var(--shadow-light);
+            background: #0d0b0b;
+            box-shadow: 6px 6px 16px var(--shadow-dark), -4px -4px 12px var(--shadow-light);
             border: 1px solid var(--border-neu);
             border-radius: 16px;
             transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
@@ -104,30 +104,30 @@
 
         .neu-card:hover {
             transform: translateY(-2px);
-            box-shadow: 9px 9px 22px var(--shadow-dark), -7px -7px 18px #40380c;
+            box-shadow: 8px 8px 20px var(--shadow-dark), -5px -5px 14px rgba(247, 240, 109, 0.08);
         }
 
         /* Neumorphic Inset / Sunken / Debossed Surfaces */
         .neu-inset {
-            background: #171403;
-            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
-            border: 1px solid rgba(247, 240, 109, 0.14);
+            background: #020202;
+            box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -2px -2px 6px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.12);
             border-radius: 12px;
         }
 
         .neu-inset-subtle {
-            background: #1a1704;
-            box-shadow: inset 2px 2px 6px var(--shadow-dark), inset -2px -2px 6px var(--shadow-light);
-            border: 1px solid rgba(247, 240, 109, 0.12);
+            background: #060505;
+            box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -1px -1px 4px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.1);
             border-radius: 10px;
         }
 
         /* Neumorphic Secondary / Nav Button */
         .neu-btn {
-            background: #242007;
+            background: #0d0b0b;
             color: #ffffff;
-            box-shadow: 4px 4px 10px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
-            border: 1px solid rgba(247, 240, 109, 0.25);
+            box-shadow: 4px 4px 10px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.22);
             border-radius: 12px;
             transition: all 0.18s ease-in-out;
             cursor: pointer;
@@ -138,7 +138,7 @@
             background: #F7F06D;
             color: #000000;
             border-color: #F7F06D;
-            box-shadow: 5px 5px 14px var(--shadow-dark), -3px -3px 10px #40380c, 0 0 12px rgba(247, 240, 109, 0.3);
+            box-shadow: 4px 4px 12px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 12px rgba(247, 240, 109, 0.3);
         }
 
         .neu-btn:active, .neu-btn.active {
@@ -152,7 +152,7 @@
         .neu-btn-primary {
             background: #F7F06D !important;
             color: #000000 !important;
-            box-shadow: 4px 4px 14px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 15px rgba(247, 240, 109, 0.25);
+            box-shadow: 4px 4px 12px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 14px rgba(247, 240, 109, 0.25);
             border: 1px solid #F7F06D;
             border-radius: 12px;
             transition: all 0.18s ease-in-out;
@@ -163,7 +163,7 @@
         .neu-btn-primary:hover {
             background: #ede559 !important;
             color: #000000 !important;
-            box-shadow: 5px 5px 18px var(--shadow-dark), -3px -3px 10px #40380c, 0 0 22px rgba(247, 240, 109, 0.45);
+            box-shadow: 5px 5px 16px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 20px rgba(247, 240, 109, 0.45);
         }
 
         .neu-btn-primary:active {
@@ -175,16 +175,16 @@
 
         /* Neumorphic Small Chips & Badges */
         .neu-chip {
-            background: #242007;
+            background: #0d0b0b;
             color: #F7F06D;
-            box-shadow: 3px 3px 7px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
-            border: 1px solid rgba(247, 240, 109, 0.25);
+            box-shadow: 2px 2px 6px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+            border: 1px solid rgba(247, 240, 109, 0.22);
             border-radius: 8px;
             transition: all 0.15s ease-in-out;
         }
 
         .neu-chip:hover {
-            background: #2c2709;
+            background: #141111;
         }
 
         .neu-chip:active, .neu-chip.active {
@@ -193,9 +193,9 @@
 
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 5px; height: 5px; }
-        ::-webkit-scrollbar-track { background: #161403; }
-        ::-webkit-scrollbar-thumb { background: #3a330b; border-radius: 6px; }
-        ::-webkit-scrollbar-thumb:hover { background: #4f4510; }
+        ::-webkit-scrollbar-track { background: #020202; }
+        ::-webkit-scrollbar-thumb { background: #1c1818; border-radius: 6px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2b2525; }
     </style>
 </head>
 <body class="text-white min-h-screen flex flex-col selection:bg-[#F7F06D] selection:text-black">
@@ -210,16 +210,12 @@
             </a>
 
             <!-- Center: Brand Logo -->
-            <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl neu-inset flex items-center justify-center text-[#F7F06D] shrink-0">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i>
-                </div>
-                <div class="text-left hidden xs:block">
-                    <div class="font-bold text-sm tracking-tight text-white flex items-center gap-1.5">
-                        <span>SCCE HackEvents</span>
+            <div class="flex items-center">
+                <div class="text-left">
+                    <div class="font-bold text-sm sm:text-base tracking-tight text-white flex items-center gap-1.5">
+                        <span>Hack Events</span>
                         <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold neu-chip text-[#F7F06D]">LIVE</span>
                     </div>
-                    <div class="text-[10px] text-stone-300 font-medium">Sree Chaitanya College of Engineering</div>
                 </div>
             </div>
 
@@ -347,11 +343,11 @@
                     <!-- Platform Filter -->
                     <div class="neu-inset rounded-xl p-1 flex items-center shrink-0">
                         <select id="platform-select" onchange="handlePlatformFilter()" class="bg-transparent text-xs font-bold text-white px-2.5 py-1 rounded-lg focus:outline-none cursor-pointer">
-                            <option value="all" class="bg-[#242007] text-white">All Platforms</option>
-                            <option value="SCCE Campus" class="bg-[#242007] text-[#F7F06D] font-bold">⭐ SCCE Campus</option>
-                            <option value="Devpost" class="bg-[#242007] text-white">Devpost</option>
-                            <option value="Devfolio" class="bg-[#242007] text-white">Devfolio</option>
-                            <option value="Unstop" class="bg-[#242007] text-white">Unstop</option>
+                            <option value="all" class="bg-[#0d0b0b] text-white">All Platforms</option>
+                            <option value="Campus Events" class="bg-[#0d0b0b] text-[#F7F06D] font-bold">⭐ Campus Hosted</option>
+                            <option value="Devpost" class="bg-[#0d0b0b] text-white">Devpost</option>
+                            <option value="Devfolio" class="bg-[#0d0b0b] text-white">Devfolio</option>
+                            <option value="Unstop" class="bg-[#0d0b0b] text-white">Unstop</option>
                         </select>
                     </div>
 
@@ -407,7 +403,7 @@
                                 Event / Hackathon Name <span class="text-[#F7F06D]">*</span>
                             </label>
                             <div class="neu-inset rounded-xl px-3 py-2">
-                                <input type="text" id="host-title" required placeholder="e.g. SCCE HackArena 2026" class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
+                                <input type="text" id="host-title" required placeholder="e.g. Campus HackArena 2026" class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
                             </div>
                         </div>
                         <div class="space-y-1">
@@ -416,10 +412,10 @@
                             </label>
                             <div class="neu-inset rounded-xl px-3 py-2">
                                 <select id="host-category" required class="w-full bg-transparent text-sm text-white font-semibold focus:outline-none cursor-pointer">
-                                    <option value="hackathon" class="bg-[#242007] text-white">🚀 Hackathon</option>
-                                    <option value="workshop" class="bg-[#242007] text-white">🛠️ Workshop / Bootcamp</option>
-                                    <option value="competition" class="bg-[#242007] text-white">🏆 Competition / Contest</option>
-                                    <option value="meetup" class="bg-[#242007] text-white">🤝 Meetup / Tech Fest</option>
+                                    <option value="hackathon" class="bg-[#0d0b0b] text-white">🚀 Hackathon</option>
+                                    <option value="workshop" class="bg-[#0d0b0b] text-white">🛠️ Workshop / Bootcamp</option>
+                                    <option value="competition" class="bg-[#0d0b0b] text-white">🏆 Competition / Contest</option>
+                                    <option value="meetup" class="bg-[#0d0b0b] text-white">🤝 Meetup / Tech Fest</option>
                                 </select>
                             </div>
                         </div>
@@ -432,7 +428,7 @@
                                 College / Dept / Club Name <span class="text-[#F7F06D]">*</span>
                             </label>
                             <div class="neu-inset rounded-xl px-3 py-2">
-                                <input type="text" id="host-organizer" required placeholder="e.g. SCCE CSE Dept / Coding Club" class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
+                                <input type="text" id="host-organizer" required placeholder="e.g. CSE Dept / Coding Club" class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
                             </div>
                         </div>
                         <div class="space-y-1">
@@ -441,9 +437,9 @@
                             </label>
                             <div class="neu-inset rounded-xl px-3 py-2">
                                 <select id="host-mode" required class="w-full bg-transparent text-sm text-white font-semibold focus:outline-none cursor-pointer">
-                                    <option value="offline" class="bg-[#242007] text-white">📍 In-Person (On-Campus)</option>
-                                    <option value="online" class="bg-[#242007] text-white">🌐 Online (Virtual)</option>
-                                    <option value="hybrid" class="bg-[#242007] text-white">⚡ Hybrid (Online + Offline)</option>
+                                    <option value="offline" class="bg-[#0d0b0b] text-white">📍 In-Person (On-Campus)</option>
+                                    <option value="online" class="bg-[#0d0b0b] text-white">🌐 Online (Virtual)</option>
+                                    <option value="hybrid" class="bg-[#0d0b0b] text-white">⚡ Hybrid (Online + Offline)</option>
                                 </select>
                             </div>
                         </div>
@@ -455,7 +451,7 @@
                             Location / Venue / Hall <span class="text-[#F7F06D]">*</span>
                         </label>
                         <div class="neu-inset rounded-xl px-3 py-2">
-                            <input type="text" id="host-location" required placeholder="e.g. SCCE Main Auditorium / Lab 3, Karimnagar (or Online Link)" class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
+                            <input type="text" id="host-location" required placeholder="e.g. Main Auditorium / Lab 3 (or Online Link)" class="w-full bg-transparent text-sm text-white placeholder-stone-500 font-semibold focus:outline-none">
                         </div>
                     </div>
 
@@ -487,8 +483,8 @@
                             </label>
                             <div class="neu-inset rounded-xl px-3 py-2 flex items-center gap-2">
                                 <select id="host-fee-type" onchange="toggleFeeInput()" class="bg-transparent text-sm text-white font-semibold focus:outline-none cursor-pointer">
-                                    <option value="free" class="bg-[#242007] text-white">Free (₹0)</option>
-                                    <option value="paid" class="bg-[#242007] text-white">Paid Entry</option>
+                                    <option value="free" class="bg-[#0d0b0b] text-white">Free (₹0)</option>
+                                    <option value="paid" class="bg-[#0d0b0b] text-white">Paid Entry</option>
                                 </select>
                                 <input type="text" id="host-fee-amount" placeholder="Amount (e.g. ₹150)" class="hidden w-full bg-transparent text-sm text-[#F7F06D] font-mono font-bold focus:outline-none pl-2 border-l border-white/10">
                             </div>
@@ -578,21 +574,7 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="neu-flat border-t-0 py-4 sm:py-5 text-center text-xs text-stone-400 space-y-2 px-4 mt-auto w-full">
-        <div class="flex items-center justify-center gap-2 flex-wrap">
-            <span class="neu-chip inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[#F7F06D] font-bold text-[10px] sm:text-[11px] tracking-wide">
-                <span>🎓</span> <span>Made for students of SCCE</span>
-            </span>
-        </div>
-        <div class="text-[9px] sm:text-[10px] text-stone-400 flex items-center justify-center gap-2 flex-wrap">
-            <span>SCCE HackEvents Gateway</span>
-            <span>•</span>
-            <span>Real-time Aggregation Engine</span>
-            <span>•</span>
-            <a href="index.html" class="text-[#F7F06D] font-bold hover:underline">Return to Attendance Portal</a>
-        </div>
-    </footer>
+
 
     <!-- Frontend Script Logic -->
     <script>
@@ -738,12 +720,12 @@
                 else bannerUrl = 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80';
             }
 
-            const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()).filter(Boolean) : ['SCCE Campus', 'Student Tech'];
+            const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()).filter(Boolean) : ['Campus Event', 'Student Tech'];
 
             const newEvent = {
-                id: `scce_host_${Date.now()}`,
+                id: `host_${Date.now()}`,
                 title: title,
-                platform: 'SCCE Campus',
+                platform: 'Campus Events',
                 isCampusHosted: true,
                 category: category,
                 mode: mode,
@@ -1044,7 +1026,13 @@
                 if (activeFee === 'free' && !ev.isFree) return false;
                 if (activeFee === 'paid' && ev.isFree) return false;
                 // Platform
-                if (activePlatform !== 'all' && ev.platform !== activePlatform) return false;
+                if (activePlatform !== 'all') {
+                    if (activePlatform === 'Campus Events') {
+                        if (!ev.isCampusHosted && ev.platform !== 'Campus Events' && ev.platform !== 'SCCE Campus') return false;
+                    } else if (ev.platform.toLowerCase() !== activePlatform.toLowerCase()) {
+                        return false;
+                    }
+                }
                 // Search
                 if (searchQuery) {
                     const matchTitle = ev.title.toLowerCase().includes(searchQuery);
@@ -1066,7 +1054,7 @@
             empty.classList.add('hidden');
 
             filtered.forEach(ev => {
-                const isCampus = ev.isCampusHosted || ev.platform === 'SCCE Campus';
+                const isCampus = ev.isCampusHosted || ev.platform === 'Campus Events' || ev.platform === 'SCCE Campus';
                 let modeText = ev.mode === 'online' ? '🌐 Online' : `📍 ${ev.location || 'In-Person'}`;
 
                 // Card HTML
@@ -1074,15 +1062,15 @@
                 card.className = `neu-card rounded-xl overflow-hidden flex flex-col ${isCampus ? 'border-2 border-[#F7F06D]/60 shadow-lg' : ''}`;
                 card.innerHTML = `
                     <!-- Image Banner (Full Cover) -->
-                    <div class="relative w-full h-44 overflow-hidden bg-[#161403]">
+                    <div class="relative w-full h-44 overflow-hidden bg-[#020202]">
                         <img src="${ev.bannerUrl}" alt="${ev.title}" class="w-full h-full object-cover transition duration-300 hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80';">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#242007] via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0d0b0b] via-transparent to-transparent"></div>
                         
                         <!-- Top Floating Badges (Platform, Free/Paid, Mode) -->
                         <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 flex-wrap">
                             ${isCampus ? `
                                 <span class="px-2.5 py-1 rounded-md text-[10px] font-mono font-black text-black bg-[#F7F06D] shadow-md flex items-center gap-1">
-                                    <span>⭐</span> SCCE CAMPUS
+                                    <span>⭐</span> CAMPUS HOSTED
                                 </span>
                             ` : `
                                 <span class="neu-chip px-2.5 py-1 rounded-md text-[10px] font-mono font-bold text-[#F7F06D]">
