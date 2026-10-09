@@ -202,30 +202,28 @@
 
     <!-- Sticky Floating Navigation Bar -->
     <header class="sticky top-3 z-50 px-3 sm:px-6 w-full max-w-7xl mx-auto">
-        <nav class="neu-flat rounded-2xl px-4 sm:px-6 py-2.5 flex items-center justify-between transition-all">
+        <nav class="neu-flat rounded-2xl px-2.5 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-1.5 sm:gap-4 transition-all">
             <!-- Left: Back to Portal button -->
-            <a href="index.html" class="neu-btn-primary inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black text-black transition active:scale-95 shrink-0">
-                <i data-lucide="arrow-left" class="w-4 h-4 text-black"></i>
-                <span>Attendance Portal</span>
+            <a href="index.html" class="neu-btn-primary inline-flex items-center gap-1 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-black text-black transition active:scale-95 shrink-0" title="Return to Portal">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black shrink-0"></i>
+                <span class="hidden sm:inline">Attendance </span><span>Portal</span>
             </a>
 
             <!-- Center: Brand Logo -->
-            <div class="flex items-center">
-                <div class="text-left">
-                    <div class="font-bold text-sm sm:text-base tracking-tight text-white flex items-center gap-1.5">
-                        <span>Hack Events</span>
-                        <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold neu-chip text-[#F7F06D]">LIVE</span>
-                    </div>
+            <div class="flex items-center justify-center min-w-0 px-1">
+                <div class="font-bold text-xs sm:text-base tracking-tight text-white flex items-center gap-1 sm:gap-1.5 truncate">
+                    <span class="truncate">Hack Events</span>
+                    <span class="px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-mono font-bold neu-chip text-[#F7F06D] shrink-0">LIVE</span>
                 </div>
             </div>
 
             <!-- Right: Host Event Action & Status Pill -->
-            <div class="flex items-center gap-2">
-                <button onclick="openHostModal()" class="neu-btn-primary inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black text-black transition active:scale-95 shrink-0 shadow-md">
-                    <i data-lucide="plus-circle" class="w-4 h-4 text-black"></i>
-                    <span>Host Event</span>
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <button onclick="openHostModal()" class="neu-btn-primary inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black text-black transition active:scale-95 shrink-0 shadow-md">
+                    <i data-lucide="plus-circle" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black shrink-0"></i>
+                    <span>Host<span class="hidden sm:inline"> Event</span></span>
                 </button>
-                <div class="neu-inset-subtle inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold text-emerald-300 hidden xs:inline-flex">
+                <div class="neu-inset-subtle inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold text-emerald-300 hidden md:inline-flex">
                     <span class="w-2 h-2 rounded-sm bg-emerald-500 animate-pulse"></span>
                     <span id="nav-count-badge">313 Events</span>
                 </div>
