@@ -8,6 +8,9 @@
   },
   "author": "SCCE",
   "license": "MIT",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  },
   "devDependencies": {
     "wrangler": "^3.114.0"
   },
